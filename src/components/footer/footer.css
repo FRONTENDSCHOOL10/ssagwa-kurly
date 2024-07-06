@@ -31,7 +31,7 @@ li {
   border-bottom: 1px solid var(--gray-100, #e1e1e1);
 }
 
-.Customer-Service {
+.customer-service {
   max-width: 29.8rem;
   display: flex;
   flex-flow: column wrap;
@@ -61,7 +61,7 @@ li {
   }
 }
 
-.Customer-Service ul {
+.customer-service ul {
   min-width: 29.8125rem;
   padding: 0;
   display: flex;
@@ -70,7 +70,7 @@ li {
   gap: 1rem;
 }
 
-.Customer-Service li {
+.customer-service li {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -80,20 +80,20 @@ li {
   }
 }
 
-.Customer-Service .button {
+.customer-service .button {
   width: 8.75rem;
   height: 2.5rem;
   padding: 0.25rem;
-
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   color: var(--content, #333);
   background-color: #fff;
+  cursor: pointer;
   border: 1px solid var(--gray-200, #c4c4c4);
 }
 
-.Customer-Service .mail {
+.customer-service .mail {
   p {
     height: 1.19rem;
     margin: 0;
@@ -105,7 +105,7 @@ li {
   }
 }
 
-.Company-info {
+.company-info {
   min-width: 30.4rem;
   display: flex;
   flex-direction: column;
@@ -136,7 +136,7 @@ li {
     }
   }
 }
-.SNS-links {
+.sns-links {
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
