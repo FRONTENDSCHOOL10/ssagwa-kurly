@@ -1,4 +1,4 @@
-class kurlyfooter extends HTMLElement {
+class KurlyFooter extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -17,7 +17,7 @@ class kurlyfooter extends HTMLElement {
       <footer class="footer">
         <div class="main-inner">
           <div class="footer-top">
-            <section class="Customer-Service" aria-labelledby="customer-service-title">
+            <section class="customer-service" aria-labelledby="customer-service-title">
               <h2 id="customer-service-title">고객행복센터</h2>
               <div class="number">
                 <p class="tel-number"><a href="tel:1644-1107" aria-label="전화 문의 1644-1107">1644-1107</a></p>
@@ -45,8 +45,8 @@ class kurlyfooter extends HTMLElement {
                 <p>비회원 대량주문 문의 : <a href="mailto:help@karlycorp.com">help@karlycorp.com</a></p>
               </div>
             </section>
-            <section class="Company-info" aria-label="회사 정보">
-              <nav class="Company-info" aria-label="회사 정보">
+            <section class="company-info" aria-label="회사 정보">
+              <nav class="company-info" aria-label="회사 정보">
                 <ul>
                   <li><a href="#">칼리소개</a></li>
                   <li><a href="#">칼리소개영상</a></li>
@@ -67,7 +67,7 @@ class kurlyfooter extends HTMLElement {
                 <a href="mailto:recruit@karlycorp.com">recruit@karlycorp.com</a></p>
                 <p>팩스 : 070 - 7500 - 6098</p>
               </address>
-              <ul class="SNS-links" aria-label="SNS 링크">
+              <ul class="sns-links" aria-label="sns링크">
                 <li><a href="https://blog.naver.com/marketkurly" target='_blank' aria-label="칼리 블로그"><img src="/ssagwa-kurly/src/assets/svg/Blog.svg" alt=""></a></li>
                 <li><a href="https://www.instagram.com/marketkurly/" target='_blank' aria-label="칼리 인스타그램"><img src="/ssagwa-kurly/src/assets/svg/Instagram.svg" alt=""></a></li>
                 <li><a href="https://www.facebook.com/Marketkurly/" target='_blank' aria-label="칼리 페이스북"><img src="/ssagwa-kurly/src/assets/svg/FaceBook.svg" alt=""></a></li>
@@ -111,4 +111,4 @@ class kurlyfooter extends HTMLElement {
   }
 }
 
-customElements.define('ssagwakurly-footer', kurlyfooter);
+customElements.define('ssagwakurly-footer', KurlyFooter);
