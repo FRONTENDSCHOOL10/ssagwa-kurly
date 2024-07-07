@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link rel="stylesheet" href="/styles/reset.css" /> -->
+  <link rel="stylesheet" href="/components/input/input.css" />
+  <title>Document</title>
+</head>
+<body>
+  <div class="component-input">
+    <label class="sr-only" for="userEmail">아이디</label>
+    <input class="large" type="email" name="userEmail" id="userEmail" required placeholder="아이디(이메일)" aria-invalid="false" aria-describedby="userEmailError"
+    aria-live="assertive" />
+    <span class="error-message" id="userEmailError">아이디는 이메일 형식으로 입력해
+      주세요.</span>
+  </div>
+</body>
+</html>
