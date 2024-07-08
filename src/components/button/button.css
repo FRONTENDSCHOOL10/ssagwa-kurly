@@ -1,10 +1,5 @@
 
-.button-group__button{
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
+.button-group__button--large{
 
   button{
     width: 21.25rem;
@@ -13,6 +8,18 @@
     border: 1px solid var(--primary);
     font-size: 1rem;
   }
+}
+
+.button-group__button--small{
+  
+  button{
+    width: 21.25rem;
+    height: 2.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--primary);
+    font-size: 1rem;
+  }
+}
 
   .button--transparent{
     background-color: transparent;
@@ -24,5 +31,5 @@
     color: var(--white);
   }
 
-}
+
 
