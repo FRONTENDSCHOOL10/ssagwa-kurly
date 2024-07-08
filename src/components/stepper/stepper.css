@@ -1,0 +1,36 @@
+.component-stepper {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid rgb(221, 223, 225);
+  border-radius: 3px;
+
+  width: 88px;
+  height: 30px;
+  gap: 8px;
+
+  button {
+    width: 30px;
+    height: 30px;
+    background-color: inherit;
+    border: none;
+
+    cursor: pointer;
+  }
+
+  .minus {
+    background-image: url('/assets/svg/Minus.svg');
+    background-size: 46px 84px;
+    background-position: -8px -45px;
+    background-repeat: no-repeat;
+  }
+
+  .plus {
+    background-image: url('/assets/svg/Plus.svg');
+    background-size: 46px 84px;
+    background-position: -8px -7px;
+    background-repeat: no-repeat;
+  }
+}
