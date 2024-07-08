@@ -15,10 +15,10 @@ class KurlyFooter extends HTMLElement {
     const template = document.createElement('template');
     template.innerHTML = `
       <footer class="footer">
-        <div class="main-inner">
-          <div class="footer-top">
-            <section class="customer-service" aria-labelledby="customer-service-title">
-              <h2 id="customer-service-title">고객행복센터</h2>
+        <div class="footer__maininner">
+          <div class="footer__top">
+            <section class="footer__customer-service" aria-labelledby="customer-service__title">
+              <h2 id="customer-service__title">고객행복센터</h2>
               <div class="number">
                 <p class="tel-number"><a href="tel:1644-1107" aria-label="전화 문의 1644-1107">1644-1107</a></p>
                 <p>월~토요일 오전 7시 - 오후 6시</p>
@@ -45,8 +45,8 @@ class KurlyFooter extends HTMLElement {
                 <p>비회원 대량주문 문의 : <a href="mailto:help@karlycorp.com">help@karlycorp.com</a></p>
               </div>
             </section>
-            <section class="company-info" aria-label="회사 정보">
-              <nav class="company-info" aria-label="회사 정보">
+            <section class="footer__company-info" aria-label="회사 정보">
+              <nav>
                 <ul>
                   <li><a href="#">칼리소개</a></li>
                   <li><a href="#">칼리소개영상</a></li>
@@ -57,7 +57,7 @@ class KurlyFooter extends HTMLElement {
                 </ul>
               </nav>
               <address>
-                <p class="business-info">법인명 (상호) : 주식회사 컬리 | 사업자등록번호 : 261-81-23567 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2618123467"  target="_blank" rel="noopener noreferrer"> | 사업자정보 확인</a></p>
+                <p class="company-info__business-info">법인명 (상호) : 주식회사 컬리 | 사업자등록번호 : 261-81-23567 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2618123467"  target="_blank" rel="noopener noreferrer"> | 사업자정보 확인</a></p>
                 <p>통신판매업 : 제 2018-서울강남-01646호 |
                 개인정보보호책임자 : 이원준</p> 
                 <p>주소 : 서울특별시 강남구 테헤란로 133, 18층(역삼동) | 대표이사 : 김슬아</p>
@@ -67,7 +67,7 @@ class KurlyFooter extends HTMLElement {
                 <a href="mailto:recruit@karlycorp.com">recruit@karlycorp.com</a></p>
                 <p>팩스 : 070 - 7500 - 6098</p>
               </address>
-              <ul class="sns-links" aria-label="sns링크">
+              <ul class="company-info__sns-links" aria-label="sns링크">
                 <li><a href="https://blog.naver.com/marketkurly" target='_blank' aria-label="칼리 블로그"><img src="/assets/svg/Blog.svg" alt=""></a></li>
                 <li><a href="https://www.instagram.com/marketkurly/" target='_blank' aria-label="칼리 인스타그램"><img src="/assets/svg/Instagram.svg" alt=""></a></li>
                 <li><a href="https://www.facebook.com/Marketkurly/" target='_blank' aria-label="칼리 페이스북"><img src="/assets/svg/FaceBook.svg" alt=""></a></li>
@@ -76,7 +76,7 @@ class KurlyFooter extends HTMLElement {
               </ul>
             </section>
           </div>
-          <div class="footer-middle">
+          <div class="footer__middle">
             
               <a href="/" target='_blank'>
                 <img src="/assets/svg/isms.svg" alt="">
@@ -97,8 +97,8 @@ class KurlyFooter extends HTMLElement {
             
           </div>
         </div>
-        <div class="footer-bottom">
-          <div class="footer-inner">
+        <div class="footer__bottom">
+          <div class="footer__inner">
             <small>마켓칼리에서 판매되는 상품 중에는 마켓칼리에 입점한 개별 판매자가 판매하는 마켓플레이스(오픈마켓) 상품이 포함되어 있습니다.<br />
             마켓플레이스(오픈마켓) 상품의 경우 칼리는 통신판매중개자로서 통신판매의 당사자가 아닙니다. 칼리는 해당 상품의 주문, 품질, 교환/환불 등 의무와 책임을 부담하지 않습니다.</small>
             <small>© KURLY CORP. ALL RIGHTS RESERVED</small>
