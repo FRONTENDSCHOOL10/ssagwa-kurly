@@ -4,10 +4,10 @@
   justify-content: center;
   align-items: center;
 
-  border: 1px solid rgb(221, 223, 225);
+  border: 1px solid var(--gray-200);
   border-radius: 3px;
 
-  width: 88px;
+  width: 84px;
   height: 30px;
   gap: 8px;
 
@@ -20,14 +20,18 @@
     cursor: pointer;
   }
 
-  .minus {
+  .component-stepper__button--minus:disabled {
+    cursor: default;
+  }
+
+  .component-stepper__button--minus {
     background-image: url('/assets/svg/Minus.svg');
     background-size: 46px 84px;
     background-position: -8px -45px;
     background-repeat: no-repeat;
   }
 
-  .plus {
+  .component-stepper__button--plus {
     background-image: url('/assets/svg/Plus.svg');
     background-size: 46px 84px;
     background-position: -8px -7px;

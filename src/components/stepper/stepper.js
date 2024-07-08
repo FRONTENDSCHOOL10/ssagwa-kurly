@@ -1,34 +1,26 @@
 import '/components/stepper/stepper.css';
 
-const minus = document.querySelector('.component-stepper .minus');
-const plus = document.querySelector('.component-stepper .plus');
-const status = document.querySelector('.component-stepper span');
+const stepper = document.querySelector('.component-stepper');
+const minusBtn = stepper.querySelector('.component-stepper__button--minus');
+const plusBtn = stepper.querySelector('.component-stepper__button--plus');
+const statusDisplay = stepper.querySelector('span');
 
-console.log(minus);
-const minNumber = 1;
+const MIN_NUMBER = 1;
+const MINUS_BTN_ACTIVE_BG = '-8px -7px';
+const MINUS_BTN_INACTIVE_BG = '-8px -45px';
 
-
-function handleMinus() {
-  const counter = +status.textContent;
-
-  if (counter !== 1) {
-    status.textContent = counter - 1;
-  }
-  if(counter === 2) {
-    minus.disabled = true;
-    minus.style.backgroundPosition = '-8px -45px';
-  }
+function updateCounter(change) {
+  let counter = parseInt(statusDisplay.textContent, 10) + change;
+  counter = Math.max(MIN_NUMBER, counter);
+  statusDisplay.textContent = counter;
+  updateMinusButtonState(counter);
 }
 
-function handlePlus() {
-  const counter = +status.textContent;
-
-  if(counter === minNumber){
-    minus.disabled = false;
-    minus.style.backgroundPosition = '-8px -7px';
-  }
-  status.textContent = counter + 1;
+function updateMinusButtonState(counter) {
+  const isMinValue = counter === MIN_NUMBER;
+  minusBtn.disabled = isMinValue;
+  minusBtn.style.backgroundPosition = isMinValue ? MINUS_BTN_INACTIVE_BG : MINUS_BTN_ACTIVE_BG;
 }
 
-minus.addEventListener('click', handleMinus);
-plus.addEventListener('click', handlePlus);
+minusBtn.addEventListener('click', () => updateCounter(-1));
+plusBtn.addEventListener('click', () => updateCounter(1));
