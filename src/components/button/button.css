@@ -1,35 +1,30 @@
 
-.button-group__button--large{
 
-  button{
-    width: 21.25rem;
-    height: 3.375rem;
-    border-radius: 0.25rem;
-    border: 1px solid var(--primary);
-    font-size: 1rem;
-  }
+.button--large{
+  width: 21.25rem;
+  height: 3.375rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary);
+  font-size: 1rem;
 }
 
-.button-group__button--small{
-  
-  button{
-    width: 21.25rem;
-    height: 2.75rem;
-    border-radius: 0.25rem;
-    border: 1px solid var(--primary);
-    font-size: 1rem;
-  }
+.button--small{
+  width: 21.25rem;
+  height: 2.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary);
+  font-size: 1rem;
 }
 
-  .button--transparent{
-    background-color: transparent;
-    color: var(--primary);
-  }
+.button--transparent{
+  background-color: transparent;
+  color: var(--primary);
+}
 
-  .button--primary{
-    background-color: var(--primary);
-    color: var(--white);
-  }
+.button--primary{
+  background-color: var(--primary);
+  color: var(--white);
+}
 
 
 
