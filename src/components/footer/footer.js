@@ -8,7 +8,7 @@ class KurlyFooter extends HTMLElement {
     // CSS 파일을 동적으로 로드
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = './footer.css';
+    link.href = '/components/footer/footer.css';
     this.shadowRoot.appendChild(link);
 
     // HTML 템플릿 추가
@@ -98,7 +98,7 @@ class KurlyFooter extends HTMLElement {
           </div>
         </div>
         <div class="footer__bottom">
-          <div class="footer__inner">
+          <div class="footer__subinner">
             <small>마켓칼리에서 판매되는 상품 중에는 마켓칼리에 입점한 개별 판매자가 판매하는 마켓플레이스(오픈마켓) 상품이 포함되어 있습니다.<br />
             마켓플레이스(오픈마켓) 상품의 경우 칼리는 통신판매중개자로서 통신판매의 당사자가 아닙니다. 칼리는 해당 상품의 주문, 품질, 교환/환불 등 의무와 책임을 부담하지 않습니다.</small>
             <small>© KURLY CORP. ALL RIGHTS RESERVED</small>
