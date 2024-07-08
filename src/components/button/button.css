@@ -10,18 +10,18 @@
     width: 21.25rem;
     height: 3.375rem;
     border-radius: 0.25rem;
-    border: 1px solid var(--primary, #e23e57);
+    border: 1px solid var(--primary);
     font-size: 1rem;
   }
 
   .button-group__button--white{
     background-color: white;
-    color: var(--primary, #e23e57);
+    color: var(--primary);
 
   }
 
   .button-group__button--purple{
-    background-color: var(--primary, #e23e57);
+    background-color: var(--primary);
     color: white;
   }
 
