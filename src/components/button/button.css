@@ -14,14 +14,14 @@
     font-size: 1rem;
   }
 
-  .button--white{
-    background-color: white;
+  .button--transparent{
+    background-color: transparent;
     color: var(--primary);
   }
 
-  .button--purple{
+  .button--primary{
     background-color: var(--primary);
-    color: white;
+    color: var(--white);
   }
 
 }
