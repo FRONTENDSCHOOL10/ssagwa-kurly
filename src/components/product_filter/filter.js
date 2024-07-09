@@ -1,3 +1,5 @@
+import '/components/product_filter/filter.css';
+
 function CreateFilterComponent(FilterContainer, data) {
   const container = document.getElementById(FilterContainer);
 
@@ -15,25 +17,24 @@ function CreateFilterComponent(FilterContainer, data) {
       </section>
     `;
     container.appendChild(aside);
-    bindEvents();
   }
 
   function renderFilterSections() {
-    return data.sections
-      .map(
-        (section) => `
-      <article class="filter__sections filter__section-${section.id}">
-        <button class="filter__toggle" aria-expanded="false" aria-controls="${
-          section.id
-        }-list">
-          ${section.title}
-          ${renderToggleArrow()}
-        </button>
-        ${renderSectionList(section)}
-      </article>
-    `
-      )
-      .join('');
+    let sectionsHTML = '';
+    data.sections.forEach((section) => {
+      sectionsHTML += `
+        <article class="filter__sections filter__section-${section.id}">
+          <button class="filter__toggle" aria-expanded="false" aria-controls="${
+            section.id
+          }-list">
+            ${section.title}
+            ${renderToggleArrow()}
+          </button>
+          ${renderSectionList(section)}
+        </article>
+      `;
+    });
+    return sectionsHTML;
   }
 
   function renderToggleArrow() {
@@ -47,22 +48,21 @@ function CreateFilterComponent(FilterContainer, data) {
   function renderSectionList(section) {
     if (!section.items) return '';
 
-    const listItems = section.items
-      .map(
-        (item, index) => `
-      <li class="filter__category-item">
-        <input type="checkbox" id="${section.id}${index + 1}" name="${
-          section.id
-        }" value="${item.name}" class="filter__checkbox">
-        <label for="${section.id}${index + 1}" class="filter__label">
-          ${item.name}<span class="filter__count" aria-label="상품 수">${
-            item.count
-          }</span>
-        </label>
-      </li>
-    `
-      )
-      .join('');
+    let listItemsHTML = '';
+    section.items.forEach((item, index) => {
+      listItemsHTML += `
+        <li class="filter__category-item">
+          <input type="checkbox" id="${section.id}${index + 1}" name="${
+            section.id
+          }" value="${item.name}" class="filter__checkbox">
+          <label for="${section.id}${index + 1}" class="filter__label">
+            ${item.name}<span class="filter__count" aria-label="상품 수">${
+              item.count
+            }</span>
+          </label>
+        </li>
+      `;
+    });
 
     const moreButton = ['category', 'brand'].includes(section.id)
       ? `<button type="button" class="filter__more" aria-label="더보기">${section.title} 더보기</button>`
@@ -70,68 +70,17 @@ function CreateFilterComponent(FilterContainer, data) {
 
     return `
       <ul id="${section.id}-list" class="filter__category-list" role="list" >
-        ${listItems}
+        ${listItemsHTML}
         ${moreButton}
       </ul>
     `;
   }
 
-  // 마크업테스를 위해 임시로 Ai의힘을빌려 확인용으로 만들어뒀습니다!
-  function bindEvents() {
-    const toggleButtons = container.querySelectorAll('.filter__toggle');
-    toggleButtons.forEach((button) => {
-      button.addEventListener('click', () => toggleSection(button));
-    });
-
-    const resetButton = container.querySelector('#resetFilter');
-    resetButton.addEventListener('click', resetFilters);
-
-    const checkboxes = container.querySelectorAll('.filter__checkbox');
-    checkboxes.forEach((checkbox) => {
-      checkbox.addEventListener('change', updateFilter);
-    });
-  }
-
-  function toggleSection(button) {
-    const expanded = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', !expanded);
-    const controlledElement = document.getElementById(
-      button.getAttribute('aria-controls')
-    );
-    if (controlledElement) {
-      controlledElement.style.display = expanded ? 'none' : 'block';
-    }
-    button.querySelector('.filter__toggle-arrow').style.transform = expanded
-      ? 'rotate(0deg)'
-      : 'rotate(180deg)';
-  }
-  function resetFilters() {
-    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => (checkbox.checked = false));
-    updateFilter();
-  }
-
-  function updateFilter() {
-    const resetButton = container.querySelector('#resetFilter');
-    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-    const anyChecked = Array.from(checkboxes).some(
-      (checkbox) => checkbox.checked
-    );
-
-    if (anyChecked) {
-      resetButton.classList.add('filter__reset--active');
-    } else {
-      resetButton.classList.remove('filter__reset--active');
-    }
-
-    console.log('Filter updated');
-  }
-
   render();
 }
 
-//여기서부터는 임시로 값을넣어줌 확인하기위해
-//나중에 pocketbase 연동해서 데이터가져올때수정해야함
+// 여기서부터는 임시로 값을 넣어줌 확인하기 위해
+// 나중에 pocketbase 연동해서 데이터 가져올 때 수정해야 함
 
 const filterdata = {
   sections: [
