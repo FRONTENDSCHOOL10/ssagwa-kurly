@@ -51,7 +51,7 @@ class KurlyFooter extends HTMLElement {
                 </ul>
               </nav>
               <address>
-                <p class="company-info__business-info">법인명 (상호) : 주식회사 컬리 | 사업자등록번호 : 261-81-23567 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2618123467"  target="_blank" rel="noopener noreferrer"> | 사업자정보 확인</a></p>
+                <p class="company-info__business-info">법인명 (상호) : 주식회사 컬리 | 사업자등록번호 : 261-81-23567 | <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2618123467"  target="_blank" rel="noopener noreferrer">사업자정보 확인</a></p>
                 <p>통신판매업 : 제 2018-서울강남-01646호 |
                 개인정보보호책임자 : 이원준</p> 
                 <p>주소 : 서울특별시 강남구 테헤란로 133, 18층(역삼동) | 대표이사 : 김슬아</p>
