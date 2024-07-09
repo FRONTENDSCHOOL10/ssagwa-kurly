@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Components - Cart Modal</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/components/cartModal/cartModal.css" />
+    <script type="module" src="/components/cartModal/handleModal.js"></script>
+  </head>
+  <body>
+    <!-- test button -->
+    <button type="button" class="open-modal-btn" data-open="cart-modal">
+      장바구니 담기
+    </button>
+
+    <div
+      class="cart-modal"
+      id="cart-modal"
+      role="dialog"
+      aria-labelledby="cart-modal__title"
+      aria-hidden="true "
+    >
+      <div class="cart-modal__content" role="document">
+        <h1 id="cart-modal__title" class="cart-modal__title">제품 이름</h1>
+        <div class="cart-modal__container">
+          <span class="cart-modal__product__price">제품 가격</span>
+          <!-- 추후 스테퍼 컴포넌트 사용 -->
+          <img
+            src="/assets/images/stepper.png"
+            class="cart-modal__counter"
+            alt="상품 수량 카운터"
+          />
+        </div>
+        <div class="cart-modal__container">
+          <span>합계</span>
+          <div class="cart-modal__total">
+            <span class="cart-modal__total-price">총 금액 원</span>
+
+            <span class="cart-modal__reward"
+              ><img src="/assets/svg/Badge-Reward.svg" alt="" />구매 시 5원
+              적립</span
+            >
+          </div>
+        </div>
+        <div class="cart-modal__buttons">
+          <!-- 추후 버튼 컴포넌트 사용-->
+          <button type="button" id="data-close">취소</button>
+          <button type="submit" class="close-btn">장바구니 담기</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
