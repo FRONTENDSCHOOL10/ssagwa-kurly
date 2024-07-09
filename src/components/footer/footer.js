@@ -5,15 +5,9 @@ class KurlyFooter extends HTMLElement {
   }
 
   connectedCallback() {
-    // CSS 파일을 동적으로 로드
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/components/footer/footer.css';
-    this.shadowRoot.appendChild(link);
-
-    // HTML 템플릿 추가
     const template = document.createElement('template');
     template.innerHTML = `
+    <style>@import url('/components/footer/footer.css');</style>
       <footer class="footer">
         <div class="footer__maininner">
           <div class="footer__top">
