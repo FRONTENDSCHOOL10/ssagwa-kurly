@@ -1,0 +1,62 @@
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.swiper{
+  width: 100vw;
+  /* height: 23.125rem; */
+  height: 100%;
+  position: relative;
+}
+
+.swiper-slide{
+
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.swiper-button-left,.swiper-button-right{
+  background-image: url(/assets/svg/Arrow.svg);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 10;
+  top: 40%;
+  opacity: 1 !important;
+  display: block !important; 
+}
+
+.swiper-button-left{
+  left: 20%;
+}
+
+.swiper-button-right{
+  background-position: 0 0;
+  transform: rotate(180deg);
+  right: 20%;
+}
+
+.main__product{
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2{
+    margin-bottom: 1.75rem;
+    font-family: inherit;
+    font-size: 1.776875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+  }
+}
+
+.main__banner{
+  padding: 2.5rem 0;
+}
