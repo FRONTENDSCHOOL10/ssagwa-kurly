@@ -1,3 +1,4 @@
+import csstext from '/src/components/header/header.css?inline';
 import categoryMenuItem from '/src/components/header-category/headerCategory.js';
 
 class KurlyHeader extends HTMLElement {
@@ -5,12 +6,9 @@ class KurlyHeader extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
 
-    const headerStyle = document.createElement('link');
-    headerStyle.rel = 'stylesheet';
-    headerStyle.href = '/src/components/header/header.css';
-
     const template = document.createElement('template');
     template.innerHTML = `
+    <style>${csstext}</style>
     <div class="header__wrapper">
       <header class="header">
         <div class="header__top">
@@ -18,7 +16,7 @@ class KurlyHeader extends HTMLElement {
             <div class="header__logo-site-switch">
               <h1 class="header__logo">
                 <a href="/">
-                  <img src="/src/assets/logo.svg" alt="사과컬리 로고" />
+                  <img src="/src/assets/logo.svg" alt="사과컬리" />
                 </a>
               </h1>
               <nav class="header__site-switch">
@@ -34,7 +32,7 @@ class KurlyHeader extends HTMLElement {
               />
               <button
                 type="submit"
-                aria-label="검색"
+                
               >
                 <img src="/src/assets/svg/Search.svg" alt="검색" />
               </button>
@@ -121,7 +119,6 @@ class KurlyHeader extends HTMLElement {
     `;
 
     const fragment = document.createDocumentFragment();
-    fragment.appendChild(headerStyle);
     fragment.appendChild(template.content.cloneNode(true));
     this.shadowRoot.appendChild(fragment);
   }
