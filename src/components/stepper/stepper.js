@@ -1,8 +1,8 @@
-import '/components/stepper/stepper.css';
+import 'src/components/stepper/stepper.css';
 
-const stepper = document.querySelector('.component-stepper');
-const minusBtn = stepper.querySelector('.component-stepper__button--minus');
-const plusBtn = stepper.querySelector('.component-stepper__button--plus');
+const stepper = document.querySelector('.stepper');
+const minusBtn = stepper.querySelector('.stepper__button--minus');
+const plusBtn = stepper.querySelector('.stepper__button--plus');
 const statusDisplay = stepper.querySelector('span');
 
 const MAX_NUMBER = 99; 
