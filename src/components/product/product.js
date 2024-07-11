@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const productData = [
       { 
-          image: "/assets/images/product/product01.png", 
+          image: "/src/assets/images/product/product01.png", 
           name: "[풀무원] 탱탱쫄면 (4개입)", 
           discount: "24", 
           price: "2980", 
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${item.image}" alt="${item.name}" />
                     <figcaption class="sr-only">상품 이미지: ${item.name}</figcaption>
                 </figure>
-                <button type="button" class="product__basket" aria-label="장바구니에 상품 담기"><img src="/assets/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기</button>
+                <button type="button" class="product__basket" aria-label="장바구니에 상품 담기"><img src="/src/assets/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기</button>
                 <span class="product__delivery" aria-label="배송 설명">샛별배송</span>
                 <span class="product__title" aria-label="상품이름">${item.name}</span>
                 <div class="product__price--wrap">
