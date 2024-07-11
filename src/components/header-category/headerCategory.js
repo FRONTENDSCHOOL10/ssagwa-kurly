@@ -38,7 +38,7 @@ function categoryMenuItem(shadowRoot) {
 
     categoryContainer.classList.add('nav__category__item');
 
-    categoryIcon.src = `/assets/svg/MenuIcon-${item.icon}.svg`;
+    categoryIcon.src = `/src/assets/svg/MenuIcon-${item.icon}.svg`;
     categoryIcon.alt = item.title;
     categoryIcon.classList.add('nav__category__item-img');
     categoryTitle.textContent = item.title;
