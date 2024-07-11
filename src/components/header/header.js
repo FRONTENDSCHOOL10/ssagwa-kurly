@@ -1,3 +1,5 @@
+import categoryMenuItem from '/src/components/header-category/headerCategory.js';
+
 class KurlyHeader extends HTMLElement {
   constructor() {
     super();
@@ -16,6 +18,7 @@ class KurlyHeader extends HTMLElement {
             <div class="header__logo-site-switch">
               <h1 class="header__logo">
                 <a href="/">
+                  <img src="/src/assets/logo.svg" alt="사과컬리 로고" />
                   <img src="/src/assets/logo.svg" alt="사과컬리 로고" />
                 </a>
               </h1>
@@ -38,15 +41,18 @@ class KurlyHeader extends HTMLElement {
               <li>
                 <a href="#">
                   <img src="/src/assets/svg/Location.svg" alt="배송지 등록" />
+                  <img src="/src/assets/svg/Location.svg" alt="배송지 등록" />
                 </a>
               </li>
               <li>
                 <a href="#">
                   <img src="/src/assets/svg/Heart.svg" alt="찜한 상품 목록" />
+                  <img src="/src/assets/svg/Heart.svg" alt="찜한 상품 목록" />
                 </a>
               </li>
               <li>
                 <a href="#">
+                  <img src="/src/assets/svg/Group.svg" alt="장바구니" />
                   <img src="/src/assets/svg/Group.svg" alt="장바구니" />
                 </a>
               </li>
@@ -65,6 +71,7 @@ class KurlyHeader extends HTMLElement {
             <li class="header__member-item">
               <a href="#" class="header__member-link">
                 고객센터
+                <img src="/src/assets/svg/Icon_down.png" alt="펼치기" />
                 <img src="/src/assets/svg/Icon_down.png" alt="펼치기" />
               </a>
               <ul class="header__cs-menu">
@@ -85,9 +92,10 @@ class KurlyHeader extends HTMLElement {
           </ul>
         </div>
 
-        <nav class="nav" aria-label="상품 전체 카테고리">
+          <nav class="nav" aria-label="상품 전체 카테고리">
           <ul class="nav__category" aria-haspopup="true" aria-expanded="false">
             <li>
+              <img src="/src/assets/svg/Hamburger.svg" alt="카테고리" />
               <img src="/src/assets/svg/Hamburger.svg" alt="카테고리" />
               <span>카테고리</span>
             </li>
@@ -162,6 +170,10 @@ class KurlyHeader extends HTMLElement {
     fragment.appendChild(headerStyle);
     fragment.appendChild(template.content.cloneNode(true));
     this.shadowRoot.appendChild(fragment);
+  }
+
+  connectedCallback() {
+    categoryMenuItem(this.shadowRoot);
 
     window.addEventListener('scroll', this.handleScroll.bind(this));
   }
