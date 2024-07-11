@@ -7,7 +7,7 @@ class KurlyFooter extends HTMLElement {
   connectedCallback() {
     const template = document.createElement('template');
     template.innerHTML = `
-    <style>@import url('/components/footer/footer.css');</style>
+    <style>@import url('/src/components/footer/footer.css');</style>
       <footer class="footer">
         <div class="footer__maininner">
           <div class="footer__top">
@@ -62,11 +62,11 @@ class KurlyFooter extends HTMLElement {
                 <p>팩스 : 070 - 7500 - 6098</p>
               </address>
               <ul class="company-info__sns-links" aria-label="sns링크">
-                <li><a href="https://blog.naver.com/marketkurly" target='_blank' aria-label="칼리 블로그"><img src="/assets/svg/Blog.svg" alt=""></a></li>
-                <li><a href="https://www.instagram.com/marketkurly/" target='_blank' aria-label="칼리 인스타그램"><img src="/assets/svg/Instagram.svg" alt=""></a></li>
-                <li><a href="https://www.facebook.com/Marketkurly/" target='_blank' aria-label="칼리 페이스북"><img src="/assets/svg/FaceBook.svg" alt=""></a></li>
-                <li><a href="https://m.post.naver.com/marketkurly" target='_blank' aria-label="칼리 네이버 포스트"><img src="/assets/svg/NaverPost.svg" alt=""></a></li>
-                <li><a href="https://www.youtube.com/channel/UCfpdjL5pl-1qKT7Xp4UQzQg" target='_blank' aria-label="칼리 유튜브"><img src="/assets/svg/Youtube.svg" alt=""></a></li>
+                <li><a href="https://blog.naver.com/marketkurly" target='_blank' aria-label="칼리 블로그"><img src="/assets/svg/Blog.svg" alt="블로그아이콘"></a></li>
+                <li><a href="https://www.instagram.com/marketkurly/" target='_blank' aria-label="칼리 인스타그램"><img src="/assets/svg/Instagram.svg" alt="인스타그램아이콘"></a></li>
+                <li><a href="https://www.facebook.com/Marketkurly/" target='_blank' aria-label="칼리 페이스북"><img src="/assets/svg/FaceBook.svg" alt="페이스북아이콘"></a></li>
+                <li><a href="https://m.post.naver.com/marketkurly" target='_blank' aria-label="칼리 네이버 포스트"><img src="/assets/svg/NaverPost.svg" alt="네이버포스트아이콘"></a></li>
+                <li><a href="https://www.youtube.com/channel/UCfpdjL5pl-1qKT7Xp4UQzQg" target='_blank' aria-label="칼리 유튜브"><img src="/assets/svg/Youtube.svg" alt="유튜브아이콘"></a></li>
               </ul>
             </section>
           </div>
