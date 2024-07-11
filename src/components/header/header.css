@@ -195,6 +195,10 @@ input:focus {
   }
 }
 
+.join {
+  color: var(--primary);
+}
+
 .nav {
   display: flex;
   width: 100%;
