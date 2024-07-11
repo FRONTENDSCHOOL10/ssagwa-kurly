@@ -21,7 +21,7 @@ class KurlyHeader extends HTMLElement {
               </h1>
               <nav class="header__site-switch">
                 <a href="/" class="site-main">사과컬리</a>
-                <a href="#" class="site-beauty ">사과뷰티</a>
+                <a href="#" class="site-beauty">사과뷰티</a>
               </nav>
             </div>
             <form class="header__search" role="search">
@@ -41,32 +41,37 @@ class KurlyHeader extends HTMLElement {
               <li>
                 <a href="#">
                   <img src="/src/assets/svg/Location.svg" alt="배송지 등록" />
+                  <img src="/src/assets/svg/Location.svg" alt="배송지 등록" />
                 </a>
               </li>
               <li>
                 <a href="#">
+                  <img src="/src/assets/svg/Heart.svg" alt="찜한 상품 목록" />
                   <img src="/src/assets/svg/Heart.svg" alt="찜한 상품 목록" />
                 </a>
               </li>
               <li>
                 <a href="#">
                   <img src="/src/assets/svg/Group.svg" alt="장바구니" />
+                  <img src="/src/assets/svg/Group.svg" alt="장바구니" />
                 </a>
               </li>
             </ul>
           </div>
+
           <ul class="header__member-service">
             <li class="header__member-item">
-              <a href="#" class="header__member-link join">회원가입</a>
+              <a href="#" class="header__member-link divider" id="signup"
+                >회원가입</a
+              >
             </li>
-            <div class="divider"></div>
             <li class="header__member-item">
-              <a href="#" class="header__member-link">로그인</a>
+              <a href="#" class="header__member-link divider">로그인</a>
             </li>
-            <div class="divider"></div>
             <li class="header__member-item">
               <a href="#" class="header__member-link">
                 고객센터
+                <img src="/src/assets/svg/Icon_down.png" alt="펼치기" />
                 <img src="/src/assets/svg/Icon_down.png" alt="펼치기" />
               </a>
               <ul class="header__cs-menu">
@@ -91,9 +96,52 @@ class KurlyHeader extends HTMLElement {
           <ul class="nav__category" aria-haspopup="true" aria-expanded="false">
             <li>
               <img src="/src/assets/svg/Hamburger.svg" alt="카테고리" />
+              <img src="/src/assets/svg/Hamburger.svg" alt="카테고리" />
               <span>카테고리</span>
             </li>
-            <ul class="nav__category-list"></ul>
+            <li>
+              <ul class="nav__category-list">
+                <li class="nav__category-item">
+                  <a href="#">
+                    <img src="/src/assets/svg/MenuIcon-Gift.svg" alt="선물하기" />
+                    <span>선물하기</span>
+                  </a>
+                </li>
+                <li class="nav__category-item">
+                  <a href="#">
+                    <img src="/src/assets/svg/MenuIcon-Vegetable.svg" alt="채소" />
+                    <span>채소</span>
+                  </a>
+                </li>
+                <li class="nav__category-item">
+                  <a href="#">
+                    <img
+                      src="/src/assets/svg/MenuIcon-Fruit.svg"
+                      alt="과일 · 견과 · 쌀"
+                    />
+                    <span>과일 · 견과 · 쌀</span>
+                  </a>
+                </li>
+                <li class="nav__category-item">
+                  <a href="#">
+                    <img
+                      src="/src/assets/svg/MenuIcon-SeaFood.svg"
+                      alt="수산 · 해산 · 건어물"
+                    />
+                    <span>수산 · 해산 · 건어물</span>
+                  </a>
+                </li>
+                <li class="nav__category-item">
+                  <a href="#">
+                    <img
+                      src="/src/assets/svg/MenuIcon-Meat.svg"
+                      alt="정육 · 계란"
+                    />
+                    <span>정육 · 계란</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
 
           <ul class="nav__product-list">
@@ -114,8 +162,8 @@ class KurlyHeader extends HTMLElement {
             <a href="#"><span>샛별·하루</span> 배송안내</a>
           </div>
         </nav>
-      </header>
-    </div>
+      </div>
+    </header>
     `;
 
     const fragment = document.createDocumentFragment();
