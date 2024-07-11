@@ -1,5 +1,3 @@
-import categoryMenuItem from '/components/header-category/headerCategory.js';
-
 class KurlyHeader extends HTMLElement {
   constructor() {
     super();
@@ -89,13 +87,44 @@ class KurlyHeader extends HTMLElement {
           </ul>
         </div>
 
-          <nav class="nav" aria-label="상품 전체 카테고리">
+        <nav class="nav" aria-label="상품 전체 카테고리">
           <ul class="nav__category" aria-haspopup="true" aria-expanded="false">
             <li>
               <img src="/assets/svg/Hamburger.svg" alt="카테고리" />
               <span>카테고리</span>
             </li>
-            <ul class="nav__category-list"></ul>
+            <ul class="nav__category-list">
+              <li class="nav__category-item">
+                <a href="#">
+                  <img src="/assets/svg/MenuIcon-Gift.svg" alt="선물하기"/>
+                  <span>선물하기</span>
+                </a>
+              </li>
+              <li class="nav__category-item">
+                <a href="#">
+                  <img src="/assets/svg/MenuIcon-Vegetable.svg" alt="채소"/>
+                  <span>채소</span>
+                </a>
+              </li>
+              <li class="nav__category-item">
+                <a href="#">
+                  <img src="/assets/svg/MenuIcon-Fruit.svg" alt="과일 · 견과 · 쌀"/>
+                  <span>과일 · 견과 · 쌀</span>
+                </a>
+              </li>
+              <li class="nav__category-item">
+                <a href="#">
+                  <img src="/assets/svg/MenuIcon-SeaFood.svg" alt="수산 · 해산 · 건어물"/>
+                  <span>수산 · 해산 · 건어물</span>
+                </a>
+              </li>
+              <li class="nav__category-item">
+                <a href="#">
+                  <img src="/assets/svg/MenuIcon-Meat.svg" alt="정육 · 계란"/>
+                  <span>정육 · 계란</span>
+                </a>
+              </li>
+            </ul>
           </ul>
 
           <ul class="nav__product-list">
@@ -124,10 +153,6 @@ class KurlyHeader extends HTMLElement {
     fragment.appendChild(headerStyle);
     fragment.appendChild(template.content.cloneNode(true));
     this.shadowRoot.appendChild(fragment);
-  }
-
-  connectedCallback() {
-    categoryMenuItem(this.shadowRoot);
 
     window.addEventListener('scroll', this.handleScroll.bind(this));
   }
