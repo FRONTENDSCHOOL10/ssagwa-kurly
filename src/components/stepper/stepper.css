@@ -1,7 +1,7 @@
 .component-stepper {
   display: inline-flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   border: 1px solid var(--gray-200);
@@ -9,7 +9,6 @@
 
   width: 84px;
   height: 30px;
-  gap: 8px;
 
   button {
     width: 30px;

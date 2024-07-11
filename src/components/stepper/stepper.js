@@ -5,13 +5,14 @@ const minusBtn = stepper.querySelector('.component-stepper__button--minus');
 const plusBtn = stepper.querySelector('.component-stepper__button--plus');
 const statusDisplay = stepper.querySelector('span');
 
+const MAX_NUMBER = 99; 
 const MIN_NUMBER = 1;
 const MINUS_BTN_ACTIVE_BG = '-8px -7px';
 const MINUS_BTN_INACTIVE_BG = '-8px -45px';
 
 function updateCounter(change) {
   let counter = parseInt(statusDisplay.textContent, 10) + change;
-  counter = Math.max(MIN_NUMBER, counter);
+  counter = Math.min(MAX_NUMBER, Math.max(MIN_NUMBER, counter));
   statusDisplay.textContent = counter;
   updateMinusButtonState(counter);
 }
