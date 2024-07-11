@@ -24,14 +24,14 @@
   }
 
   .stepper__button--minus {
-    background-image: url('/assets/svg/Minus.svg');
+    background-image: url('/src/assets/svg/Minus.svg');
     background-size: 46px 84px;
     background-position: -8px -45px;
     background-repeat: no-repeat;
   }
 
   .stepper__button--plus {
-    background-image: url('/assets/svg/Plus.svg');
+    background-image: url('/src/assets/svg/Plus.svg');
     background-size: 46px 84px;
     background-position: -8px -7px;
     background-repeat: no-repeat;
