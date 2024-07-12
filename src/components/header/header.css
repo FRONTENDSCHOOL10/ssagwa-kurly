@@ -55,6 +55,7 @@ input:focus {
   width: 100%;
   height: 3.9375rem;
   margin-top: 2.3125rem;
+  z-index: 999;
 }
 
 .header__logo-site-switch {
@@ -316,6 +317,7 @@ nav.scrolled {
 
 .header__wrapper.scrolled {
   transform: translateY(-6.25rem);
+  z-index: 999;
 }
 
 .header__search.scrolled {
