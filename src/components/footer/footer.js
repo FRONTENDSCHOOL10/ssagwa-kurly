@@ -64,30 +64,30 @@ class KurlyFooter extends HTMLElement {
                 <p>팩스 : 070 - 7500 - 6098</p>
               </address>
               <ul class="company-info__sns-links" aria-label="sns링크">
-                <li><a href="https://blog.naver.com/marketkurly" target='_blank' aria-label="칼리 블로그"><img src="/src/assets/svg/Blog.svg" alt="블로그아이콘"></a></li>
-                <li><a href="https://www.instagram.com/marketkurly/" target='_blank' aria-label="칼리 인스타그램"><img src="/src/assets/svg/Instagram.svg" alt="인스타그램아이콘"></a></li>
-                <li><a href="https://www.facebook.com/Marketkurly/" target='_blank' aria-label="칼리 페이스북"><img src="/src/assets/svg/FaceBook.svg" alt="페이스북아이콘"></a></li>
-                <li><a href="https://m.post.naver.com/marketkurly" target='_blank' aria-label="칼리 네이버 포스트"><img src="/src/assets/svg/NaverPost.svg" alt="네이버포스트아이콘"></a></li>
-                <li><a href="https://www.youtube.com/channel/UCfpdjL5pl-1qKT7Xp4UQzQg" target='_blank' aria-label="칼리 유튜브"><img src="/src/assets/svg/Youtube.svg" alt="유튜브아이콘"></a></li>
+                <li><a href="https://blog.naver.com/marketkurly" target='_blank' aria-label="칼리 블로그"><img src="/svg/Blog.svg" alt="블로그아이콘"></a></li>
+                <li><a href="https://www.instagram.com/marketkurly/" target='_blank' aria-label="칼리 인스타그램"><img src="/svg/Instagram.svg" alt="인스타그램아이콘"></a></li>
+                <li><a href="https://www.facebook.com/Marketkurly/" target='_blank' aria-label="칼리 페이스북"><img src="/svg/FaceBook.svg" alt="페이스북아이콘"></a></li>
+                <li><a href="https://m.post.naver.com/marketkurly" target='_blank' aria-label="칼리 네이버 포스트"><img src="/svg/NaverPost.svg" alt="네이버포스트아이콘"></a></li>
+                <li><a href="https://www.youtube.com/channel/UCfpdjL5pl-1qKT7Xp4UQzQg" target='_blank' aria-label="칼리 유튜브"><img src="/svg/Youtube.svg" alt="유튜브아이콘"></a></li>
               </ul>
             </section>
           </div>
           <div class="footer__middle">
             
               <a href="/" target='_blank'>
-                <img src="/src/assets/svg/isms.svg" alt="">
+                <img src="/svg/isms.svg" alt="">
                 <p>[인증범위] 마켓칼리 쇼핑몰 서비스 개발 운영<br />(심사받지 않은 물리적 인프라 제외)<br /> [유효기간] 2022.01.19 ~ 2025.01.18</p>
               </a>
               <a href="/" target='_blank'>
-                <img src="/src/assets/svg/logo_privacy.svg" alt="">
+                <img src="/svg/logo_privacy.svg" alt="">
                 <p>개인정보보호 우수 웹사이트<br />개인정보처리시스템 인증 (ePRIVACY PLUS)</p>
               </a>
               <a href="/" target='_blank'>
-                <img src="/src/assets/svg/logo_tosspayments.svg" alt="">
+                <img src="/svg/logo_tosspayments.svg" alt="">
                 <p>토스페이먼츠 구매안전(에스크로)서비스<br />를 이용하실 수 있습니다.</p>
               </a>
               <a href="/" target='_blank'>
-                <img src="/src/assets/svg/logo_wooriBank.svg" alt="">
+                <img src="/svg/logo_wooriBank.svg" alt="">
                 <p>고객님이 현금으로 결제한 금액에 대해 우리은행과채무지급보<br />증 계약을 체결하여 안전거래를 보장하고있습니다.</p>
               </a>
             
