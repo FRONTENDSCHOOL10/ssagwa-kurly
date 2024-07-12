@@ -1,0 +1,35 @@
+
+.button--large{
+  width: 100%;
+  height: 3.375rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.button--small{
+  width: 100%;
+  height: 2.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.button--transparent{
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.button--primary{
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+
+
