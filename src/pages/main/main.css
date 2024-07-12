@@ -2,6 +2,7 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 9.75rem;
 }
 .swiper{
   width: 100vw;
