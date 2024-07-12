@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <span class="product__price" aria-label="원가">${item.originalPrice}원</span>
                 <span class="product__description" aria-label="상품 설명">${item.description}</span>
-                <div class="product__tag" aria-labelledby="Karly Only">
-                    <span class="tag--only tag--primary" id="Karly Only">Karly Only</span>
-                    <span class="tag--only" aria-label="한정수량">한정수량</span>
+                <div class="product__tag">
+                    <span class="tag--only tag--primary">Karly Only</span>
+                    <span class="tag--only">한정수량</span>
                 </div>
             </li>
       `;
