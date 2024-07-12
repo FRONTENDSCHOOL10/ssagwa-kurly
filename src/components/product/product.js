@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
   productData.forEach((item) => {
 
       const discountPrice = realPrice(item.originalPrice, item.discount);
+      //할인율이 0%로 입력이 되었거나 빈문자일 경우
       const noDiscounted = item.discount !== '0' && item.discount !== '';
 
       const template = `
