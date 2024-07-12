@@ -1,1 +1,1 @@
-export * from '/lib/math/index.js'
+export * from '/src/lib/math/index.js';

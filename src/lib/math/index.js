@@ -1,1 +1,1 @@
-export * from '/lib/math/comma.js'
+export * from '/src/lib/math/comma.js';
