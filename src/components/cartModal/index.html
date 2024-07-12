@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Components - Cart Modal</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <script type="module" src="/src/components/cartModal/cartModal.js"></script>
+  </head>
+  <body>
+    <!-- 테스트용 |  외부 장바구니담기 버튼 -->
+    <button type="button" class="button--open-modal" data-open="cart-modal">
+      장바구니 담기
+    </button>
+
+    <section
+      class="cart-modal"
+      id="cart-modal"
+      role="dialog"
+      aria-labelledby="cart-modal__title"
+      aria-hidden="true"
+    >
+      <div class="cart-modal__content" role="document">
+        <div class="cart-modal__wrapper">
+          <header>
+            <h2 id="cart-modal__title" class="cart-modal__title"></h2>
+          </header>
+          <div class="cart-modal__details">
+            <div class="cart-modal__wrapper">
+              <span class="cart-modal__product-price"></span>
+              <span class="cart-modal__product-og-price"></span>
+            </div>
+            <!-- css 테스트용 | 추후 stepper 컴포넌트로 변경 -->
+            <div class="cart-modal__product-counter"></div>
+          </div>
+        </div>
+        <div class="cart-modal__summary">
+          <span>합계</span>
+          <div class="cart-modal__total">
+            <span class="cart-modal__total-price"></span>
+            <span class="cart-modal__reward">
+              <img src="/svg/Badge-Reward.svg" alt="적립 배지" />
+              <span class="cart-modal__earn"></span>
+            </span>
+          </div>
+        </div>
+        <!-- css 테스트용 | 추후 button 컴포넌트로 변경 -->
+        <div class="cart-modal__buttons">
+          <button
+            type="button"
+            class="button--large button--transparent button--close-modal"
+            aria-label="모달 닫기"
+          >
+            취소
+          </button>
+          <button
+            type="submit"
+            class="button--large button--primary button--submit-modal"
+          >
+            장바구니 담기
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
