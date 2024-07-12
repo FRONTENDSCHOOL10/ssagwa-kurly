@@ -100,15 +100,7 @@ body {
 .cart-modal__buttons {
   display: flex;
   justify-content: space-between;
-  align-self: stretch;
-  flex-direction: row;
-  align-items: flex-start;
   gap: 0.5rem;
-}
-
-.cart-modal__buttons button {
-  width: 10.875rem;
-  height: 3.375rem;
 }
 
 .counter {
