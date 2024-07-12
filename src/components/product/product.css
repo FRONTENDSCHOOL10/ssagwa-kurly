@@ -1,3 +1,6 @@
+*{
+  font-family: inherit;
+}
 
 .product__wrapper{
   width: 249px;
