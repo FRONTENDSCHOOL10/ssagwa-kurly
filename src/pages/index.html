@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마켓 베스트 - 사과컬리 </title>
+  <script type="module" src="/src/pages/productlist.js"></script>
+</head>
+
+<body>
+  <ssagwakurly-header></ssagwakurly-header>
+  <main class="productlistpage">
+    <h2 class="productlistpage__header" aria-label="추천메뉴목록">베스트</h2>
+    <div class="productlist-area">
+      <aside id="productlist-filter"></aside>
+      <section class="productlist-group">
+        <article class="productlist-sortings">
+          <p class="productlist-sorting__count">총 284건</p>
+          <ul>
+            <li><a class="productlist-sorting   productlist-sorting--is-active">추천순</a></li>
+            <li class="bar"><a class="productlist-sorting">신상품순</a></li>
+            <li class="bar"><a class="productlist-sorting">판매량순</a></li>
+            <li class="bar"><a class="productlist-sorting">혜택순</a></li>
+            <li class="bar"><a class="productlist-sorting">낮은 가격순</a></li>
+            <li class="bar"><a class="productlist-sorting">높은 가격순</a></li>
+          </ul>
+        </article>
+        <article>
+          상품리스트
+        </article>
+        <nav class="paginator">
+          <a href="#" class="doublearrow">
+            <img src="/svg/firstpage.svg" alt="처음페이지 아이콘" />
+          </a>
+          <a href="#" class="arrow">
+            <img src="/svg/Previouspage.svg" alt="이전페이지 아이콘" />
+          </a>
+          <a href="#" class="pagelinks pagelinks--is-selected">1</a>
+          <a href="#" class="pagelinks">2</a>
+          <a href="#" class="pagelinks">3</a>
+          <a href="#" class="arrow">
+            <img src="/svg/nextpage.svg" alt="다음페이지 아이콘" />
+          </a>
+          <a href="#" class="doublearrow">
+            <img src="/svg/lastpage.svg" alt="마지막페이지 아이콘" />
+          </a>
+        </nav>
+      </section>
+    </div>
+  </main>
+  <ssagwakurly-footer></ssagwakurly-footer>
+</body>
+
+</html>
