@@ -1,4 +1,4 @@
-import 'src/components/stepper/stepper.css';
+import '/src/components/stepper/stepper.css';
 
 const stepper = document.querySelector('.stepper');
 const minusBtn = stepper.querySelector('.stepper__button--minus');
