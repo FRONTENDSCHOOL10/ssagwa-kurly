@@ -5,6 +5,7 @@ input {
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
+  z-index: 11;
 }
 
 ul {
