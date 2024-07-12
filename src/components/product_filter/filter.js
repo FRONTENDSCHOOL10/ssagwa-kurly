@@ -1,6 +1,6 @@
-import '/components/product_filter/filter.css';
+import '/src/components/product_filter/filter.css';
 
-function CreateFilterComponent(FilterContainer, data) {
+function createFilterComponent(FilterContainer, data) {
   const container = document.getElementById(FilterContainer);
 
   function render() {
@@ -144,4 +144,4 @@ const filterdata = {
   ],
 };
 
-CreateFilterComponent('filter-container', filterdata);
+createFilterComponent('productlist-filter', filterdata);

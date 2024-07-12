@@ -1,5 +1,4 @@
 .filter {
-  width: 13.75rem;
   .filter__sections {
     border-bottom: 1px solid var(--gray-100);
   }
@@ -12,7 +11,7 @@
   .filter__section-title {
     font-size: 1rem;
     font-weight: 500;
-    color: #333;
+    color: var(--content);
   }
   .filter__reset {
     font-size: 0.625rem;
@@ -56,7 +55,7 @@
     background: inherit;
     padding: 0;
     border: none;
-    color: #333;
+    color: var(--content);
     font-size: 1rem;
     cursor: pointer;
   }
@@ -72,7 +71,7 @@
     width: 1.5rem;
     height: 1.5rem;
     padding: 0.5px;
-    background: white no-repeat center;
+    background: var(--white) no-repeat center;
     border: 1px solid var(--mainColor);
     cursor: pointer;
     outline: none;
