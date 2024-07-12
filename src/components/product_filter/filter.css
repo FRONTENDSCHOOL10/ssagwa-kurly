@@ -77,12 +77,12 @@
     outline: none;
     appearance: none;
     border-radius: 50%;
-    background-image: url('/assets/svg/check.svg');
+    background-image: url('/svg/check.svg');
     background-position: -8px -8px;
   }
   .filter__category-item input[type='checkbox']:checked {
     background-repeat: no-repeat;
-    background-image: url('/assets/svg/check.svg');
+    background-image: url('/svg/check.svg');
     background-position: -8px -40px;
   }
   .filter__label {
