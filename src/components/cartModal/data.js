@@ -1,9 +1,9 @@
-import { comma } from '/lib/index.js';
+import { comma } from '/src/lib/index.js';
 
-// 데이터 임포트 테스트용...
+// 데이터 임포트 테스트용...()
 const productData = [
   {
-    image: '/assets/images/product/product01.png',
+    image: '/src/assets/images/product/product01.png',
     name: '[풀무원] 탱탱쫄면 (4개입)',
     discount: '0',
     price: '4980',
@@ -11,21 +11,21 @@ const productData = [
     description: '설명설명',
   },
   {
-    image: '/assets/images/product/product02.png',
+    image: '/src/assets/images/product/product02.png',
     name: '[온더바디] 죠르디 시카 자석 선쿠션',
     discount: '10',
     price: '30000',
     originalPrice: '27000',
     description: '설명설명',
   },
-  {
-    image: '/assets/images/product/product04.png',
-    name: '[멤버스특가][르네휘테르] 포티샤 샴푸 듀오 선물세트 BEST 4종(택1)[멤버스특가][르네휘테르] 포티샤 샴푸 듀오 선물세트 BEST 4종(택1)',
-    discount: '25',
-    price: '90000',
-    originalPrice: '',
-    description: '설명설명',
-  },
+  // {
+  //   image: '/src/assets/images/product/product04.png',
+  //   name: '[멤버스특가][르네휘테르] 포티샤 샴푸 듀오 선물세트 BEST 4종(택1)[멤버스특가][르네휘테르] 포티샤 샴푸 듀오 선물세트 BEST 4종(택1)',
+  //   discount: '25',
+  //   price: '90000',
+  //   originalPrice: '',
+  //   description: '설명설명',
+  // },
 ];
 
 function truncateText(text, maxBytes) {
@@ -47,15 +47,6 @@ productData.forEach((item) => {
 
   const productName = document.querySelector('.cart-modal__title');
   productName.textContent = truncatedName;
-
-  const discountElement = document.querySelector(
-    '.cart-modal__product-discount'
-  );
-  if (discount && discount !== '0') {
-    discountElement.textContent = `${discount}%`;
-  } else {
-    discountElement.textContent = '';
-  }
 
   const productPrice = document.querySelector('.cart-modal__product-price');
   productPrice.textContent = `${comma(price)}원`;
