@@ -19,4 +19,10 @@
   a:first-of-type {
     border-left: 1px solid var(--gray-100);
   }
+  a:hover {
+    background-color: var(--gray-200);
+  }
+  .pagelinks--is-selected {
+    color: var(--primary);
+  }
 }
