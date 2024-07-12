@@ -1,3 +1,6 @@
+import '/src/components/cartModal/cartModal.css';
+import '/src/components/cartModal/data.js';
+
 const openModalButtons = document.querySelectorAll('.button--open-modal');
 const closeModalButtons = document.querySelectorAll('.button--close-modal');
 const cartModal = document.getElementById('cart-modal');
