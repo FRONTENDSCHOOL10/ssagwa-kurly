@@ -23,7 +23,7 @@ button {
 .product__status {
   display: flex;
   align-items: center;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .product__list {
@@ -85,7 +85,7 @@ button {
 }
 
 .product__title {
-  font-weight: 500;
+  font-weight: 600;
   max-height: 3.375rem;
   line-height: 1.375rem;
 
