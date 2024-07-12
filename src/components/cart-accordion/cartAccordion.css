@@ -1,13 +1,13 @@
-.cart-accordion {
-  width: 46.375rem;
-}
-
 button {
   border: none;
   background-color: transparent;
   outline: none;
   cursor: pointer;
   padding: 0;
+}
+
+.cart-accordion {
+  width: 46.375rem;
 }
 
 .cart-accordion__heading {
@@ -32,10 +32,7 @@ button {
   position: relative;
   padding: 1.25rem 0;
   width: 100%;
-}
-
-.product__list:not(:first-child) {
-  border-top: 1px solid rgb(244, 244, 244);
+  border-bottom: 0.0625rem solid var(--gray-50);
 }
 
 .product__list-checkbox {
@@ -138,6 +135,21 @@ button {
   padding-top: 0.25rem;
 }
 
+.empty__cart {
+  width: 46.375rem;
+  height: 15.875rem;
+  border-bottom: 0.0625rem solid var(--gray-50);
+
+  p{
+    padding: 7.1875rem 0;
+    border-top: 0.0625rem solid var(--gray-500);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+    color: var(--gray-300);
+  }
+}
+
 /* 아이콘 */
 
 .icon {
@@ -146,47 +158,49 @@ button {
   display: inline-block;
 }
 
-.large {
+.icon--large {
   width: 1.875rem;
   height: 1.875rem;
 }
-.small {
+.icon--small {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.refrigerated {
+.icon--refrigerated {
   background-image: url('/svg/Food-Refrigerated.svg');
   margin-right: 0.5rem;
 }
 
-.frozen {
+.icon--frozen {
   background-image: url('/svg/Food-Frozen.svg');
   margin-right: 0.5rem;
 }
 
-.normal {
+.icon--normal {
   background-image: url('/svg/Food-Normal.svg');
   margin-right: 0.5rem;
 }
 
-.Checked {
+.icon--Checked {
   background-image: url('/svg/Check-Checked.svg');
+  z-index: 99;
+  cursor: pointer;
 }
 
-.UnChecked {
+.icon--UnChecked {
   background-image: url('/svg/Check-UnChecked.svg');
 }
 
-.delete {
+.icon--delete {
   background-image: url('/svg/Cancel.svg');
   margin-left: 0.5625rem;
 }
 
-.arrow-up {
+.icon--arrow-up {
   background-image: url('/svg/Arrow-Up.svg');
 }
 
-.arrow-down {
+.icon--arrow-down {
   background-image: url('/svg/Arrow-Down.svg');
 }

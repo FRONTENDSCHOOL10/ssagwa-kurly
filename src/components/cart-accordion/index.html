@@ -12,21 +12,25 @@
   </head>
   <body>
     <section class="cart-accordion" aria-labelledby="cart-accordion__title">
-      <h4 class="cart-accordion__heading">
-        <span class="product__status" id="cart-accordion__title">
-          <span class="icon large refrigerated" aria-hidden="true"></span>
-          냉장 상품
-        </span>
-        <button data-testid="fold-button">
-          <span class="icon large arrow-up"></span>
-        </button>
-      </h4>
-
+      <header>
+        <h2 class="cart-accordion__heading">
+          <span class="product__status" id="cart-accordion__title">
+            <span
+              class="icon icon--large icon--refrigerated"
+              aria-hidden="true"
+            ></span>
+            냉장 상품
+          </span>
+          <button class="cart-accordion__toggle-button">
+            <span class="icon icon--large icon--arrow-up"></span>
+          </button>
+        </h2>
+      </header>
       <ul class="cart-accordion__product-list">
         <li class="product__list">
-          <label class="product__list-checkbox">
-            <input type="checkbox" checked />
-            <span class="icon small Checked"></span>
+          <label class="product__list-checkbox" for="product-checkbox">
+            <input type="checkbox" id="product-checkbox" checked />
+            <span class="icon icon--small icon--Checked"></span>
           </label>
           <a href="#" class="product__list-image">
             <span class="product-image"></span>
@@ -55,26 +59,21 @@
               aria-label="수량 올리기"
             ></button>
           </div>
-
           <div class="product__total-price">
-            <span
-              aria-label="할인 가격"
-              data-testid="product-price"
-              class="product__product-price"
+            <span aria-label="할인 가격" class="product__product-price"
               >2,330원</span
             >
-            <span
-              aria-label="판매 가격"
-              data-testid="selling-price"
-              class="product__selling-price"
-              >2,330원</span
+            <span aria-label="판매 가격" class="product__selling-price"
+              >3,330원</span
             >
           </div>
-          <button type="button" data-testid="delete">
-            <span class="icon large delete"></span>
+          <button class="product-delete-button" type="button">
+            <span class="icon icon--large icon--delete"></span>
           </button>
         </li>
       </ul>
     </section>
+
+
   </body>
 </html>
