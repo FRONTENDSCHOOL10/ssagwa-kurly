@@ -1,3 +1,5 @@
+import csstext from '/src/components/footer/footer.css?inline';
+
 class KurlyFooter extends HTMLElement {
   constructor() {
     super();
@@ -7,7 +9,7 @@ class KurlyFooter extends HTMLElement {
   connectedCallback() {
     const template = document.createElement('template');
     template.innerHTML = `
-    <style>@import url('/src/components/footer/footer.css');</style>
+    <style>${csstext}</style>
       <footer class="footer">
         <div class="footer__maininner">
           <div class="footer__top">
