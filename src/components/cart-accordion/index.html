@@ -5,22 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Components - Cart Accordion</title>
     <link rel="stylesheet" href="/src/styles/global.css" />
-    <link
-      rel="stylesheet"
-      href="/src/components/cart-accordion/cartAccordion.css"
-    />
+    <script
+      type="module"
+      src="/src/components/cart-accordion/cartAccordion.js"
+    ></script>
   </head>
   <body>
     <section class="cart-accordion" aria-labelledby="cart-accordion__title">
       <h4 class="cart-accordion__heading">
         <span class="product__status" id="cart-accordion__title">
-          <span
-            class="icon large refrigerated"
-            aria-hidden="true"></span>
+          <span class="icon large refrigerated" aria-hidden="true"></span>
           냉장 상품
         </span>
         <button data-testid="fold-button">
-          <span class="icon large arrow-down"></span>
+          <span class="icon large arrow-up"></span>
         </button>
       </h4>
 
@@ -35,112 +33,44 @@
           </a>
           <div class="product__info">
             <a>
-              <p class="product__title text-overflow">[풀무원] 탱 신상 탱탱쫄dfdfㄴㅇ라ㅓㄴㅁ이라ㅓㄴㅁ아ㅣ런ㅁㅇ;ㅣㅏ럼ㄴ아ㅣㄹ면 마시쪙 신상 탱탱쫄면 마시쪙탱쫄면 (4개입)</p>
-              <p class="product__description text-overflow">NEW! 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션  파운데이션 파운데이션 신상 탱탱쫄면 마시쪙마시쪙</p>
+              <p class="product__title text-overflow">
+                [풀무원] 탱 신상 탱탱쫄df(4개입)
+              </p>
+              <p class="product__description text-overflow">
+                NEW! 파운데이션 파운데이션 파운데이션 파운데이션
+              </p>
             </a>
           </div>
-
-          <span
-            aria-label="합계"
-            data-testid="product-total-price"
-            class="product__total-price"
-            >4,980원</span
-          >
-          <button class="delete-button" type="button" data-testid="delete">
-            <span class="icon large delete"></span>
-          </button>
-        </li>
-
-        <li class="product__list">
-          <label class="product__list-checkbox">
-            <input type="checkbox" checked />
-            <span class="icon small Checked"></span>
-          </label>
-          <a href="#" class="product__list-image">
-            <span class="product-image"></span>
-          </a>
-          <div class="product__info">
-            <a>
-              <p class="product__title text-overflow">[풀무원] 탱 신상 탱탱쫄dfdfㄴㅇ라ㅓㄴㅁ이라ㅓㄴㅁ아ㅣ런ㅁㅇ;ㅣㅏ럼ㄴ아ㅣㄹ면 마시쪙 신상 탱탱쫄면 마시쪙탱쫄면 (4개입)</p>
-              <p class="product__description text-overflow">NEW! 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션  파운데이션 파운데이션 신상 탱탱쫄면 마시쪙마시쪙</p>
-            </a>
+          <div class="stepper">
+            <button
+              class="stepper__button--minus"
+              type="button"
+              aria-label="수량 내리기"
+              disabled
+            ></button>
+            <span>1</span>
+            <button
+              class="stepper__button--plus"
+              type="button"
+              aria-label="수량 올리기"
+            ></button>
           </div>
 
-          <span
-            aria-label="합계"
-            data-testid="product-total-price"
-            class="product__total-price"
-            >4,980원</span
-          >
-          <button class="delete-button" type="button" data-testid="delete">
-            <span class="icon large delete"></span>
-          </button>
-        </li>
-
-                <li class="product__list">
-          <label class="product__list-checkbox">
-            <input type="checkbox" checked />
-            <span class="icon small Checked"></span>
-          </label>
-          <a href="#" class="product__list-image">
-            <span class="product-image"></span>
-          </a>
-          <div class="product__info">
-            <a>
-              <p class="product__title text-overflow">[풀무원] 탱 신상 탱탱쫄dfdfㄴㅇ라ㅓㄴㅁ이라ㅓㄴㅁ아ㅣ런ㅁㅇ;ㅣㅏ럼ㄴ아ㅣㄹ면 마시쪙 신상 탱탱쫄면 마시쪙탱쫄면 (4개입)</p>
-              <p class="product__description text-overflow">NEW! 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션  파운데이션 파운데이션 신상 탱탱쫄면 마시쪙마시쪙</p>
-            </a>
+          <div class="product__total-price">
+            <span
+              aria-label="할인 가격"
+              data-testid="product-price"
+              class="product__product-price"
+              >2,330원</span
+            >
+            <span
+              aria-label="판매 가격"
+              data-testid="selling-price"
+              class="product__selling-price"
+              >2,330원</span
+            >
           </div>
-
-          <span
-            aria-label="합계"
-            data-testid="product-total-price"
-            class="product__total-price"
-            >4,980원</span
-          >
-          <button class="delete-button" type="button" data-testid="delete">
-            <span class="icon large delete"></span>
-          </button>
-        </li>
-      </ul>
-    </section>
-
-    <section class="cart-accordion" aria-labelledby="cart-accordion__title">
-      <h4 class="cart-accordion__heading">
-        <span class="product__status" id="cart-accordion__title">
-          <span
-            class="icon large frozen"
-            aria-hidden="true"></span>
-          냉동 상품
-        </span>
-        <button data-testid="fold-button">
-          <span class="icon large arrow-down"></span>
-        </button>
-      </h4>
-
-      <ul class="cart-accordion__product-list">
-        <li class="product__list">
-          <label class="product__list-checkbox">
-            <input type="checkbox" checked />
-            <span class="icon small Checked"></span>
-          </label>
-          <a href="#" class="product__list-image">
-            <span class="product-image"></span>
-          </a>
-          <div class="product__info">
-            <a>
-              <p class="product__title text-overflow">[풀무원] 탱 신상 탱탱쫄dfdfㄴㅇ라ㅓㄴㅁ이라ㅓㄴㅁ아ㅣ런ㅁㅇ;ㅣㅏ럼ㄴ아ㅣㄹ면 마시쪙 신상 탱탱쫄면 마시쪙탱쫄면 (4개입)</p>
-              <p class="product__description text-overflow">NEW! 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션 파운데이션  파운데이션 파운데이션 신상 탱탱쫄면 마시쪙마시쪙</p>
-            </a>
-          </div>
-
-          <span
-            aria-label="합계"
-            data-testid="product-total-price"
-            class="product__total-price"
-            >4,980원</span
-          >
-          <button class="delete-button" type="button" data-testid="delete">
+          <button type="button" data-testid="delete">
             <span class="icon large delete"></span>
           </button>
         </li>
