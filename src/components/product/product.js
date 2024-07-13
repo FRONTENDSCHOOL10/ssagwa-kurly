@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const noDiscounted = item.discount !== '0' && item.discount !== '';
 
       const template = `
-            <li class="product__wrapper">
+            <a href=""><li class="product__wrapper">
                 <figure class="product__visual" aria-label="상품 이미지">
                     <img src="${item.image}" alt="${item.name}" />
                     <figcaption class="sr-only">상품 이미지: ${item.name}</figcaption>
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="tag--only tag--primary">Karly Only</span>
                     <span class="tag--only">한정수량</span>
                 </div>
-            </li>
+            </li></a>
       `;
       productList.insertAdjacentHTML('beforeEnd', template);
   });
