@@ -1,0 +1,39 @@
+.stepper {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid var(--gray-200);
+  border-radius: 3px;
+
+  width: 84px;
+  height: 30px;
+
+  button {
+    width: 30px;
+    height: 30px;
+    background-color: inherit;
+    border: none;
+
+    cursor: pointer;
+  }
+
+  .stepper__button--minus:disabled {
+    cursor: default;
+  }
+
+  .stepper__button--minus {
+    background-image: url('/svg/Minus.svg');
+    background-size: 46px 84px;
+    background-position: -8px -45px;
+    background-repeat: no-repeat;
+  }
+
+  .stepper__button--plus {
+    background-image: url('/svg/Plus.svg');
+    background-size: 46px 84px;
+    background-position: -8px -7px;
+    background-repeat: no-repeat;
+  }
+}
