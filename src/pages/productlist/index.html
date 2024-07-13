@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>마켓 베스트 - 사과컬리 </title>
+  <link rel="stylesheet" href="/src/pages/productlist/productlist.css" />
   <script type="module" src="/src/pages/productlist/productlist.js"></script>
 </head>
 
@@ -12,6 +13,7 @@
   <ssagwakurly-header></ssagwakurly-header>
   <main class="productlistpage">
     <h2 class="productlistpage__header" aria-label="추천메뉴목록">베스트</h2>
+
     <div class="productlist-area">
       <aside id="productlist-filter"></aside>
       <section class="productlist-group">
@@ -26,8 +28,8 @@
             <li class="bar"><a class="productlist-sorting">높은 가격순</a></li>
           </ul>
         </article>
-        <article>
-          상품리스트
+        <article class="products" role="group">
+
         </article>
         <nav class="paginator">
           <a href="#" class="doublearrow">
@@ -48,6 +50,7 @@
         </nav>
       </section>
     </div>
+
   </main>
   <ssagwakurly-footer></ssagwakurly-footer>
 </body>
