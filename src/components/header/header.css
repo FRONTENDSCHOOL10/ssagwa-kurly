@@ -22,7 +22,8 @@ input:focus {
 }
 
 .header__wrapper {
-  position: fixed;
+  position: sticky;
+  top: 0;
   background-color: var(--white);
   display: flex;
   width: 100vw;
