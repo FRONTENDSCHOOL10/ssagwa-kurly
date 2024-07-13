@@ -1,5 +1,5 @@
 import '/src/components/product/product.css';
-// import { comma } from "/src/lib/utils/tiger.js";
+import { comma } from "/src/lib/math/comma.js";
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="product__title" aria-label="상품이름">${item.name}</span>
                 <div class="product__price--wrap">
                     ${noDiscounted ? `<div class="product__discount" aria-label="할인율">${item.discount}%</div>` : ''}
-                    <div class="product__real-price" aria-label="가격">${noDiscounted ? `${discountPrice}원` : `${item.originalPrice}원`}</div>
+                    <div class="product__real-price" aria-label="가격">${noDiscounted ? `${comma(discountPrice)}원` : `${comma(item.originalPrice)}원`}</div>
                 </div>
-                <span class="product__price" aria-label="원가">${item.originalPrice}원</span>
+                <span class="product__price" aria-label="원가">${comma(item.originalPrice)}원</span>
                 <span class="product__description" aria-label="상품 설명">${item.description}</span>
                 <div class="product__tag">
                     <span class="tag--only tag--primary">Karly Only</span>
