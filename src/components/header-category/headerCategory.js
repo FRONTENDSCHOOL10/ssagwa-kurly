@@ -3,7 +3,7 @@ function categoryMenuItem(shadowRoot) {
     { icon: 'Gift', title: '선물하기' },
     { icon: 'Vegetable', title: '채소' },
     { icon: 'Fruit', title: '과일 · 견과 · 쌀' },
-    { icon: 'Seafood', title: '수산 · 해산 · 건어물' },
+    { icon: 'SeaFood', title: '수산 · 해산 · 건어물' },
     { icon: 'Meat', title: '정육 · 계란' },
     { icon: 'Food', title: '국 · 반찬 · 메인요리' },
     { icon: 'Salad', title: '샐러드 · 간편식' },
@@ -38,7 +38,7 @@ function categoryMenuItem(shadowRoot) {
 
     categoryContainer.classList.add('nav__category__item');
 
-    categoryIcon.src = `/src/assets/svg/MenuIcon-${item.icon}.svg`;
+    categoryIcon.src = `/svg/MenuIcon-${item.icon}.svg`;
     categoryIcon.alt = item.title;
     categoryIcon.classList.add('nav__category__item-img');
     categoryTitle.textContent = item.title;
