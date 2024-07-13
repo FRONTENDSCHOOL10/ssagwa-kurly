@@ -11,7 +11,7 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 340px;
+  width: 21.25rem;
   
   h1{
     font-family: inherit;
@@ -21,6 +21,14 @@ main{
     line-height: 150%;
     margin-bottom: 2.75rem;
   }
+}
+
+.box-sizing{
+  box-sizing: border-box;
+}
+
+.form--login{
+  margin-bottom: 0.75rem;
 }
 
 .login__form{
@@ -42,6 +50,3 @@ main{
   }
 }
 
-.box-sizing{
-  box-sizing: border-box;
-}
