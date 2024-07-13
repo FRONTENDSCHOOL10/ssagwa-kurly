@@ -13,13 +13,14 @@ function createFilterComponent(FilterContainer, data) {
           <h2 class="filter__section-title">필터</h2>
           <button id="resetFilter" type="button" class="filter__reset" aria-label="필터 초기화">초기화</button>
         </header>
-        ${renderFilterSections()}
+        ${getFilterSectionsHTML()}
       </section>
     `;
     container.appendChild(aside);
+    addEventListeners();
   }
 
-  function renderFilterSections() {
+  function getFilterSectionsHTML() {
     let sectionsHTML = '';
     data.sections.forEach((section) => {
       sectionsHTML += `
@@ -28,33 +29,26 @@ function createFilterComponent(FilterContainer, data) {
             section.id
           }-list">
             ${section.title}
-            ${renderToggleArrow()}
+            <svg class="filter__toggle-arrow"></svg>
           </button>
-          ${renderSectionList(section)}
+          ${getSectionListHTML(section)}
         </article>
       `;
     });
     return sectionsHTML;
   }
 
-  function renderToggleArrow() {
-    return `
-      <svg class="filter__toggle-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <path d="M5 7L9 11L13 7" stroke="#999999" stroke-width="1.2" />
-      </svg>
-    `;
-  }
-
-  function renderSectionList(section) {
+  function getSectionListHTML(section) {
     if (!section.items) return '';
 
     let listItemsHTML = '';
     section.items.forEach((item, index) => {
+      const inputType = section.id === 'price' ? 'radio' : 'checkbox';
       listItemsHTML += `
         <li class="filter__category-item">
-          <input type="checkbox" id="${section.id}${index + 1}" name="${
+          <input type="${inputType}" id="${section.id}${index + 1}" name="${
             section.id
-          }" value="${item.name}" class="filter__checkbox">
+          }" value="${item.name}" class="filter__${inputType}">
           <label for="${section.id}${index + 1}" class="filter__label">
             ${item.name}<span class="filter__count" aria-label="상품 수">${
               item.count
@@ -76,11 +70,25 @@ function createFilterComponent(FilterContainer, data) {
     `;
   }
 
+  function addEventListeners() {
+    const toggleButtons = container.querySelectorAll('.filter__toggle');
+    toggleButtons.forEach((button) => {
+      button.addEventListener('click', handleSectionToggle);
+    });
+  }
+
+  function handleSectionToggle(event) {
+    const button = event.currentTarget;
+    const sectionId = button.getAttribute('aria-controls');
+    const section = document.getElementById(sectionId);
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+    button.setAttribute('aria-expanded', !isExpanded);
+    section.classList.toggle('expanded');
+  }
+
   render();
 }
-
-// 여기서부터는 임시로 값을 넣어줌 확인하기 위해
-// 나중에 pocketbase 연동해서 데이터 가져올 때 수정해야 함
 
 const filterdata = {
   sections: [
@@ -108,7 +116,16 @@ const filterdata = {
         { name: '판매자배송', count: 6 },
       ],
     },
-    { id: 'price', title: '가격' },
+    {
+      id: 'price',
+      title: '가격',
+      items: [
+        { name: '6,900 미만', count: 100 },
+        { name: '6,900원 ~ 9,900원', count: 200 },
+        { name: '9,990원 ~ 14,900원', count: 150 },
+        { name: '14,900이상', count: 100 },
+      ],
+    },
     {
       id: 'brand',
       title: '브랜드',
