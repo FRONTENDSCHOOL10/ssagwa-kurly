@@ -5,7 +5,7 @@ import { calcDiscountPrice } from '/src/lib/math/calcDiscountPrice.js';
 
 export async function ProductsList() {
   try {
-    const records = await pb.collection('products').getList(1, 50, {
+    const records = await pb.collection('products').getFullList({
       sort: '-created',
     });
 
