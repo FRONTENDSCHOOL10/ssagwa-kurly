@@ -3,7 +3,6 @@ main{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 9.75rem;
 }
 
 .login__container{
@@ -34,7 +33,7 @@ main{
 .login__form{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 340px;
 }
 
 .form--login-find{
@@ -50,3 +49,14 @@ main{
   }
 }
 
+.flex-box{
+  display: flex;
+  flex-direction: column;
+}
+
+.width-box{
+
+  input{
+    width: 100%;
+  }
+}
