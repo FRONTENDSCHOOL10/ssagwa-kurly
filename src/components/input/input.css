@@ -45,7 +45,7 @@
     bottom: -1.25rem;
   }
 
-  .input__field.is--invalid + .input__error-message {
+  .is--invalid + .input__error-message {
     display: block;
   }
 }
