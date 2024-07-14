@@ -9,15 +9,15 @@
   </head>
   <body>
     <ssagwakurly-header></ssagwakurly-header>
-    <div id="register-page">
-      <h2 class="title">회원가입</h2>
-      <span class="requiredElement">필수입력사항</span>
+    <div class="register-page">
+      <h2 class="register__title">회원가입</h2>
+      <span class="register__required-element">필수입력사항</span>
       <form>
         <div class="input register__section">
-          <label class="register__required register__label" for="userID"
+          <label class="register__label--required register__label" for="userID"
             >아이디</label
           >
-          <div class="input__wrapper">
+          <div class="register__input-wrapper">
             <input
               class="register__input input__field--small"
               type="text"
@@ -33,20 +33,16 @@
               >6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</span
             >
           </div>
-          <button
-            type="button"
-            aria-label="아이디 중복 확인"
-            class="button--small button--transparent"
-          >
+          <button type="button" class="button--small button--transparent">
             중복확인
           </button>
         </div>
 
         <div class="input register__section">
-          <label class="register__required register__label" for="userPw"
+          <label class="register__label--required register__label" for="userPw"
             >비밀번호</label
           >
-          <div class="input__wrapper">
+          <div class="register__input-wrapper">
             <input
               class="register__input input__field--small"
               type="password"
@@ -65,10 +61,12 @@
         </div>
 
         <div class="input register__section">
-          <label class="register__required register__label" for="userPwConfirm"
+          <label
+            class="register__label--required register__label"
+            for="userPwConfirm"
             >비밀번호 확인</label
           >
-          <div class="input__wrapper">
+          <div class="register__input-wrapper">
             <input
               class="register__input input__field--small"
               type="password"
@@ -87,7 +85,9 @@
         </div>
 
         <div class="input register__section">
-          <label class="register__required register__label" for="userName"
+          <label
+            class="register__label--required register__label"
+            for="userName"
             >이름</label
           >
           <input
@@ -103,10 +103,12 @@
         </div>
 
         <div class="input register__section">
-          <label class="register__required register__label" for="userEmail"
+          <label
+            class="register__label--required register__label"
+            for="userEmail"
             >이메일</label
           >
-          <div class="input__wrapper">
+          <div class="register__input-wrapper">
             <input
               class="register__input input__field--small"
               type="email"
@@ -132,10 +134,12 @@
         </div>
 
         <div class="input register__section">
-          <label class="register__required register__label" for="phoneNum"
+          <label
+            class="register__label--required register__label"
+            for="phoneNum"
             >휴대폰</label
           >
-          <div class="input__wrapper">
+          <div class="register__input-wrapper">
             <input
               class="register__input input__field--small"
               type="tel"
@@ -147,32 +151,27 @@
               aria-describedby="phoneNumError"
               aria-live="polite"
             />
-            <span class="input__error-message" id="phoneNumError"
-              >휴대폰 번호를 입력해주세요.</span
-            >
+            <span class="input__error-message" id="phoneNumError">휴대폰 번호를 입력해주세요.</span>
           </div>
-          <button
-            type="button"
-            aria-label="휴대폰 인증번호 받기"
-            class="button--small button--transparent"
-          >
+          <button type="button" class="button--small button--transparent">
             인증번호 받기
           </button>
         </div>
 
         <div class="register__section">
-          <label class="register__required register__label" for="userAdress"
+          <label
+            class="register__label--required register__label"
+            for="userAdress"
             >주소</label
           >
-          <div class="adress__wrapper">
+          <div class="register__adress-wrapper">
             <button
               type="button"
-              aria-label="주소 검색"
               class="button--small button--transparent"
             >
               주소 검색
             </button>
-            <div class="adress__accordion input">
+            <div class="register__adress-accordion input">
               <div class="adress__line">
                 <input
                   class="register__input input__field--small"
@@ -186,7 +185,6 @@
                 />
                 <button
                   type="button"
-                  aria-label="재검색"
                   class="button--small button--transparent"
                 >
                   <img
@@ -326,7 +324,9 @@
         </div>
 
         <div class="register__section register__agreement">
-          <label class="register__label register__required">이용약관동의</label>
+          <label class="register__label register__label--required"
+            >이용약관동의</label
+          >
           <div class="register__agreement--list">
             <div class="input--checkbox">
               <div class="input--checkbox--wrapper">
@@ -406,9 +406,8 @@
         </div>
 
         <button
-          type="button"
-          aria-label="가입하기"
-          class="button__register button--large button--primary"
+          type="submit"
+          class="register-page__submit-btn button--large button--primary"
         >
           가입하기
         </button>

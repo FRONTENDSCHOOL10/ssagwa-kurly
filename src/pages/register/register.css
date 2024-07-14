@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-#register-page {
+.register-page {
   --requiredElement: '*';
   --Info-Error: #f03f40;
 
@@ -13,14 +13,14 @@
 
   font-weight: 600;
 
-  .title {
+  .register__title {
     font-size: 1.333rem;
     text-align: center;
     margin-top: 5rem;
     margin-bottom: 1.375rem;
   }
 
-  .requiredElement {
+  .register__required-element {
     display: block;
 
     font-size: 0.7502rem;
@@ -46,7 +46,7 @@
 
   padding-block: 1.25rem;
 
-  .register__required {
+  .register__label--required {
     &::after {
       content: var(--requiredElement);
       color: var(--Info-Error);
@@ -62,22 +62,22 @@
   }
 
   .register__input,
-  .adress__wrapper > button,
+  .register__adress-wrapper > button,
   .radio__wrapper,
   .userBirth {
     width: 20.8125rem;
   }
 
-  .input__wrapper + button {
+  .register__input-wrapper + button {
     width: 8.9375rem;
   }
 }
 
-.adress__wrapper {
+.register__adress-wrapper {
   display: flex;
   flex-direction: column;
 
-  .adress__accordion {
+  .register__adress-accordion {
     display: none; /* 보일때에는 flex로 변경 */
   }
 
@@ -94,7 +94,7 @@
     }
   }
 
-  .adress__accordion > input {
+  .register__adress-accordion > input {
     margin-top: 1rem;
   }
 
@@ -238,7 +238,7 @@
   }
 }
 
-.button__register {
+.register-page__submit-btn {
   width: 21.25rem;
   margin: 2.5rem 9.375rem 5rem;
 }
