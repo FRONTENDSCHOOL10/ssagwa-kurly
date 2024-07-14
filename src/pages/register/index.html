@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/nosorry.png" />
+    <script type="module" src="/src/pages/register/register.js"></script>
+    <title>회원가입 - 사과 컬리</title>
+  </head>
+  <body>
+    <ssagwakurly-header></ssagwakurly-header>
+    <div class="register-page">
+      <h2 class="register__title">회원가입</h2>
+      <span class="register__required-element">필수입력사항</span>
+      <form>
+        <div class="input register__section">
+          <label class="register__label--required register__label" for="userID"
+            >아이디</label
+          >
+          <div class="register__input-wrapper">
+            <input
+              class="register__input input__field--small"
+              type="text"
+              name="userID"
+              id="userID"
+              required
+              placeholder="아이디를 입력해주세요"
+              aria-invalid="false"
+              aria-describedby="userIDError"
+              aria-live="assertive"
+            />
+            <span class="input__error-message" id="userIDError"
+              >6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합</span
+            >
+          </div>
+          <button type="button" class="button--small button--transparent">
+            중복확인
+          </button>
+        </div>
+
+        <div class="input register__section">
+          <label class="register__label--required register__label" for="userPw"
+            >비밀번호</label
+          >
+          <div class="register__input-wrapper">
+            <input
+              class="register__input input__field--small"
+              type="password"
+              name="userPw"
+              id="userPw"
+              required
+              placeholder="비밀번호를 입력해주세요"
+              aria-invalid="false"
+              aria-describedby="userPwError"
+              aria-live="polite"
+            />
+            <span class="input__error-message" id="userPwError"
+              >최소 10자리 이상 입력</span
+            >
+          </div>
+        </div>
+
+        <div class="input register__section">
+          <label
+            class="register__label--required register__label"
+            for="userPwConfirm"
+            >비밀번호 확인</label
+          >
+          <div class="register__input-wrapper">
+            <input
+              class="register__input input__field--small"
+              type="password"
+              name="userPwConfirm"
+              id="userPwConfirm"
+              required
+              placeholder="비밀번호를 한번 더 입력해주세요"
+              aria-invalid="false"
+              aria-describedby="userPwConfirmError"
+              aria-live="polite"
+            />
+            <span class="input__error-message" id="userPwConfirmError"
+              >동일한 비밀번호 입력</span
+            >
+          </div>
+        </div>
+
+        <div class="input register__section">
+          <label
+            class="register__label--required register__label"
+            for="userName"
+            >이름</label
+          >
+          <input
+            class="register__input input__field--small"
+            type="text"
+            name="userName"
+            id="userName"
+            required
+            placeholder="이름을 입력해주세요"
+            aria-invalid="false"
+            aria-live="polite"
+          />
+        </div>
+
+        <div class="input register__section">
+          <label
+            class="register__label--required register__label"
+            for="userEmail"
+            >이메일</label
+          >
+          <div class="register__input-wrapper">
+            <input
+              class="register__input input__field--small"
+              type="email"
+              name="userEmail"
+              id="userEmail"
+              required
+              placeholder="예) kurly@ssagwa.com"
+              aria-invalid="false"
+              aria-describedby="userEmailError"
+              aria-live="polite"
+            />
+            <span class="input__error-message" id="userEmailError"
+              >이메일 형식으로 입력해주세요.</span
+            >
+          </div>
+          <button
+            type="button"
+            aria-label="이메일 중복 확인"
+            class="button--small button--transparent"
+          >
+            중복확인
+          </button>
+        </div>
+
+        <div class="input register__section">
+          <label
+            class="register__label--required register__label"
+            for="phoneNum"
+            >휴대폰</label
+          >
+          <div class="register__input-wrapper">
+            <input
+              class="register__input input__field--small"
+              type="tel"
+              name="phoneNum"
+              id="phoneNum"
+              required
+              placeholder="숫자만 입력해주세요."
+              aria-invalid="false"
+              aria-describedby="phoneNumError"
+              aria-live="polite"
+            />
+            <span class="input__error-message" id="phoneNumError">휴대폰 번호를 입력해주세요.</span>
+          </div>
+          <button type="button" class="button--small button--transparent">
+            인증번호 받기
+          </button>
+        </div>
+
+        <div class="register__section">
+          <label
+            class="register__label--required register__label"
+            for="userAdress"
+            >주소</label
+          >
+          <div class="register__adress-wrapper">
+            <button
+              type="button"
+              class="button--small button--transparent"
+            >
+              주소 검색
+            </button>
+            <div class="register__adress-accordion input">
+              <div class="adress__line">
+                <input
+                  class="register__input input__field--small"
+                  type="text"
+                  name="userAdress"
+                  id="userAdress"
+                  required
+                  readonly
+                  aria-invalid="false"
+                  aria-live="polite"
+                />
+                <button
+                  type="button"
+                  class="button--small button--transparent"
+                >
+                  <img
+                    src="/svg/Search.svg"
+                    alt="검색"
+                    aria-hidden="true"
+                    width="28"
+                    height="28"
+                  />재검색
+                </button>
+              </div>
+              <input
+                class="register__input input__field--small"
+                type="text"
+                name="userAdressOther"
+                id="userAdressOther"
+                required
+                placeholder="나머지 주소를 입력해주세요"
+                aria-invalid="false"
+                aria-live="polite"
+              />
+            </div>
+            <span>배송지에 따라 상품 정보가 달라질 수 있습니다.</span>
+          </div>
+        </div>
+
+        <div class="register__section">
+          <label class="register__label">성별</label>
+          <div class="radio__wrapper">
+            <div class="input--radio">
+              <input
+                class="appearance-none"
+                type="radio"
+                name="gender"
+                id="man"
+                value="man"
+              />
+              <span></span>
+              <label for="man">남자</label>
+            </div>
+            <div class="input--radio">
+              <input
+                class="appearance-none"
+                type="radio"
+                name="gender"
+                id="female"
+                value="female"
+              />
+              <span></span>
+              <label for="female">여자</label>
+            </div>
+            <div class="input--radio">
+              <input
+                class="appearance-none"
+                checked
+                type="radio"
+                name="gender"
+                id="notSelect"
+                value="notSelect"
+              />
+              <span></span>
+              <label for="notSelect">선택안함</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="register__section">
+          <label class="register__label">생년월일</label>
+          <div class="userBirth">
+            <input
+              class=""
+              type="text"
+              name="birth_year"
+              id="birth_year"
+              maxlength="4"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+              required
+              placeholder="YYYY"
+              aria-invalid="false"
+              aria-live="polite"
+            />
+            <span>/</span>
+            <input
+              class=""
+              type="text"
+              name="birth_month"
+              id="birth_month"
+              maxlength="2"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+              required
+              placeholder="MM"
+              aria-invalid="false"
+              aria-live="polite"
+            />
+            <span>/</span>
+            <input
+              class=""
+              type="text"
+              name="birth_day"
+              id="birth_day"
+              maxlength="2"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+              required
+              placeholder="DD"
+              aria-invalid="false"
+              aria-live="polite"
+            />
+          </div>
+        </div>
+
+        <div class="register__section">
+          <label class="register__label">추가입력 사항</label>
+          <div class="radio__wrapper">
+            <div class="input--radio">
+              <input
+                class="appearance-none"
+                type="radio"
+                name="additionalInfo"
+                id="inviteFriend"
+                value="inviteFriend"
+              />
+              <span></span>
+              <label for="inviteFriend">친구초대 추천인 아이디</label>
+            </div>
+            <div class="input--radio">
+              <input
+                class="appearance-none"
+                type="radio"
+                name="additionalInfo"
+                id="event"
+                value="event"
+              />
+              <span></span>
+              <label for="event">참여 이벤트명</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="register__section register__agreement">
+          <label class="register__label register__label--required"
+            >이용약관동의</label
+          >
+          <div class="register__agreement--list">
+            <div class="input--checkbox">
+              <div class="input--checkbox--wrapper">
+                <input
+                  class="appearance-none"
+                  type="checkbox"
+                  name="agreementAll"
+                  id="agreeAll"
+                />
+                <span></span>
+                <div class="input__agreementAll">
+                  <label for="agreeAll">전체 동의합니다.</label>
+                  <span
+                    >선택항목에 동의하지 않은 경우도 회원가입 및 일반적인
+                    서비스를 이용할 수 있습니다.</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="input--checkbox">
+              <div class="input--checkbox--wrapper">
+                <input
+                  class="appearance-none"
+                  type="checkbox"
+                  name="agreement"
+                  id="agreeTerms"
+                />
+                <span></span>
+                <label for="agreeTerms">이용약관 동의 (필수)</label>
+              </div>
+              <a href="#">약관보기></a>
+            </div>
+            <div class="input--checkbox">
+              <div class="input--checkbox--wrapper">
+                <input
+                  class="appearance-none"
+                  type="checkbox"
+                  name="agreement"
+                  id="agreePersonal"
+                />
+                <span></span>
+                <label for="agreePersonal"
+                  >개인정보 수집 이용∙동의 (필수)</label
+                >
+              </div>
+              <a href="#">약관보기></a>
+            </div>
+            <div class="input--checkbox">
+              <div class="input--checkbox--wrapper">
+                <input
+                  class="appearance-none"
+                  type="checkbox"
+                  name="agreement"
+                  id="agreeEvent"
+                />
+                <span></span>
+                <label for="agreeEvent"
+                  >무료배송, 할인쿠폰 등 혜택/정보 수신 동의 (선택)</label
+                >
+              </div>
+              <a href="#">약관보기></a>
+            </div>
+            <div class="input--checkbox">
+              <div class="input--checkbox--wrapper">
+                <input
+                  class="appearance-none"
+                  type="checkbox"
+                  name="agreement"
+                  id="over14"
+                />
+                <span></span>
+                <label for="over14">본인은 만 14세 이상입니다. (필수)</label>
+              </div>
+              <a href="#">약관보기></a>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="register-page__submit-btn button--large button--primary"
+        >
+          가입하기
+        </button>
+      </form>
+    </div>
+    <ssagwakurly-footer></ssagwakurly-footer>
+  </body>
+</html>
