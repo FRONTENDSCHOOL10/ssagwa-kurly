@@ -1,12 +1,11 @@
+/* main css */
 main{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 9.75rem;
 }
 .swiper{
   width: 100vw;
-  /* height: 23.125rem; */
   height: 100%;
   position: relative;
 }
@@ -61,4 +60,13 @@ main{
 
 .line__banner{
   margin: 2.5rem 0;
+}
+
+/* product css */
+.main__product{
+  width: 65.625rem;
+}
+
+.main__product--items{
+
 }
