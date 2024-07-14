@@ -13,8 +13,6 @@ const loginButton = getNode('.login');
 function handleLogin(e){
   e.preventDefault();
 
-  console.log('로그인 시도');
-
   // const id = 'kimnunu@naver.com';
   // const pw = 'dkssud123@123';
 
