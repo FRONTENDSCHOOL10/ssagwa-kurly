@@ -1,6 +1,5 @@
 
 .button--large{
-  width: 100%;
   height: 3.375rem;
   border-radius: 0.25rem;
   border: 1px solid var(--primary);
@@ -11,7 +10,6 @@
 }
 
 .button--small{
-  width: 100%;
   height: 2.75rem;
   border-radius: 0.25rem;
   border: 1px solid var(--primary);
