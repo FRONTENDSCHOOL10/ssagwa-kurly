@@ -11,19 +11,17 @@
 
 <body>
   <nav class="paginator">
-    <a href="#" class="doublearrow">
-      <img src="/svg/firstpage.svg" alt="처음페이지 아이콘" />
+    <a href="#" class="doublearrow" data-page="first">
+      <img src="/svg/firstpage.svg" alt="첫페이지 아이콘" />
     </a>
-    <a href="#" class="arrow">
+    <a href="#" class="arrow" data-page="prev">
       <img src="/svg/Previouspage.svg" alt="이전페이지 아이콘" />
     </a>
-    <a href="#" class="pagelinks pagelinks--is-selected">1</a>
-    <a href="#" class="pagelinks">2</a>
-    <a href="#" class="pagelinks">3</a>
-    <a href="#" class="arrow">
+    <div class="page-numbers"></div>
+    <a href="#" class="arrow" data-page="next">
       <img src="/svg/nextpage.svg" alt="다음페이지 아이콘" />
     </a>
-    <a href="#" class="doublearrow">
+    <a href="#" class="doublearrow" data-page="last">
       <img src="/svg/lastpage.svg" alt="마지막페이지 아이콘" />
     </a>
   </nav>
