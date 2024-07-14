@@ -1,0 +1,206 @@
+button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cart-accordion {
+  width: 46.375rem;
+}
+
+.cart-accordion__heading {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  padding: 0.9375rem 0 0.9375rem 0;
+  border-top: 0.0625rem solid var(--gray-300);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.product__status {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.product__list {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1.25rem 0;
+  width: 100%;
+  border-bottom: 0.0625rem solid var(--gray-50);
+}
+
+.product__list-checkbox {
+  margin-left: 2px;
+
+  input {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0px, 0px, 0px, 0px);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+  }
+
+  span {
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+}
+
+.product__list-image {
+  display: inline-block;
+  width: 60px;
+  height: 78px;
+  margin-right: 20px;
+  background-image: url(https://res.kurly.com/v/2.12.43/_next/static/images/noimg-150x195-2c819ff85dca3193dfce31add0852dbb.svg)
+    center center no-repeat rgb(245, 245, 245);
+}
+
+.product-image {
+  display: block;
+  height: 100%;
+  background-image: url('/src/assets/images/product/product01.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.product__info {
+  display: flex;
+  flex-direction: column;
+  width: 22rem;
+  margin-right: 1.25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.product__title {
+  font-weight: 600;
+  max-height: 3.375rem;
+  line-height: 1.375rem;
+
+  overflow: hidden;
+  word-break: break-all;
+  white-space: normal;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.product__description {
+  color: var(--gray-300);
+  font-size: 0.875rem;
+  max-height: 2.375rem;
+  line-height: 1.1875rem;
+  margin-top: 8px;
+
+  overflow: hidden;
+  word-break: break-all;
+  white-space: normal;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.product__total-price {
+  display: flex;
+  flex-direction: column;
+  width: 127px;
+  text-align: right;
+  word-break: break-all;
+}
+
+.product__product-price {
+  display: flex;
+  width: 7.9375rem;
+  word-break: break-all;
+  font-weight: 700;
+  justify-content: flex-end;
+}
+
+.product__selling-price {
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--gray-200);
+  text-decoration: line-through;
+  padding-top: 0.25rem;
+}
+
+.empty__cart {
+  width: 46.375rem;
+  height: 15.875rem;
+  border-bottom: 0.0625rem solid var(--gray-50);
+
+  p{
+    padding: 7.1875rem 0;
+    border-top: 0.0625rem solid var(--gray-500);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+    color: var(--gray-300);
+  }
+}
+
+/* 아이콘 */
+
+.icon {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+
+.icon--large {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+.icon--small {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon--refrigerated {
+  background-image: url('/svg/Food-Refrigerated.svg');
+  margin-right: 0.5rem;
+}
+
+.icon--frozen {
+  background-image: url('/svg/Food-Frozen.svg');
+  margin-right: 0.5rem;
+}
+
+.icon--normal {
+  background-image: url('/svg/Food-Normal.svg');
+  margin-right: 0.5rem;
+}
+
+.icon--Checked {
+  background-image: url('/svg/Check-Checked.svg');
+  z-index: 99;
+  cursor: pointer;
+}
+
+.icon--UnChecked {
+  background-image: url('/svg/Check-UnChecked.svg');
+}
+
+.icon--delete {
+  background-image: url('/svg/Cancel.svg');
+  margin-left: 0.5625rem;
+}
+
+.icon--arrow-up {
+  background-image: url('/svg/Arrow-Up.svg');
+}
+
+.icon--arrow-down {
+  background-image: url('/svg/Arrow-Down.svg');
+}
