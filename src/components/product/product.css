@@ -10,6 +10,15 @@
   display: flex;
   flex-direction: column;
 }
+.product__image-wrapper {
+  overflow: hidden;
+}
+.product__image-wrapper img {
+  transition: transform 0.3s ease-in-out;
+}
+.product__image-wrapper:hover img {
+  transform: scale(1.1);
+}
 
 .product__visual {
   width: 15.5625rem;
