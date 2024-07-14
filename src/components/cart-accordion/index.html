@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Components - Cart Accordion</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <script
+      type="module"
+      src="/src/components/cart-accordion/cartAccordion.js"
+    ></script>
+  </head>
+  <body>
+    <section class="cart-accordion" aria-labelledby="cart-accordion__title">
+      <header>
+        <h2 class="cart-accordion__heading">
+          <span class="product__status" id="cart-accordion__title">
+            <span
+              class="icon icon--large icon--refrigerated"
+              aria-hidden="true"
+            ></span>
+            냉장 상품
+          </span>
+          <button class="cart-accordion__toggle-button">
+            <span class="icon icon--large icon--arrow-up"></span>
+          </button>
+        </h2>
+      </header>
+      <ul class="cart-accordion__product-list">
+        <li class="product__list">
+          <label class="product__list-checkbox" for="product-checkbox">
+            <input type="checkbox" id="product-checkbox" checked />
+            <span class="icon icon--small icon--Checked"></span>
+          </label>
+          <a href="#" class="product__list-image">
+            <span class="product-image"></span>
+          </a>
+          <div class="product__info">
+            <a>
+              <p class="product__title text-overflow">
+                [풀무원] 탱 신상 탱탱쫄df(4개입)
+              </p>
+              <p class="product__description text-overflow">
+                NEW! 파운데이션 파운데이션 파운데이션 파운데이션
+              </p>
+            </a>
+          </div>
+          <div class="stepper">
+            <button
+              class="stepper__button--minus"
+              type="button"
+              aria-label="수량 내리기"
+              disabled
+            ></button>
+            <span>1</span>
+            <button
+              class="stepper__button--plus"
+              type="button"
+              aria-label="수량 올리기"
+            ></button>
+          </div>
+          <div class="product__total-price">
+            <span aria-label="할인 가격" class="product__product-price"
+              >2,330원</span
+            >
+            <span aria-label="판매 가격" class="product__selling-price"
+              >3,330원</span
+            >
+          </div>
+          <button class="product-delete-button" type="button">
+            <span class="icon icon--large icon--delete"></span>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+
+  </body>
+</html>
