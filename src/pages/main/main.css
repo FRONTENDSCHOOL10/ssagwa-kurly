@@ -6,10 +6,10 @@ main{
 }
 .swiper{
   width: 1900px;
-    height: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .swiper-slide{
