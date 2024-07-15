@@ -68,7 +68,7 @@
     width: 20.8125rem;
   }
 
-  .register__input-wrapper + button {
+  .input__wrapper + button {
     width: 8.9375rem;
   }
 }
