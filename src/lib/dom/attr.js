@@ -2,7 +2,7 @@ import { typeError } from '/src/lib/error/typeError.js';
 import { isString } from '/src/lib/utils/typeOf.js';
 import { getNode } from '/src/lib/dom/getNode.js';
 
-function getAttr(node, prop) {
+export function getAttr(node, prop) {
   if (typeof node === 'string') node = getNode(node);
   if (typeof prop !== 'string')
     throw new TypeError(
@@ -12,7 +12,7 @@ function getAttr(node, prop) {
   return node.getAttribute(prop);
 }
 
-function setAttr(node, prop, value) {
+export function setAttr(node, prop, value) {
   if (isString(node)) node = getNode(node);
   if (!isString(prop))
     typeError('setAttr함수의 두 번째 인수는 문자 타입 이어야 합니다.');

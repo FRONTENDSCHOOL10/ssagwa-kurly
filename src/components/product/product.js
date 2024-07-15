@@ -3,7 +3,7 @@ import '/src/components/product/product.css';
 import { comma } from '/src/lib/math/comma.js';
 import { calcDiscountPrice } from '/src/lib/math/calcDiscountPrice.js';
 
-export async function ProductsList() {
+async function ProductsList() {
   try {
     const records = await pb.collection('products').getFullList({
       sort: '-created',
@@ -11,7 +11,7 @@ export async function ProductsList() {
 
     const productsContainer = document.querySelector('.products');
 
-    records.items.forEach((item) => {
+    records.forEach((item) => {
       const price = Number(item.price);
       const discountRate = Number(item.discountRate);
       const hasDiscount = discountRate !== 0 && item.discountRate !== '';
@@ -34,7 +34,7 @@ export async function ProductsList() {
             </a>
           </div>
           <button type="button" class="product__basket" aria-label="장바구니에 상품 담기">
-            <img src="/public/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기
+            <img src="/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기
           </button>
           <a href="#" class="product__link">
             <div class="product__details">
@@ -50,9 +50,9 @@ export async function ProductsList() {
                     ? `<div class="product__discount" aria-label="할인율">${discountRate}%</div>`
                     : ''
                 }
-                <div class="product__real-price" aria-label="가격">
-                  ${comma(discountPrice)}원
-                </div>
+                <div class="product__real-price" aria-label="가격">${comma(
+                  discountPrice
+                )}원</div>
               </div>
               ${
                 hasDiscount
@@ -88,6 +88,7 @@ export async function ProductsList() {
     });
   } catch (error) {
     console.error('제품을 가져오는 중 오류 발생:', error);
+    console.error('Error details:', error);
   }
 }
 
