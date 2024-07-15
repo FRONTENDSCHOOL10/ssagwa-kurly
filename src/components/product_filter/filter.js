@@ -72,7 +72,7 @@ function createFilterComponent(FilterContainer, data) {
   }
 
   function addEventListeners() {
-    const toggleButtons = getNodes('.filter__toggle');
+    const toggleButtons = container.querySelectorAll('.filter__toggle');
     toggleButtons.forEach((button) => {
       button.addEventListener('click', handleSectionToggle);
     });
@@ -81,9 +81,9 @@ function createFilterComponent(FilterContainer, data) {
   function handleSectionToggle(event) {
     const button = event.currentTarget;
     const sectionId = getAttr(button, 'aria-controls');
-    const sectionId = getAttr(button, 'aria-controls');
+
     const section = document.getElementById(sectionId);
-    const isExpanded = getAttr(button, 'aria-expanded') === 'true';
+
     const isExpanded = getAttr(button, 'aria-expanded') === 'true';
 
     button.setAttribute('aria-expanded', !isExpanded);
