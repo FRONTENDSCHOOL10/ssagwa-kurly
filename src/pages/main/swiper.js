@@ -32,7 +32,7 @@ export const slideSwiper = () => {
   const swiper2 = new Swiper('.price-swiper', {
     // Optional parameters
     direction: 'horizontal',
-    loop: true,
+    loop: false,
     slidesPerView: 4,
     slidesPerGroup: 1,
     spaceBetween: 0, 
