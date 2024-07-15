@@ -6,6 +6,9 @@ export const slideSwiper = () => {
     autoplay: {
       delay: 3000,
     },
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 0,
     speed: 2000,
     observer: true,
     observeParents: true,
@@ -55,4 +58,3 @@ export const slideSwiper = () => {
     },
   });
 }
-

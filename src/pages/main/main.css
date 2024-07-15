@@ -7,6 +7,7 @@ main{
 .swiper{
   width: 100vw;
   height: 100%;
+  position: relative;
 }
 
 .swiper-slide{
@@ -18,7 +19,7 @@ main{
   }
 }
 
-.swiper-button-left,.swiper-button-right{
+.banner-swiper-button-left,.banner-swiper-button-right{
   background-image: url(/svg/Arrow.svg);
   background-size: cover;
   width: 50px;
@@ -28,14 +29,15 @@ main{
   z-index: 10;
   top: 40%;
   opacity: 1 !important;
-  display: block !important; 
+  display: block !important;
+  cursor: pointer; 
 }
 
-.swiper-button-left{
+.banner-swiper-button-left{
   left: 20%;
 }
 
-.swiper-button-right{
+.banner-swiper-button-right{
   background-position: 0 0;
   transform: rotate(180deg);
   right: 20%;
@@ -93,8 +95,18 @@ main{
 }
 
 .price-swiper-button-right{
-  /* position: absolute; */
   top: 25%;
   left: 96%;
+  background-image: url(/svg/Arrow.svg);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  position: absolute;
   z-index: 10;
+  opacity: 1 !important;
+  display: block !important;
+  cursor: pointer; 
+  background-position: 0 0;
+  transform: rotate(180deg);
 }
