@@ -7,7 +7,6 @@ main{
 .swiper{
   width: 100vw;
   height: 100%;
-  position: relative;
 }
 
 .swiper-slide{
@@ -42,6 +41,7 @@ main{
   right: 20%;
 }
 
+
 .main__product{
   padding: 2.5rem 0;
   display: flex;
@@ -55,6 +55,9 @@ main{
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
+    width: 1042px;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -69,5 +72,29 @@ main{
 }
 
 .product__wrapper {
-  width: 249px !important;
+  /* width: 249px !important; */
+  width: 25% !important; 
+  box-sizing: border-box;
+  position: relative;
+  a{
+    width: 100%;
+    display: block;
+  }
+}
+
+.price-swiper{
+  width: 1042px !important;
+}
+
+.price-swiper .swiper-slide {
+  width: calc(25% - 15px) !important;
+  margin-right: 15px !important;  
+  box-sizing: border-box; 
+}
+
+.price-swiper-button-right{
+  position: absolute;
+  top: 25%;
+  left: 96%;
+  z-index: 10;
 }
