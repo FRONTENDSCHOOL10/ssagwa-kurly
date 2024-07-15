@@ -11,6 +11,7 @@ ul {
 }
 
 .footer {
+  position: sticky;
   display: flex;
   width: 100%;
   align-self: stretch;
