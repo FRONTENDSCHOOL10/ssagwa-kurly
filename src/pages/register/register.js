@@ -8,37 +8,39 @@ import '/src/components/button/button.css';
 
 import pb from '/src/api/pocketbase';
 import { isBoolean } from '/src/lib/utils/typeOf.js';
+import { getNode } from '/src/lib/dom/getNode.js';
+import viewModal from '/src/components/modal/modal.js';
 
-const registerForm = document.querySelector('.register__form');
-const userID = document.querySelector('#userID');
-const userPw = document.querySelector('#userPw');
-const userPwConfirm = document.querySelector('#userPwConfirm');
-const userName = document.querySelector('#userName');
-const userEmail = document.querySelector('#userEmail');
-const phoneNum = document.querySelector('#phoneNum');
-const userAdress = document.querySelector('#userAdress');
-const userAdressOther = document.querySelector('#userAdressOther');
-const gender = getSelectedRadioValue('gender');
-const birth_year = document.querySelector('#birth_year');
-const birth_month = document.querySelector('#birth_month');
-const birth_day = document.querySelector('#birth_day');
+const registerForm = getNode('.register__form');
+const userID = getNode('#userID');
+const userPw = getNode('#userPw');
+const userPwConfirm = getNode('#userPwConfirm');
+const userName = getNode('#userName');
+const userEmail = getNode('#userEmail');
+const phoneNum = getNode('#phoneNum');
+const userAdress = getNode('#userAdress');
+const userAdressOther = getNode('#userAdressOther');
+const birth_year = getNode('#birth_year');
+const birth_month = getNode('#birth_month');
+const birth_day = getNode('#birth_day');
 
-const verificationIDBtn = document.querySelector('.verificationID');
-const verificationEmailBtn = document.querySelector('.verificationEmail');
-const searchAdressBtn = document.querySelector('.searchAdressBtn');
-const registerBtn = document.querySelector('.register-page__submit-btn');
+const verificationIDBtn = getNode('.verificationID');
+const verificationEmailBtn = getNode('.verificationEmail');
+const verificationPhoneBtn = getNode('.verificationPhone');
+const searchAdressBtn = getNode('.searchAdressBtn');
+const registerBtn = getNode('.register-page__submit-btn');
 
-const agreeAll = document.querySelector('#agreeAll');
+const agreeAll = getNode('#agreeAll');
 const agreeOther = [
-  document.querySelector('#agreeTerms'),
-  document.querySelector('#agreePersonal'),
-  document.querySelector('#agreeEvent'),
-  document.querySelector('#over14'),
+  getNode('#agreeTerms'),
+  getNode('#agreePersonal'),
+  getNode('#agreeEvent'),
+  getNode('#over14'),
 ];
 
 // 선택된 라디오 버튼의 값을 가져오는 함수
 function getSelectedRadioValue(name) {
-  const selectedRadio = document.querySelector(`input[name="${name}"]:checked`);
+  const selectedRadio = getNode(`input[name="${name}"]:checked`);
   return selectedRadio ? selectedRadio.value : null;
 }
 
@@ -53,6 +55,13 @@ function regID(text) {
 function regEmail(text) {
   const regex =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+  return regex.test(String(text).toLowerCase());
+}
+
+// 전화번호 형식
+function regPhone(text) {
+  const regex = /^01[016789]\d{7,8}$/;
 
   return regex.test(String(text).toLowerCase());
 }
@@ -85,10 +94,12 @@ function isErrorMessage(reg, inputElement) {
 
 const validateID = (inputElement) => {
   isErrorMessage(regID, inputElement);
+  verificationIDBtn.disabled = false;
 };
 
 const validateEmail = (inputElement) => {
   isErrorMessage(regEmail, inputElement);
+  verificationEmailBtn.disabled = false;
 };
 
 const validatePassword = (inputElement) => {
@@ -97,13 +108,22 @@ const validatePassword = (inputElement) => {
 
 const validateConfirmPassword = (inputElement) => {
   function confirmPW(confirmPassword) {
-    const password = document.querySelector('#userPw').value;
+    const password = getNode('#userPw').value;
 
     if (password === confirmPassword) {
       return true;
     }
   }
   isErrorMessage(confirmPW, inputElement);
+};
+
+const validatePhone = (inputElement) => {
+  isErrorMessage(regPhone, inputElement);
+  if(regPhone(inputElement.value)){
+    verificationPhoneBtn.disabled = false;
+  }else{
+    verificationPhoneBtn.disabled = true;
+  }
 };
 
 const validateRegister = (event) => {
@@ -116,20 +136,21 @@ const validateRegister = (event) => {
   if (inputElement.id === 'userID') validateID(inputElement);
   else if (inputElement.id === 'userEmail') validateEmail(inputElement);
   else if (inputElement.id === 'userPw') validatePassword(inputElement);
-  else if (inputElement.id === 'userPwConfirm')
-    validateConfirmPassword(inputElement);
+  else if (inputElement.id === 'userPwConfirm') validateConfirmPassword(inputElement);
+  else if (inputElement.id === 'phoneNum') validatePhone(inputElement);
 };
 
-function verificationIDEvent(event) {
-  const idValue = event.target.previousElementSibling.firstElementChild.value;
+function verificationIDEvent() {
+  const idValue = userID.value;
   verificationID(idValue)
     .then((result) => {
       if (!isBoolean(result)) return;
 
       if (result) {
-        alert('사용 할 수 있는 아이디 입니다');
+        viewModal('사용 할 수 있는 아이디 입니다.');
+        verificationIDBtn.disabled = true;
       } else {
-        alert('사용 불가능한 아이디 입니다');
+        viewModal('사용 불가능한 아이디 입니다.');
       }
     })
     .catch((error) => {
@@ -137,17 +158,17 @@ function verificationIDEvent(event) {
     });
 }
 
-function verificationEmailEvent(event) {
-  const emailValue =
-    event.target.previousElementSibling.firstElementChild.value;
+function verificationEmailEvent() {
+  const emailValue = userEmail.value;
   verificationEmail(emailValue)
     .then((result) => {
       if (!isBoolean(result)) return;
 
       if (result) {
-        alert('사용 가능한 이메일 입니다');
+        viewModal('사용 가능한 이메일 입니다.');
+        verificationEmailBtn.disabled = true;
       } else {
-        alert('사용 불가능한 이메일 입니다');
+        viewModal('사용 불가능한 이메일 입니다.');
       }
     })
     .catch((error) => {
@@ -160,7 +181,7 @@ function verificationEmailEvent(event) {
 async function verificationID(id) {
   try {
     if (!regID(id)) {
-      alert('6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합');
+      viewModal('6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합');
       return '12';
     }
 
@@ -184,7 +205,7 @@ async function verificationID(id) {
 async function verificationEmail(email) {
   try {
     if (!regEmail(email)) {
-      alert('이메일 형식으로 입력해 주세요.');
+      viewModal('이메일 형식으로 입력해 주세요.');
       return;
     }
 
@@ -206,7 +227,7 @@ async function verificationEmail(email) {
 function searchAdress() {
   new daum.Postcode({
     oncomplete: function (data) {
-      const adressAccordion = document.querySelector(
+      const adressAccordion = getNode(
         '.register__adress-accordion'
       );
       adressAccordion.style.display = 'block';
@@ -222,7 +243,32 @@ function searchAdress() {
   }).open();
 }
 
-function register() {
+function register(event) {
+  event.preventDefault();
+
+  if(verificationIDBtn.disabled === false){
+    viewModal('아이디 중복 체크를 해주세요.');
+    return;
+  }else if(verificationEmailBtn.disabled === false){
+    viewModal('이메일 중복 체크를 해주세요.');
+    return;
+  }else if(userPw.value === ''){
+    viewModal('비밀번호를 입력해 주세요.');
+    return;
+  }else if(!agreeOther[0].checked || !agreeOther[1].checked || !agreeOther[3].checked){
+    viewModal('필수 이용 약관을 동의해 주세요.');
+    return;
+  }else if(userPwConfirm.value === ''){
+    viewModal('비밀번호를 한번 더 입력해 주세요.');
+    return;
+  }else if(userName.value === ''){
+    viewModal('이름을 입력해 주세요.');
+    return;
+  }else if(userAdress.value === '' || userAdressOther.value === ''){
+    viewModal('주소를 검색하여 입력해 주세요.');
+    return;
+  }
+
   const data = {
     username: userID.value,
     email: userEmail.value,
@@ -237,7 +283,7 @@ function register() {
       birth_year.value && birth_month.value && birth_day.value
         ? `${birth_year.value}-${birth_month.value}-${birth_day.value}`
         : '',
-    gender: gender,
+    gender: getSelectedRadioValue('gender'),
     alarm: agreeOther[2].checked,
   };
 
@@ -246,8 +292,8 @@ function register() {
       .collection('users')
       .create(data)
       .then(() => {
-        alert('🎉 회원 가입이 완료됐습니다! 🎉 로그인 페이지로 이동합니다!');
         location.href = '/src/pages/login/';
+        // viewModal('🎉 회원 가입이 완료됐습니다! 🎉');
       });
   }
 
@@ -289,10 +335,3 @@ for (const checkbox of agreeOther) {
   });
 }
 registerBtn.addEventListener('click', register);
-
-/* async function getUser() {
-  const data = await pb.collection('users').getOne('hf3xw2qkzd9kxoj');
-  console.log(data);
-} */
-
-// getUser(); */
