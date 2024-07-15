@@ -18,7 +18,7 @@
   
   <main>
     <section aria-labelledby="banner-slider">
-      <div id="banner-slider" class="swiper">
+      <div id="banner-slider" class="swiper banner-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide"><img src="/src/assets/images/banner/banner01.png" alt="부드러운 달콤함 컬리 과일가게 멜론 9900원" /></div>
           <div class="swiper-slide"><img src="/src/assets/images/banner/banner02.png" alt="한눈에 보는 이달의 카드 혜택" /></div>
@@ -32,11 +32,12 @@
 
     <section class="main__product" aria-labelledby="recommended-item-list">
       <h2 id="recommended-item-list">이 상품 어때요?</h2>
-      <div class="product--swiper">
-        <div class="swiper">
+      <div class="product--swiper main__product">
+        <div class="swiper price-swiper">
           <ul class="swiper-wrapper product__list main__product--items">
             <!-- product 컴포넌트 슬라이드로 추가 될 예정 -->
           </ul>
+          <div class="swiper-button-right recommended-swiper-button-right"></div>
         </div>
       </div>
     </section>
@@ -47,11 +48,12 @@
 
     <section class="main__product" aria-labelledby="recommendation-price">
       <h2 id="recommendation-price">놓치면 후회할 가격</h2>
-      <div class="product--swiper">
-        <div class="swiper">
+      <div class="product--swiper main__product">
+        <div class="swiper price-swiper">
           <ul class="swiper-wrapper product__list main__product--items">
             <!-- product 컴포넌트 슬라이드로 추가 될 예정 -->
           </ul>
+          <div class="swiper-button-right recommended-swiper-button-right"></div>
         </div>
       </div>
     </section>

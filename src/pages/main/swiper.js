@@ -1,29 +1,114 @@
-export const slideSwiper = () =>{
-  const swiper = new Swiper('.swiper', {
+// export const slideSwiper = () =>{
+//   const swiper1 = new Swiper('.banner-swiper', {
+//     // Optional parameters
+//     direction: 'horizontal',
+//     loop: true,
+//     autoplay:{
+//       delay:3000
+//     },
+//     speed:2000,
+//     observer: true,
+//     observeParents: true,
+//     parallax:true,
+  
+//     // If we need pagination
+//     pagination: {
+//       el: '.swiper-pagination',
+//       clickable:true,
+//       bulletClass:'bullet',
+//       bulletActiveClass:'is-active',
+//     }, 
+  
+//     // Navigation arrows
+//     navigation: {
+//       nextEl: '.swiper-button-right',
+//       prevEl: '.swiper-button-left',
+//     },
+  
+//   });
+//   const swiper2 = new Swiper('.product-swiper', {
+//     // Optional parameters
+//     direction: 'horizontal',
+//     loop: true,
+//     slidesPerView: 4,
+//     slidesPerGroup: 1,
+//     spaceBetween: 10,
+//     autoplay:{
+//       delay:3000
+//     },
+//     speed:2000,
+//     observer: true,
+//     observeParents: true,
+//     parallax:true,
+  
+//     // If we need pagination
+//     pagination: {
+//       el: '.swiper-pagination',
+//       clickable:true,
+//       bulletClass:'bullet',
+//       bulletActiveClass:'is-active',
+//     }, 
+  
+    
+//   });
+// }
+
+export const slideSwiper = () => {
+  const swiper1 = new Swiper('.banner-swiper', {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
-    autoplay:{
-      delay:3000
+    autoplay: {
+      delay: 3000,
     },
-    speed:2000,
+    speed: 2000,
     observer: true,
     observeParents: true,
-    parallax:true,
-  
+    parallax: true,
+
     // If we need pagination
     pagination: {
       el: '.swiper-pagination',
-      clickable:true,
-      bulletClass:'bullet',
-      bulletActiveClass:'is-active',
-    }, 
-  
+      clickable: true,
+      bulletClass: 'bullet',
+      bulletActiveClass: 'is-active',
+    },
+
     // Navigation arrows
     navigation: {
-      nextEl: '.swiper-button-right',
-      prevEl: '.swiper-button-left',
+      nextEl: '.banner-swiper-button-right',
+      prevEl: '.banner-swiper-button-left',
     },
-  
+  });
+
+  const swiper2 = new Swiper('.price-swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+    slidesPerView: 4,
+    slidesPerGroup: 1,
+    spaceBetween: 15, 
+    autoplay: {
+      delay: 3000,
+    },
+    speed: 2000,
+    observer: true,
+    observeParents: true,
+    parallax: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      bulletClass: 'bullet',
+      bulletActiveClass: 'is-active',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.price-swiper-button-right',
+      prevEl: '.price-swiper-button-left',
+    },
   });
 }
+

@@ -65,8 +65,9 @@ main{
 /* product css */
 .main__product{
   width: 65.625rem;
+  overflow: hidden;
 }
 
-.main__product--items{
-
+.product__wrapper {
+  width: 249px !important;
 }

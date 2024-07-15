@@ -9,7 +9,10 @@ import { calcDiscountPrice } from "/src/lib/math/calcDiscountPrice.js";
 import pb from "/src/api/pocketbase.js";
 
 
-slideSwiper();
+document.addEventListener('DOMContentLoaded', function () {
+  slideSwiper();
+});
+
 
 async function fetchAndDisplayProducts() {
   try {
@@ -28,7 +31,7 @@ async function fetchAndDisplayProducts() {
         item.discountRate !== '0' && item.discountRate !== '';
 
       const template = `
-        <li class="product__wrapper">
+        <li class="product__wrapper swiper-slide">
             <a href="#" class="product__link">
               <figure class="product__visual" aria-label="상품 이미지">
                 <img src="${pb.getFileUrl(item, item.productImg)}" alt="${item.productName}" />
