@@ -116,7 +116,7 @@ function updateProductList() {
     insertLast('.products', template);
   });
 }
-console.log('VITE_PB_API:', import.meta.env.VITE_PB_API);
+
 function updatePagination() {
   const totalPages = Math.ceil(totalProducts.length / perpage);
   const pageNumbersContainer = getNode('.page-numbers');
