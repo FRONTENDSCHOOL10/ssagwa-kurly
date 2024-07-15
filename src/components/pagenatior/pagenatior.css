@@ -2,6 +2,9 @@
   display: flex;
   padding-top: 2.25rem;
   align-items: flex-start;
+  .page-numbers {
+    display: flex;
+  }
   a {
     display: flex;
     justify-content: center;
@@ -16,7 +19,14 @@
     color: var(--content);
     font-size: 0.75rem;
   }
-  a:first-of-type {
+  .doublearrow:first-of-type {
     border-left: 1px solid var(--gray-100);
+  }
+  a:hover {
+    background-color: var(--gray-200);
+  }
+  .pagelinks--is-selected {
+    color: var(--primary);
+    background-color: var(--gray-200);
   }
 }
