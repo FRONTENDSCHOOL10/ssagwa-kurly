@@ -30,7 +30,7 @@ button {
   width: 742px;
 }
 
-.product-section-bar {
+/* .product-section-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,7 +72,7 @@ button {
   background: var(--gray-100);
   margin: 6px 21px 0 22px;
   vertical-align: top;
-}
+} */
 
 .cart__total-section {
   position: relative;
@@ -94,8 +94,7 @@ button {
 
 .product-amount,
 .discount-amout,
-.delivery-cost,
-.estimated-amount {
+.delivery-cost {
   display: flex;
   justify-content: space-between;
 }
@@ -106,9 +105,39 @@ button {
 }
 
 .estimated-amount {
+  flex-direction: column;
   margin-top: 16px;
   padding-top: 18px;
   border-top: 0.0625rem solid var(--gray-100);
+
+  .amount {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.reward {
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  font-size: 12px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.icon--reward {
+  display: inline-block;
+  background-image: url('/svg/Badge-Reward.svg');
+  width: 21px;
+  height: 18px;
+  margin-right: 5px;
+  display: flex;
+  padding: 0px 8px;
+}
+
+.icon--location {
+  background-image: url('/svg/Location.svg');
+  width: 36px;
+  height: 36px;
 }
 
 .total__span-left {
@@ -138,13 +167,14 @@ button {
   text-align: right;
 
   strong {
-    font-size: 20px;
+    font-size: 29px;
     font-weight: 700;
     line-height: 28px;
   }
   span {
     padding-left: 4px;
     font-size: 16px;
+    font-weight: 600;
     vertical-align: 1px;
   }
 }
@@ -160,14 +190,11 @@ button {
   padding: 16px 0;
 
   li {
-    padding-top: 4px;
     color: var(--gray-400);
 
     position: relative;
     font-size: 12px;
-    line-height: 16px;
-    padding-left: 7px;
-    text-align: left;
+    line-height: 1.125rem;
 
     ::before {
       overflow: hidden;
@@ -184,4 +211,47 @@ button {
 
 .cart__total-login {
   padding-top: 20px;
+}
+
+.cart__total-delivery {
+  font-weight: 500;
+  padding: 23px 20px 20px;
+  border-width: 1px 1px 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-top-color: rgb(242, 242, 242);
+  border-right-color: rgb(242, 242, 242);
+  border-left-color: rgb(242, 242, 242);
+  border-image: initial;
+  border-bottom-style: initial;
+  border-bottom-color: initial;
+
+  h4 {
+    background-image: url(/svg/Location.svg) 0px 50% / 20px 20px no-repeat;
+    display: flex;
+    align-items: center;
+  }
+
+  .address {
+    padding-top: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    word-break: break-word;
+  }
+
+  .delivery-type {
+    display: inline-block;
+    color: var(--primary);
+    font-size: 14px;
+    padding: 7px 0 12px 0;
+  }
+}
+
+.freeDelivery {
+  display: block;
+  padding-top: 2px;
+  color: var(--primary);
+  line-height: 18px;
+  text-align: right;
 }
