@@ -211,6 +211,8 @@ button {
 
 .cart__total-login {
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart__total-delivery {
@@ -254,4 +256,9 @@ button {
   color: var(--primary);
   line-height: 18px;
   text-align: right;
+}
+
+.delivery-location{
+  display: flex;
+  flex-direction: column;
 }

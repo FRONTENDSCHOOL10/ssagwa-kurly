@@ -1,5 +1,5 @@
 import '/src/components/cart-accordion/cartAccordion.css';
-import { initializeStepper } from '/src/components/stepper/stepper.js';
+import  initializeStepper  from '/src/components/stepper/stepper.js';
 import { comma } from '/src/lib/index.js';
 import { calculateTotals, updateTotals } from '/src/pages/cart/cart.js';
 
