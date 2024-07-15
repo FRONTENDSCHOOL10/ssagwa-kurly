@@ -72,7 +72,7 @@ function createFilterComponent(FilterContainer, data) {
   }
 
   function addEventListeners() {
-    const toggleButtons = container.querySelectorAll('.filter__toggle');
+    const toggleButtons = getNodes('.filter__toggle');
     toggleButtons.forEach((button) => {
       button.addEventListener('click', handleSectionToggle);
     });
@@ -81,7 +81,9 @@ function createFilterComponent(FilterContainer, data) {
   function handleSectionToggle(event) {
     const button = event.currentTarget;
     const sectionId = getAttr(button, 'aria-controls');
+    const sectionId = getAttr(button, 'aria-controls');
     const section = document.getElementById(sectionId);
+    const isExpanded = getAttr(button, 'aria-expanded') === 'true';
     const isExpanded = getAttr(button, 'aria-expanded') === 'true';
 
     button.setAttribute('aria-expanded', !isExpanded);
@@ -131,11 +133,11 @@ const filterdata = {
       id: 'brand',
       title: '브랜드',
       items: [
-        { name: '감자밭', count: 1 },
-        { name: '라이크라이온', count: 1 },
-        { name: '멋사', count: 1 },
-        { name: '서울', count: 1 },
-        { name: '광화문', count: 1 },
+        { name: 'CJ', count: 1 },
+        { name: '조선호텔', count: 1 },
+        { name: 'KF365', count: 1 },
+        { name: '피코크', count: 1 },
+        { name: '도리꺠침', count: 1 },
       ],
     },
     {
@@ -149,10 +151,7 @@ const filterdata = {
     {
       id: 'type',
       title: '유형',
-      items: [
-        { name: 'Kurly Only', count: 77 },
-        { name: '희소가치 프로젝트', count: 7 },
-      ],
+      items: [{ name: 'Kurly Only', count: 77 }],
     },
     {
       id: 'exclude',

@@ -5,6 +5,7 @@ input {
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
+  z-index: 11;
 }
 
 ul {
@@ -32,6 +33,7 @@ input:focus {
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.071) 0 0.2rem 0.25rem 0;
   transition: transform 0.3s ease;
+  z-index: 999;
 }
 
 .header {
