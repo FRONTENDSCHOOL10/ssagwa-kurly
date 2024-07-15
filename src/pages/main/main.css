@@ -22,8 +22,8 @@ main{
 .banner-swiper-button-left,.banner-swiper-button-right{
   background-image: url(/svg/Arrow.svg);
   background-size: cover;
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   background-repeat: no-repeat;
   position: absolute;
   z-index: 10;
@@ -57,7 +57,7 @@ main{
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
-    width: 1042px;
+    width: 65.125rem;
     display: flex;
     justify-content: center;
   }
@@ -85,12 +85,12 @@ main{
 }
 
 .price-swiper{
-  width: 1042px !important;
+  width: 65.125rem!important;
 }
 
 .price-swiper .swiper-slide {
-  width: calc(25% - 15px) !important;
-  margin-right: 15px !important;  
+  width: calc(25% - 0.9375rem) !important;
+  margin-right: 0.9375rem !important;  
   box-sizing: border-box; 
 }
 
@@ -99,8 +99,8 @@ main{
   left: 95.5%;
   background-image: url(/svg/arrow2.svg);
   background-size: cover;
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   background-repeat: no-repeat;
   position: absolute;
   z-index: 10;
