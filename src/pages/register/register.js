@@ -17,7 +17,7 @@ const userPw = getNode('#userPw');
 const userPwConfirm = getNode('#userPwConfirm');
 const userName = getNode('#userName');
 const userEmail = getNode('#userEmail');
-const phoneNum = getNode('#phoneNum');
+const userPhoneNum = getNode('#phoneNum');
 const userAdress = getNode('#userAdress');
 const userAdressOther = getNode('#userAdressOther');
 const birth_year = getNode('#birth_year');
@@ -252,6 +252,9 @@ function register(event) {
   }else if(verificationEmailBtn.disabled === false){
     viewModal('이메일 중복 체크를 해주세요.');
     return;
+  }else if(userPhoneNum.value === ''){
+    viewModal('휴대폰 인증을 진행해 주세요.');
+    return;
   }else if(userPw.value === ''){
     viewModal('비밀번호를 입력해 주세요.');
     return;
@@ -276,7 +279,7 @@ function register(event) {
     password: userPw.value,
     passwordConfirm: userPwConfirm.value,
     name: userName.value,
-    phoneNumber: phoneNum.value,
+    phoneNumber: userPhoneNum.value,
     adress: userAdress.value,
     otherAdress: userAdressOther.value,
     birth:
@@ -284,7 +287,7 @@ function register(event) {
         ? `${birth_year.value}-${birth_month.value}-${birth_day.value}`
         : '',
     gender: getSelectedRadioValue('gender'),
-    alarm: agreeOther[2].checked,
+    alram: agreeOther[2].checked,
   };
 
   async function createUser(data) {
