@@ -8,7 +8,8 @@ import { getStorage,setStorage } from "/src/lib/utils/storage.js";
 
 //setDocumentTitle.js로 페이지 이름 정해두기
 
-const loginButton = getNode('.login');
+const loginButton = getNode('.loginBtn');
+const registerButton = getNode('.registerBtn');
 
 function handleLogin(e){
   e.preventDefault();
@@ -39,3 +40,6 @@ function handleLogin(e){
 }
 
 loginButton.addEventListener('click',handleLogin);
+registerButton.addEventListener('click', ()=> {
+  location.href = '/src/pages/register/'
+}); 
