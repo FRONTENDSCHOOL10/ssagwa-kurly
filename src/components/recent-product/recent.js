@@ -1,0 +1,1 @@
+import '/src/components/recent-product/recent.css';
