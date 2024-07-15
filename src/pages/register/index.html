@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/nosorry.png" />
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="module" src="/src/pages/register/register.js"></script>
     <title>회원가입 - 사과 컬리</title>
   </head>
@@ -168,7 +169,10 @@
             >주소</label
           >
           <div class="register__adress-wrapper">
-            <button type="button" class="button--small button--transparent">
+            <button
+              type="button"
+              class="button--small button--transparent searchAdressBtn"
+            >
               주소 검색
             </button>
             <div class="register__adress-accordion input">
@@ -237,11 +241,11 @@
                 checked
                 type="radio"
                 name="gender"
-                id="notSelect"
-                value="notSelect"
+                id="noSelect"
+                value="noSelect"
               />
               <span></span>
-              <label for="notSelect">선택안함</label>
+              <label for="noSelect">선택안함</label>
             </div>
           </div>
         </div>
@@ -256,7 +260,6 @@
               id="birth_year"
               maxlength="4"
               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-              required
               placeholder="YYYY"
               aria-live="polite"
             />
@@ -268,7 +271,6 @@
               id="birth_month"
               maxlength="2"
               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-              required
               placeholder="MM"
               aria-live="polite"
             />
@@ -280,7 +282,6 @@
               id="birth_day"
               maxlength="2"
               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-              required
               placeholder="DD"
               aria-live="polite"
             />
