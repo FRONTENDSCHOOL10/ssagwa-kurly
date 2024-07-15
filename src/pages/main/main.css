@@ -10,6 +10,11 @@ main{
   position: relative;
 }
 
+.width-box{
+  margin: 0 auto;
+  width: 1900px;
+}
+
 .swiper-slide{
   width: 100%;
   img{
