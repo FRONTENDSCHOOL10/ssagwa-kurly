@@ -1,4 +1,5 @@
 import '/src/components/product_filter/filter.css';
+import { getNodes, getAttr, setAttr, toggleClass } from '/src/lib/index.js';
 
 function createFilterComponent(FilterContainer, data) {
   const container = document.getElementById(FilterContainer);
@@ -71,7 +72,7 @@ function createFilterComponent(FilterContainer, data) {
   }
 
   function addEventListeners() {
-    const toggleButtons = container.querySelectorAll('.filter__toggle');
+    const toggleButtons = getNodes('.filter__toggle');
     toggleButtons.forEach((button) => {
       button.addEventListener('click', handleSectionToggle);
     });
@@ -79,12 +80,12 @@ function createFilterComponent(FilterContainer, data) {
 
   function handleSectionToggle(event) {
     const button = event.currentTarget;
-    const sectionId = button.getAttribute('aria-controls');
+    const sectionId = getAttr(button, 'aria-controls');
     const section = document.getElementById(sectionId);
-    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const isExpanded = getAttr(button, 'aria-expanded') === 'true';
 
-    button.setAttribute('aria-expanded', !isExpanded);
-    section.classList.toggle('expanded');
+    setAttr(button, 'aria-expanded', !isExpanded);
+    toggleClass(section, 'expanded');
   }
 
   render();
