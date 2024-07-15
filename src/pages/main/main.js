@@ -39,7 +39,7 @@ async function fetchAndDisplayProducts() {
                 <figcaption class="sr-only">상품 이미지: ${item.productName}</figcaption>
               </figure></a>
               <button type="button" class="product__basket" aria-label="장바구니에 상품 담기">
-                <img src="/public/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기
+                <img src="/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기
               </button>
               <a href="#" class="product__link">
               <div class="product__details">
