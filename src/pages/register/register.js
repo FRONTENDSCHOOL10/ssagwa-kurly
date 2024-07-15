@@ -10,8 +10,23 @@ import pb from '/src/api/pocketbase';
 import { isBoolean } from '/src/lib/utils/typeOf.js';
 
 const registerForm = document.querySelector('.register__form');
+const userID = document.querySelector('#userID');
+const userPw = document.querySelector('#userPw');
+const userPwConfirm = document.querySelector('#userPwConfirm');
+const userName = document.querySelector('#userName');
+const userEmail = document.querySelector('#userEmail');
+const phoneNum = document.querySelector('#phoneNum');
+const userAdress = document.querySelector('#userAdress');
+const userAdressOther = document.querySelector('#userAdressOther');
+const gender = getSelectedRadioValue('gender');
+const birth_year = document.querySelector('#birth_year');
+const birth_month = document.querySelector('#birth_month');
+const birth_day = document.querySelector('#birth_day');
+
 const verificationIDBtn = document.querySelector('.verificationID');
 const verificationEmailBtn = document.querySelector('.verificationEmail');
+const searchAdressBtn = document.querySelector('.searchAdressBtn');
+const registerBtn = document.querySelector('.register-page__submit-btn');
 
 const agreeAll = document.querySelector('#agreeAll');
 const agreeOther = [
@@ -20,6 +35,12 @@ const agreeOther = [
   document.querySelector('#agreeEvent'),
   document.querySelector('#over14'),
 ];
+
+// 선택된 라디오 버튼의 값을 가져오는 함수
+function getSelectedRadioValue(name) {
+  const selectedRadio = document.querySelector(`input[name="${name}"]:checked`);
+  return selectedRadio ? selectedRadio.value : null;
+}
 
 // 6자 이상 16자 이하의 영문 혹은 영문과 숫자
 function regID(text) {
@@ -31,7 +52,7 @@ function regID(text) {
 // 이메일 형식
 function regEmail(text) {
   const regex =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
   return regex.test(String(text).toLowerCase());
 }
@@ -182,9 +203,64 @@ async function verificationEmail(email) {
   }
 }
 
+function searchAdress() {
+  new daum.Postcode({
+    oncomplete: function (data) {
+      const adressAccordion = document.querySelector(
+        '.register__adress-accordion'
+      );
+      adressAccordion.style.display = 'block';
+      searchAdressBtn.style.display = 'none';
+      var addr = ''; // 주소 변수
+
+      addr = data.roadAddress;
+
+      document.getElementById('userAdress').value = addr;
+      // 커서를 상세주소 필드로 이동한다.
+      document.getElementById('userAdressOther').focus();
+    },
+  }).open();
+}
+
+function register() {
+  const data = {
+    username: userID.value,
+    email: userEmail.value,
+    emailVisibility: true,
+    password: userPw.value,
+    passwordConfirm: userPwConfirm.value,
+    name: userName.value,
+    phoneNumber: phoneNum.value,
+    adress: userAdress.value,
+    otherAdress: userAdressOther.value,
+    birth:
+      birth_year.value && birth_month.value && birth_day.value
+        ? `${birth_year.value}-${birth_month.value}-${birth_day.value}`
+        : '',
+    gender: gender,
+    alarm: agreeOther[2].checked,
+  };
+
+  async function createUser(data) {
+    await pb
+      .collection('users')
+      .create(data)
+      .then(() => {
+        alert('🎉 회원 가입이 완료됐습니다! 🎉 로그인 페이지로 이동합니다!');
+        location.href = '/src/pages/login/';
+      });
+  }
+
+  createUser(data);
+}
+
 registerForm.addEventListener('input', debounce(validateRegister));
 verificationIDBtn.addEventListener('click', verificationIDEvent);
 verificationEmailBtn.addEventListener('click', verificationEmailEvent);
+searchAdressBtn.addEventListener('click', searchAdress);
+document
+  .querySelector('.adress__line > button')
+  .addEventListener('click', searchAdress);
 agreeAll.addEventListener('click', function () {
   const isChecked = agreeAll.checked;
 
@@ -212,34 +288,11 @@ for (const checkbox of agreeOther) {
     }
   });
 }
+registerBtn.addEventListener('click', register);
 
-/* const data = {
-  username: "test_username",
-  email: "test@example.com",
-  emailVisibility: true,
-  password: "1234567890",
-  passwordConfirm: "1234567890",
-  name: "test",
-  phoneNumber: "test",
-  adress: "test",
-  birth: "2022-01-01",
-  gender: "male",
-  alarm: true
-};
-
-async function createUser(data) {
-  await pb.collection('users').create(data)
-  .then(()=>{
-    alert('🎉 회원 가입이 완료됐습니다! 🎉 로그인 페이지로 이동합니다!');
-    location.href = '/src/pages/login/'
-  })
-}
-
-// createUser(data);
-
-async function getUser() {
+/* async function getUser() {
   const data = await pb.collection('users').getOne('hf3xw2qkzd9kxoj');
   console.log(data);
-}
+} */
 
 // getUser(); */
