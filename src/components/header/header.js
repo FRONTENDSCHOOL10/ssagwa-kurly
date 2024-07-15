@@ -49,7 +49,7 @@ class KurlyHeader extends HTMLElement {
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/src/pages/cart/index.html">
                   <img src="/svg/Group.svg" alt="장바구니" />
                 </a>
               </li>
@@ -57,10 +57,10 @@ class KurlyHeader extends HTMLElement {
           </div>
           <ul class="header__member-service">
             <li class="header__member-item divider">
-              <a href="#" class="header__member-link join">회원가입</a>
+              <a href="/src/pages/register/index.html" class="header__member-link join">회원가입</a>
             </li>
             <li class="header__member-item divider">
-              <a href="#" class="header__member-link">로그인</a>
+              <a href="/src/pages/login/index.html" class="header__member-link">로그인</a>
             </li>
             <li class="header__member-item">
               <a href="#" class="header__member-link">
