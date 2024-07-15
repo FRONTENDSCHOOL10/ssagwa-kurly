@@ -68,7 +68,9 @@ export function calculateTotals(products) {
 
   products.forEach(product => {
     product.items.forEach(item => {
+
       const quantity = item.quantity || 1; 
+
       totalAmount += item.originalPrice * quantity;
       discountAmount += (item.originalPrice - item.discountedPrice) * quantity;
     });
@@ -120,13 +122,13 @@ async function isLogin() {
   const addressElement = document.querySelector('.address__client-address');
   
   if (auth && auth.isLogin) {
-    addressBox.style.display = "block";
+    addressBox.style.display = 'block';
     orderButton.textContent = "주문하기";
     if (addressElement) {
       addressElement.textContent = `${auth.address}`;
     }
   } else {
-    addressBox.style.display = "none";
+    addressBox.style.display = 'none';
     orderButton.textContent = "로그인";
   }
 }
