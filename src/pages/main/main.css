@@ -93,7 +93,7 @@ main{
 }
 
 .price-swiper-button-right{
-  position: absolute;
+  /* position: absolute; */
   top: 25%;
   left: 96%;
   z-index: 10;
