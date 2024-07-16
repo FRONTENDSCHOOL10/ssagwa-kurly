@@ -11,82 +11,92 @@
   </head>
   <body>
     <ssagwakurly-header></ssagwakurly-header>
-    <div class="cart__bg">
+    <main class="cart__bg">
       <header class="cart__header">
         <h2>장바구니</h2>
       </header>
-      <div class="cart__section">
+      <section class="cart__section">
         <div class="cart__product-section">
-          <div class="product-section-bar">
-            <div class="product-section-bar-container">
-              <label>
-                <input type="checkbox" />
-                <span class="icon icon--small icon--UnChecked"></span>
-                <span class="all">전체선택 (0/5)</span>
-              </label>
-              <span class="divider"></span>
-              <button type="button" id="select-btn" disabled>선택삭제</button>
-            </div>
-          </div>
-
           <!-- 추후 아코디언 컴포넌트화 시키기 -->
-
-          <div class="product-section-bar">
-            <div class="product-section-bar-container">
-              <label>
-                <input type="checkbox" />
-                <span class="icon icon--small icon--UnChecked"></span>
-                <span class="all">전체선택 (0/5)</span>
-              </label>
-              <span class="divider"></span>
-              <button type="button" id="select-btn" disabled>선택삭제</button>
-            </div>
-          </div>
         </div>
 
         <div class="cart__total-section">
           <div class="cart__total-section-container">
+            <div class="cart__total-delivery">
+              <h4><span class="icon icon--location"></span>배송지</h4>
+              <div class="delivery-location">
+                <p class="address address__client-adress"></p>
+                <span class="delivery-type">배송방법</span>
+                <button
+                  type="button"
+                  aria-label="배송지 변경"
+                  class="button--small button--transparent"
+                >
+                <span>배송지 변경</span>
+              </div>
+              </button>
+            </div>
             <div class="cart__total-amout">
               <div class="product-amount">
                 <span class="total__span-left">상품금액</span>
-                <span class="total__span-right">"0"<span>원</span> </span>
+                <span class="total__span-right" id="totalAmount">0원</span>
               </div>
               <div class="discount-amout">
                 <span class="total__span-left">상품할인금액</span>
-                <span class="total__span-right">"0"<span>원</span> </span>
+                <span class="total__span-right" id="discountAmount">0원</span>
               </div>
               <div class="delivery-cost">
                 <span class="total__span-left">배송비</span>
-                <span class="total__span-right">"0"<span>원</span> </span>
+                <span class="total__span-right" id="deliveryCost">0원</span>
               </div>
               <div class="estimated-amount">
-                <span class="total__span-left">결정예정금액</span>
-                <span class="total__span-right-strong">
-                  <strong>0</strong>
-                  <span>원</span>
-                </span>
+                <div class="amount">
+                  <span class="total__span-left">결정예정금액</span>
+                  <span class="total__span-right-strong">
+                    <strong id="estimatedAmount">0</strong>
+                    <span></span>
+                  </span>
+                </div>
+
+                <div class="reward">
+                  <span class="icon--reward"></span>
+                  <span id="rewardAmount">
+                  </span>
+                </div>
               </div>
+              <p id="freeShippingMessage" class="free-shipping-message" style="display:none;"></p>
             </div>
             <div class="cart__total-login">
               <button
                 type="button"
-                aria-label="기본 색상 버튼"
+                aria-label="로그인"
                 class="button--large button--primary"
+                id="orderButton"
               >
-                <span>로그인</span>
+                <span></span>
               </button>
+
               <ul class="order-info">
+                <li>쿠폰/적립금은 주문서에서 사용 가능합니다</li>
                 <li>[주문완료] 상태일 경우에만 주문 취소 가능합니다.</li>
                 <li>
                   [마이컬리 > 주문내역 상세페이지] 에서 직접 취소하실 수
                   있습니다.
                 </li>
+                <li>
+                  쿠폰, 적립금 사용 금액을 제외한 실 결제 금액 기준으로 최종
+                  산정됩니다.
+                </li>
+                <li>
+                  상품별로 적립금 지급 기준이 다를 수 있습니다. (상품 상세
+                  페이지에서 확인 가능합니다)
+                </li>
               </ul>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
     <ssagwakurly-footer></ssagwakurly-footer>
   </body>
 </html>
