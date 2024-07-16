@@ -39,11 +39,11 @@ function handleLogin(e) {
         location.href = '/index.html';
       },
       () => {
-        viewModal('아이디 또는 비밀번호를 확인해 주세요.');
+        viewModal('아이디 또는 비밀번호를 확인해 주세요.', null);
       }
     );
   }else {
-    viewModal('아이디 또는 비밀번호를 입력해 주세요.')
+    viewModal('아이디 또는 비밀번호를 입력해 주세요.', null)
   }
 }
 
