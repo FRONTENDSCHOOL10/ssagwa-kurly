@@ -106,9 +106,12 @@ export function updateCartSummary() {
 
 function updateOrderButton(isAuth) {
   const orderButton = document.getElementById('orderButton');
+  const Location = document.querySelector('.cart__total-delivery');
   if (isAuth) {
     orderButton.textContent = '주문하기';
+    Location.style.display = 'block';
   } else {
     orderButton.textContent = '로그인';
+    Location.style.display = 'none';
   }
 }
