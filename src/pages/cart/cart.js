@@ -1,138 +1,114 @@
-import '/src/pages/cart/cart.css';
 import '/src/components/button/button.css';
-import pb from '/src/api/pocketbase.js';
-import { renderCartAccordion } from '/src/components/cart-accordion/cartAccordion.js';
 import {
-  calcDiscountPrice,
-  getPbImageURL,
-  comma,
-  getStorage,
-  setDocumentTitle,
-} from '/src/lib/index.js';
+  addEventListeners,
+  createCartAccordion,
+} from '/src/components/cart-accordion/cartAccordion.js';
+import '/src/components/footer/footer.js';
+import '/src/components/header/header.js';
+import { calcDiscountPrice, getStorage } from '/src/lib/index.js';
+import '/src/pages/cart/cart.css';
+import '/src/styles/global.css';
 
-setDocumentTitle('장바구니 - 컬리');
+document.addEventListener('DOMContentLoaded', initializeCartPage);
 
-async function getProductData() {
+async function initializeCartPage() {
   try {
-    const productData = await pb.collection('products').getFullList();
-    const groupedProducts = productData.reduce((acc, item) => {
-      const packagingType = item.packagingType.substring(0, 2);
-      let type = 'refrigerated';
+    const cartData = (await getStorage('cart')) || [];
+    const authData = (await getStorage('auth')) || { isAuth: false };
 
-      if (packagingType === '냉동') {
-        type = 'frozen';
-      } else if (packagingType === '냉장') {
-        type = 'refrigerated';
-      } else if (packagingType === '상온') {
-        type = 'normal';
-      }
-      const existingGroup = acc.find((group) => group.type === type);
-      const discountedPrice = item.discountRate 
-        ? Math.round(calcDiscountPrice(item.price, item.discountRate))
-        : item.price;
-      const displayOriginalPrice = discountedPrice !== item.price;
-
-      const productItem = {
-        title: item.productName,
-        description: item.productDescription,
-        discountedPrice: discountedPrice,
-        originalPrice: item.price,
-        img: getPbImageURL(item),
-        displayOriginalPrice,
-      };
-
-      if (existingGroup) {
-        existingGroup.items.push(productItem);
-      } else {
-        acc.push({
-          type,
-          typeName: `${packagingType} 상품`,
-          items: [productItem],
-        });
-      }
-
-      return acc;
-    }, []);
-
-    return groupedProducts;
-  } catch (error) {
-    console.error('데이터를 불러오지 못했어요:', error);
-    return [];
-  }
-}
-
-export function calculateTotals(products) {
-  let totalAmount = 0;
-  let discountAmount = 0;
-  let defaultDeliveryCost = 3000;
-
-  products.forEach(product => {
-    product.items.forEach(item => {
-
-      const quantity = item.quantity || 1; 
-
-      totalAmount += item.originalPrice * quantity;
-      discountAmount += (item.originalPrice - item.discountedPrice) * quantity;
-    });
-  });
-
-  if (totalAmount === 0 || totalAmount >= 40000) {
-    defaultDeliveryCost = 0;
-  }
-
-  const estimatedAmount = totalAmount - discountAmount + defaultDeliveryCost;
-  return {
-    totalAmount,
-    discountAmount,
-    defaultDeliveryCost,
-    estimatedAmount,
-    rewardAmount: Math.round(estimatedAmount * 0.01)
-  };
-}
-
-export function updateTotals(totals) {
-  document.getElementById('totalAmount').textContent = `${comma(totals.totalAmount)}원`;
-  document.getElementById('discountAmount').textContent = `${comma(totals.discountAmount)}원`;
-  document.getElementById('deliveryCost').textContent = `${comma(totals.defaultDeliveryCost)}원`;
-  document.getElementById('estimatedAmount').textContent = `${comma(totals.estimatedAmount)}원`;
-  document.getElementById('rewardAmount').textContent = `최대 ${comma(totals.rewardAmount)}원 적립 일반 %`;
-}
-
-async function createCartInProduct() {
-  const cartProductSection = document.querySelector('.cart__product-section');
-  const products = await getProductData();
-
-  const accordionData = {
-    selectedCount: 0,
-    totalCount: products.reduce((total, product) => total + product.items.length, 0),
-    products: products,
-  };
-
-  const accordion = renderCartAccordion(accordionData);
-  cartProductSection.appendChild(accordion);
-
-  const totals = calculateTotals(products);
-  updateTotals(totals);
-}
-
-async function isLogin() {
-  const auth = await getStorage("auth");
-  const orderButton = document.getElementById('orderButton');
-  const addressBox = document.querySelector('.cart__total-delivery');
-  const addressElement = document.querySelector('.address__client-address');
-  
-  if (auth && auth.isLogin) {
-    addressBox.style.display = 'block';
-    orderButton.textContent = "주문하기";
-    if (addressElement) {
-      addressElement.textContent = `${auth.address}`;
+    if (cartData.length) {
+      createCartAccordion(cartData);
+      addEventListeners(cartData, updateCartSummary);
+    } else {
+      createCartAccordion([]);
+      displayEmptyCartMessage();
     }
-  } else {
-    addressBox.style.display = 'none';
-    orderButton.textContent = "로그인";
+
+    updateCartSummary();
+    updateOrderButton(authData.isAuth);
+  } catch (error) {
+    console.error('장바구니 데이터를 불러오는데 실패했습니다 ☹:', error);
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  createCartInProduct().then(isLogin);
-});
+export function displayEmptyCartMessage() {
+  const cartAccordionList = document.querySelector(
+    '.cart-accordion__product-list'
+  );
+  if (
+    cartAccordionList &&
+    !cartAccordionList.querySelector('.empty-cart-message')
+  ) {
+    cartAccordionList.classList.add('empty__cart');
+    const p = document.createElement('p');
+    p.className = 'empty-cart-message';
+    p.textContent = `장바구니에 담긴 상품이 없습니다`;
+    cartAccordionList.appendChild(p);
+  }
+}
+
+export function updateCartSummary() {
+  const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+  const totalAmount = cartData.reduce(
+    (sum, item) => sum + item.price * (item.quantity || 1),
+    0
+  );
+  const discountAmount = cartData.reduce(
+    (sum, item) =>
+      Math.trunc(
+        sum +
+          (item.price - calcDiscountPrice(item.price, item.discountRate)) *
+            (item.quantity || 1)
+      ),
+    0
+  );
+
+  let deliveryCost = 0;
+  if (totalAmount > 0) {
+    deliveryCost = totalAmount >= 40000 ? 0 : 3000;
+  }
+  const estimatedAmount = totalAmount - discountAmount + deliveryCost;
+
+  document.getElementById('totalAmount').textContent =
+    `${totalAmount.toLocaleString()}원`;
+
+  document.getElementById('discountAmount').textContent =
+    discountAmount !== 0
+      ? `-${discountAmount.toLocaleString()}원`
+      : `${discountAmount.toLocaleString()}원`;
+
+  document.getElementById('deliveryCost').textContent =
+    deliveryCost !== 0
+      ? `+${deliveryCost.toLocaleString()}원`
+      : `${deliveryCost.toLocaleString()}원`;
+
+  document.getElementById('estimatedAmount').textContent =
+    `${estimatedAmount.toLocaleString()}원`;
+
+  let freeShippingMessage = document.querySelector('.free-shipping-message');
+
+  if (totalAmount > 0 && totalAmount < 40000) {
+    const amountLeft = 40000 - totalAmount;
+
+    if (!freeShippingMessage) {
+      freeShippingMessage = document.createElement('p');
+      freeShippingMessage.className = 'free-shipping-message';
+      document
+        .querySelector('.cart__total-section')
+        .appendChild(freeShippingMessage);
+    }
+    freeShippingMessage.innerHTML = `${amountLeft.toLocaleString()}원 추가 주문 시 무료배송!`;
+    freeShippingMessage.style.display = 'flex';
+  } else if (freeShippingMessage) {
+    freeShippingMessage.style.display = 'none';
+  }
+}
+
+function updateOrderButton(isAuth) {
+  const orderButton = document.getElementById('orderButton');
+  if (isAuth) {
+    orderButton.textContent = '주문하기';
+  } else {
+    orderButton.textContent = '로그인';
+  }
+}
