@@ -41,36 +41,54 @@ async function ProductsList() {
     console.error('Error details:', error);
   }
 }
-async function sortProducts(sortType) {
-  let sortField = '-created'; // 기본 정렬
 
-  switch (sortType) {
-    case '추천순':
-      sortField = '-created'; // 또는 추천 기준에 맞는 필드
-      break;
-    case '신상품순':
-      sortField = '-created'; //완료
-      break;
-    case '판매량순':
-      sortField = '-created'; // 판매량 필드가 있다고 가정
-      break;
-    case '할인율순':
-      sortField = '-discountRate'; //완료
-      break;
-    case '낮은 가격순':
-      sortField = '+price'; //이거 보니까 할인율이 적용이안돼서 할인율계산한 필드를만들어야하나?
-      break;
-    case '높은 가격순':
-      sortField = '-price'; //이거 보니까 할인율이 적용이안돼서 할인율계산한 필드를만들어야하나?
-      break;
-  }
+async function sortProducts(sortType) {
+  let sortedProducts;
 
   try {
     const records = await pb.collection('products').getFullList({
-      sort: sortField,
+      sort: '-created', // 기본정렬이 추천수지만 없어서 최신순
     });
 
-    totalProducts = records;
+    switch (sortType) {
+      case '추천순':
+        sortedProducts = records; // 추천순 없어서 최신순
+        break;
+      case '신상품순':
+        sortedProducts = records; // 최신순
+        break;
+      case '판매량순':
+        sortedProducts = records; //이것도 최신순
+        break;
+      case '할인율순':
+        sortedProducts = records.sort(
+          (a, b) => b.discountRate - a.discountRate
+        );
+        break;
+      case '낮은 가격순':
+      case '높은 가격순': {
+        const DiscountPrice = records.map((records) => ({
+          ...records,
+          discountedPrice: Math.ceil(
+            calcDiscountPrice(
+              Number(records.price),
+              Number(records.discountRate)
+            )
+          ),
+        }));
+
+        sortedProducts = DiscountPrice.sort((a, b) => {
+          return sortType === '낮은 가격순'
+            ? a.discountedPrice - b.discountedPrice
+            : b.discountedPrice - a.discountedPrice;
+        });
+        break;
+      }
+      default:
+        sortedProducts = records;
+    }
+
+    totalProducts = sortedProducts;
     currentPage = 1;
     updateProductList();
     updatePagination();
@@ -78,7 +96,6 @@ async function sortProducts(sortType) {
     console.error('정렬된 제품을 가져오는 중 오류 발생:', error);
   }
 }
-//할인율 제공함수
 
 function updateProductList() {
   const productsContainer = getNode('.products');
@@ -230,6 +247,7 @@ function handlePaginationClick(event) {
     });
   }
 }
+
 function handleSortingClick(event) {
   event.preventDefault();
   const clickedElement = event.target.closest('.productlist-sorting');
