@@ -20,11 +20,12 @@ function replaceBr(text){
   return text.replaceAll('\r\n', '<br />');
 }
 
-async function renderProductTop(){
+async function renderProduct(){
 
   const params = new URLSearchParams(location.search);
+  const productId = params.get('product');
 
-  const data = await pb.collection('products').getOne('a72jpi1pl0svi9o');
+  const data = await pb.collection('products').getOne(productId);
 
   const {price,discountRate,Delivery,productName,productDescription,productDetailDescription,packagingType,unitOfSale,weight,origin,allergy} = data;
 
@@ -155,4 +156,4 @@ async function renderProductTop(){
 
 
 
-renderProductTop();
+renderProduct();
