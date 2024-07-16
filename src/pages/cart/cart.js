@@ -18,6 +18,7 @@ async function initializeCartPage() {
 
     if (cartData.length) {
       createCartAccordion(cartData);
+      updateDeliveryType(cartData);
       addEventListeners(cartData, updateCartSummary);
     } else {
       createCartAccordion([]);
@@ -63,11 +64,12 @@ export function updateCartSummary() {
     0
   );
 
+  const netAmount = totalAmount - discountAmount;
   let deliveryCost = 0;
-  if (totalAmount > 0) {
-    deliveryCost = totalAmount >= 40000 ? 0 : 3000;
+  if (netAmount > 0) {
+    deliveryCost = netAmount >= 40000 ? 0 : 3000;
   }
-  const estimatedAmount = totalAmount - discountAmount + deliveryCost;
+  const estimatedAmount = netAmount + deliveryCost;
 
   document.getElementById('totalAmount').textContent =
     `${totalAmount.toLocaleString()}원`;
@@ -87,9 +89,8 @@ export function updateCartSummary() {
 
   let freeShippingMessage = document.querySelector('.free-shipping-message');
 
-  if (totalAmount > 0 && totalAmount < 40000) {
-    const amountLeft = 40000 - totalAmount;
-
+  if (netAmount > 0 && netAmount < 40000) {
+    const amountLeft = 40000 - netAmount;
     if (!freeShippingMessage) {
       freeShippingMessage = document.createElement('p');
       freeShippingMessage.className = 'free-shipping-message';
@@ -98,9 +99,16 @@ export function updateCartSummary() {
         .appendChild(freeShippingMessage);
     }
     freeShippingMessage.innerHTML = `${amountLeft.toLocaleString()}원 추가 주문 시 무료배송!`;
-    freeShippingMessage.style.display = 'flex';
+    freeShippingMessage.style.display = 'block';
   } else if (freeShippingMessage) {
     freeShippingMessage.style.display = 'none';
+  }
+}
+
+function updateDeliveryType(cartData) {
+  const deliveryType = document.querySelector('.delivery-type');
+  if (deliveryType && cartData.length > 0) {
+    deliveryType.textContent = cartData[0].Delivery;
   }
 }
 

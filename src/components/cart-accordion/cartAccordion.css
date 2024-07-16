@@ -39,6 +39,10 @@
   vertical-align: top;
 }
 
+.select-del-btn {
+  font: inherit;
+}
+
 .cart-accordion__heading {
   display: flex;
   justify-content: space-between;

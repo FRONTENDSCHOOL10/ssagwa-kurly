@@ -8,6 +8,10 @@ import initializeStepper from '/src/components/stepper/stepper.js';
 import { updateCartSummary } from '/src/pages/cart/cart';
 
 export function createAccordionItem(item, packagingType) {
+  const discountedPrice = calcDiscountPrice(item.price, item.discountRate);
+  const totalDiscountedPrice = discountedPrice * (item.quantity || 1);
+  const totalOriginalPrice = item.price * (item.quantity || 1);
+
   const accordionItem = `
     <li class="cart-accordion__item">
       <label class="accordion__item--checkbox" for="cart-item-checkbox-${
@@ -35,13 +39,12 @@ export function createAccordionItem(item, packagingType) {
         <button class="stepper__button--plus" type="button" aria-label="수량 올리기"></button>
       </div>
       <div class="accordion__item--total-price">
-        <span aria-label="할인 가격" class="item--discounted-price">${(
-          calcDiscountPrice(item.price, item.discountRate) *
-          (item.quantity || 1)
-        ).toLocaleString()}원</span>
-        <span aria-label="판매 가격" class="item--original-price">${(
-          item.price * (item.quantity || 1)
-        ).toLocaleString()}원</span>
+        <span aria-label="할인 가격" class="item--discounted-price">${totalDiscountedPrice.toLocaleString()}원</span>
+        ${
+          item.discountRate
+            ? `<span aria-label="판매 가격" class="item--original-price">${totalOriginalPrice.toLocaleString()}원</span>`
+            : ''
+        }
       </div>
       <button class="accordion__item---delete-button" type="button">
         <span class="icon icon--large icon--delete"></span>

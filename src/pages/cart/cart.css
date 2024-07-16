@@ -1,3 +1,9 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
 button {
   border: none;
   background-color: transparent;
@@ -68,13 +74,13 @@ button {
 }
 
 .free-shipping-message {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 4px;
+  display: block;
+  padding-top: 2px;
+  color: var(--primary);
   font-size: 12px;
   font-weight: 600;
-  right: 0;
-  color: var(--primary);
+  line-height: 18px;
+  text-align: right;
 }
 
 .estimated-amount {
