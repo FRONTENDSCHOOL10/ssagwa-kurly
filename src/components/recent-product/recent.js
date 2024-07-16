@@ -72,5 +72,41 @@ async function viewProduct(item) {
   }
 }
 
+//최근 본 상품을 화면에 렌더링을 해야한데 .product__recent 여기 안으로 불러오자
+async function renderRecentProducts() {
+  const container = document.querySelector('.product__recent');
+
+  // 로컬 스토리지에서 최근 본 상품 목록을 가져와야한다
+  try {
+    const viewItemList = await getStorage('recent') || [];
+    //만약에 배열의 길이가 0보다 크면 실행해주는데
+    if (viewItemList.length > 0) {
+      //배열의 item요소들을 돌려
+      viewItemList.forEach(item => {
+        //안에 이미지요소를 새로 만들구
+        const img = document.createElement('img');
+        //이미지의 주소랑 alt불러오기
+        img.src = item.img;
+        img.alt = item.productName;
+        //이미지의 클래스를 지정하기
+        img.classList.add('img__product-zone');
+        
+        //이미지 클릭하면 상세페이지로 넘어가야해 근데 실제 상품 페이지 주소 모르는데,, 일단 적어
+        img.onclick = () => window.location.href = item.url; 
+        //이미지를 .product__recent요따 넣어야함
+        container.appendChild(img);
+      });
+    }
+  } catch (error) {
+    console.error('최근 본 아이템 렌더링 못했지롱~', error);
+  }
+}
+
+// 문서 로드 시 최근 본 상품 초기화 및 렌더링
+document.addEventListener('DOMContentLoaded', initProductRecently);
+
+// viewProduct 함수를 전역 스코프에 노출 (다른 스크립트에서 사용할 수 있도록)
+window.viewProduct = viewProduct;
+//이거 두개까지 추가를 해야한다 하네,,?
 
 

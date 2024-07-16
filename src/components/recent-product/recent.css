@@ -40,3 +40,8 @@
   margin-bottom: 8px;
   /* background-color: yellow; */
 }
+
+.img__product-zone{
+  width: 40px;
+  height: auto;
+}
