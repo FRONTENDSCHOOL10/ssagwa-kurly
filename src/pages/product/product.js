@@ -7,14 +7,10 @@ import '/src/components/button/button.css';
 
 import pb from '/src/api/pocketbase.js';
 import initializeStepper from '/src/components/stepper/stepper.js';
-import { insertLast, insertFirst } from '/src/lib/dom/insert.js';
-import { getPbImageURL } from '/src/lib/utils/getPbImageURL';
-import { comma } from '/src/lib/index.js';
-import { calcDiscountPrice } from '/src/lib/math/calcDiscountPrice';
-import { getStorage } from '/src/lib/utils/storage';
+import { getStorage, calcDiscountPrice, comma, getPbImageURL, insertFirst, setDocumentTitle } from '/src/lib/index.js'
 import viewModal from '/src/components/modal/modal.js';
 
-const { isAuth } = await getStorage('auth') || {};
+const { isAuth } = getStorage('auth') || {};
 
 function replaceBr(text){
   return text.replaceAll('\r\n', '<br />');
@@ -152,6 +148,8 @@ async function renderProduct(){
 
   insertFirst('#description', product_description_contnet);
   insertFirst('#detail', `<img src="${getPbImageURL(data, 'productDetails', 2)}" alt="상세정보" />`)
+
+  setDocumentTitle(productName + " - 사과컬리");
 }
 
 
