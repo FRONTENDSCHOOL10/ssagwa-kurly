@@ -1,10 +1,10 @@
 import '/src/components/product_filter/filter.css';
 import { getAttr, toggleClass, addClass, removeClass } from '/src/lib/index.js';
 
-function createFilterComponent(FilterContainer, data) {
+export function createFilterComponent(FilterContainer, data, onFilterChange) {
   const container = document.getElementById(FilterContainer);
+  let currentFilters = {};
 
-  //메인 필터
   function render() {
     const aside = document.createElement('aside');
     aside.className = 'filter';
@@ -22,7 +22,6 @@ function createFilterComponent(FilterContainer, data) {
     addEventListeners();
   }
 
-  //메뉴들
   function getFilterSectionsHTML() {
     let sectionsHTML = '';
     data.sections.forEach((section) => {
@@ -41,7 +40,6 @@ function createFilterComponent(FilterContainer, data) {
     return sectionsHTML;
   }
 
-  //메뉴 펼쳤을때 리스트
   function getSectionListHTML(section) {
     if (!section.items) return '';
 
@@ -74,7 +72,6 @@ function createFilterComponent(FilterContainer, data) {
     `;
   }
 
-  //이벤트  추가
   function addEventListeners() {
     const toggleButtons = container.querySelectorAll('.filter__toggle');
     toggleButtons.forEach((button) => {
@@ -85,14 +82,13 @@ function createFilterComponent(FilterContainer, data) {
       'input[type="checkbox"], input[type="radio"]'
     );
     inputs.forEach((input) => {
-      input.addEventListener('change', updateResetButton);
+      input.addEventListener('change', handleInputChange);
     });
 
     const resetButton = container.querySelector('.filter__reset');
     resetButton.addEventListener('click', handleReset);
   }
 
-  //필터 메뉴칸 열고닫게 할수있게하는것
   function handleSectionToggle(event) {
     const button = event.currentTarget;
     const sectionId = getAttr(button, 'aria-controls');
@@ -103,7 +99,38 @@ function createFilterComponent(FilterContainer, data) {
     toggleClass(section, 'expanded');
   }
 
-  //리셋버튼 불들어왔다 꺼지게하는거
+  function handleInputChange(event) {
+    const input = event.target;
+    const filterType = input.name;
+    const filterValue = input.value;
+
+    if (input.type === 'radio') {
+      // 라디오 버튼의 경우, 해당 필터 타입의 값을 새로운 값으로 대체
+      currentFilters[filterType] = [filterValue];
+    } else {
+      // 체크박스의 경우, 기존 로직 유지
+      if (!currentFilters[filterType]) {
+        currentFilters[filterType] = [];
+      }
+
+      if (input.checked) {
+        if (!currentFilters[filterType].includes(filterValue)) {
+          currentFilters[filterType].push(filterValue);
+        }
+      } else {
+        currentFilters[filterType] = currentFilters[filterType].filter(
+          (value) => value !== filterValue
+        );
+      }
+
+      if (currentFilters[filterType].length === 0) {
+        delete currentFilters[filterType];
+      }
+    }
+
+    updateResetButton();
+    if (onFilterChange) onFilterChange(currentFilters);
+  }
   function updateResetButton() {
     const resetButton = container.querySelector('.filter__reset');
     const anyChecked = container.querySelector(
@@ -117,7 +144,6 @@ function createFilterComponent(FilterContainer, data) {
     }
   }
 
-  //리셋버튼 로직
   function handleReset() {
     const inputs = container.querySelectorAll(
       'input[type="checkbox"], input[type="radio"]'
@@ -126,78 +152,78 @@ function createFilterComponent(FilterContainer, data) {
       input.checked = false;
     });
 
+    currentFilters = {};
     updateResetButton();
+    if (onFilterChange) onFilterChange(currentFilters);
   }
 
   render();
 }
 
-const filterdata = {
+export const filterdata = {
   sections: [
     {
       id: 'category',
       title: '카테고리',
       items: [
-        { name: '샐러드·간편식', count: 65 },
-        { name: '국·반찬·메인요리', count: 52 },
-        { name: '정육·계란', count: 41 },
-        { name: '과일·견과·쌀', count: 30 },
-        { name: '간식·과자·떡', count: 18 },
-        { name: '생수·음료·우유·커피', count: 17 },
-        { name: '수산·해산·건어물', count: 16 },
-        { name: '베이커리·치즈·델리', count: 13 },
-        { name: '건강식품', count: 10 },
-        { name: '생활용품·리빙·캠핑', count: 10 },
+        { name: '샐러드·간편식', count: 0 },
+        { name: '국·반찬·메인요리', count: 0 },
+        { name: '정육·계란', count: 0 },
+        { name: '과일·견과·쌀', count: 0 },
+        { name: '간식·과자·떡', count: 0 },
+        { name: '생수·음료·우유·커피', count: 0 },
+        { name: '수산·해산·건어물', count: 0 },
+        { name: '베이커리·치즈·델리', count: 0 },
+        { name: '건강식품', count: 0 },
+        { name: '생활용품·리빙·캠핑', count: 0 },
       ],
     },
     {
       id: 'delivery',
       title: '배송',
       items: [
-        { name: '샛별배송', count: 777 },
-        { name: '판매자배송', count: 6 },
+        { name: '샛별배송', count: 0 },
+        { name: '판매자배송', count: 0 },
       ],
     },
     {
       id: 'price',
       title: '가격',
       items: [
-        { name: '6,900 미만', count: 100 },
-        { name: '6,900원 ~ 9,900원', count: 200 },
-        { name: '9,990원 ~ 14,900원', count: 150 },
-        { name: '14,900이상', count: 100 },
+        { name: '6,900 미만', count: 0 },
+        { name: '6,900원 ~ 9,900원', count: 0 },
+        { name: '9,990원 ~ 14,900원', count: 0 },
+        { name: '14,900이상', count: 0 },
       ],
     },
     {
       id: 'brand',
       title: '브랜드',
       items: [
-        { name: 'CJ', count: 1 },
-        { name: '조선호텔', count: 1 },
-        { name: 'KF365', count: 1 },
-        { name: '피코크', count: 1 },
-        { name: '도리꺠침', count: 1 },
+        { name: 'CJ', count: 0 },
+        { name: '조선호텔', count: 0 },
+        { name: 'KF365', count: 0 },
+        { name: '피코크', count: 0 },
+        { name: '도리깨침', count: 0 },
       ],
     },
     {
       id: 'benefit',
       title: '혜택',
       items: [
-        { name: '할인상품', count: 666 },
-        { name: '한정수량', count: 7 },
+        { name: '할인상품', count: 0 },
+        { name: '한정수량', count: 0 },
       ],
     },
     {
       id: 'type',
       title: '유형',
-      items: [{ name: 'Kurly Only', count: 77 }],
+      items: [{ name: 'Kurly Only', count: 0 }],
     },
     {
       id: 'exclude',
       title: '특정상품 제외',
-      items: [{ name: '반려동물 상품', count: 1 }],
+      items: [{ name: '반려동물 상품', count: 0 }],
     },
   ],
 };
-
-createFilterComponent('productlist-filter', filterdata);
