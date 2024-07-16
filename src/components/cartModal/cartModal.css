@@ -24,6 +24,7 @@ button {
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.3);
   transition: 0.2s ease-in;
+  z-index: 999;
 }
 
 .cart-modal.is-visible {
