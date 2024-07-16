@@ -1,0 +1,413 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.product-top {
+  display: flex;
+  justify-content: space-between;
+
+  width: 65.625rem;
+  margin-inline: auto;
+
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+
+  .product__img {
+    width: 25rem;
+    height: 32.125rem;
+  }
+
+  .product__detail-wrapper {
+    width: 35rem;
+
+    .product__info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+
+      .product__delivery-method {
+        color: var(--gray-500);
+
+        font-size: 1.333rem;
+        font-weight: 700;
+        line-height: 140%;
+      }
+
+      .product__name,
+      .product__price {
+        color: var(--content);
+
+        font-size: 1.7769rem;
+        font-weight: 600;
+        line-height: 150%;
+      }
+
+      .product__description {
+        color: var(--gray-400);
+
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 160%;
+      }
+
+      .product__price-wrapper {
+        div {
+          margin-bottom: 0.0625rem;
+
+          .product__discountRate {
+            color: rgb(250, 98, 47);
+
+            font-size: 1.7769rem;
+            font-weight: 600;
+            line-height: 150%;
+            margin-right: 0.125rem;
+          }
+        }
+
+        del {
+          color: var(--gray-400);
+        }
+
+        .product__currency {
+          font-size: 1rem;
+          font-weight: 700;
+          line-height: 140%;
+        }
+      }
+
+      .product__login-benefit {
+        color: var(--primary);
+
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 150%;
+      }
+
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .product__details-list {
+      .product__details-item {
+        display: flex;
+        padding-block: 1rem;
+
+        border-bottom: 1px solid var(--gray-100);
+
+        color: var(--gray-500);
+
+        font-size: 0.7502rem;
+        font-weight: 600;
+        line-height: 150%;
+
+        .product__details-title {
+          width: 8rem;
+          padding: 0.25rem;
+        }
+
+        .product__details-content {
+          width: 27rem;
+
+          .product__details-description {
+            color: var(--gray-400);
+          }
+        }
+
+        .product__selection {
+          display: flex;
+          justify-content: space-between;
+          align-items: end;
+
+          border: 1px solid var(--gray-100);
+
+          .product__selection-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+          }
+
+          .product__selection-price {
+            color: var(--content);
+
+            font-size: 1rem;
+
+            padding-right: 1rem;
+            padding-bottom: 0.75rem;
+
+            .product__selection-price--old {
+              color: var(--gray-400);
+              font-size: 0.7502rem;
+              margin-right: 0.025rem;
+            }
+          }
+        }
+      }
+    }
+
+    .product__total-price {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      gap: 0.5rem;
+
+      margin-block: 1.75rem;
+
+      color: var(--black);
+
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 150%;
+
+      .product__total-amount {
+        color: var(--content);
+        font-size: 1.8394rem;
+
+        margin-left: 1.0625rem;
+      }
+
+      .product__reward {
+        display: flex;
+        gap: 0.375rem;
+      }
+    }
+
+    .product__actions {
+      display: flex;
+      gap: 0.75rem;
+
+      .product__button-like {
+        width: 3.5rem;
+        height: 3.5rem;
+
+        cursor: pointer;
+
+        border-radius: 4px;
+        border: 1px solid var(--gray-100);
+
+        background-color: transparent;
+        background-image: url('/svg/Squre.svg');
+        background-position: -9px -9px;
+        /* background-position: -9px 63px; */
+      }
+
+      .product__button-bell {
+        width: 3.5rem;
+        height: 3.5rem;
+
+        cursor: initial;
+
+        border-radius: 4px;
+        border: 1px solid var(--gray-100);
+
+        background-color: transparent;
+        background-image: url('/svg/Bell.svg');
+        background-size: 2.25rem;
+        background-repeat: no-repeat;
+        background-position: 9px 9px;
+      }
+
+      button {
+        width: 26.5rem;
+      }
+    }
+  }
+}
+
+.product-nav {
+  position: sticky;
+  top: 56px;
+  z-index: 1000;
+
+  width: 65.625rem;
+  margin-inline: auto;
+
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 150%;
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    width: 100%;
+    height: 3.375rem;
+
+    background-color: var(--gray-50);
+    border: 1px solid var(--gray-200);
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      color: var(--content);
+      text-decoration: none;
+    }
+  }
+}
+
+.product-sub {
+  width: 65.625rem;
+  margin: 2.5rem auto;
+}
+
+#description {
+  color: var(--content);
+
+  img {
+    width: 65.625rem;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .pick {
+    font-size: 3.1573rem;
+    font-weight: 700;
+    line-height: 140%;
+
+    position: relative;
+    margin-top: 6rem;
+    margin-bottom: 4.25rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      top: 2.25rem;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--gray-200);
+    }
+
+    span {
+      background-color: var(--white);
+      position: relative;
+      z-index: 10;
+      padding-inline: 1rem;
+    }
+  }
+
+  .desc-sub_description {
+    color: var(--black);
+
+    font-size: 1.7769rem;
+    font-weight: 600;
+    padding-top: 4.75rem;
+  }
+
+  .desc-title {
+    font-size: 3.1573rem;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 2.25rem;
+  }
+
+  .desc-description {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 160%;
+
+    border-top: 1px solid var(--gray-200);
+    padding-top: 1.75rem;
+  }
+}
+
+.whykurly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-top: 1px solid var(--gray-100);
+
+  padding-top: 4.5rem;
+  padding-bottom: 5.25rem;
+
+  p {
+    color: var(--content);
+
+    font-size: 1.7769rem;
+    font-weight: 700;
+    line-height: 140%;
+
+    margin: 4.5rem;
+    margin-bottom: 2.1875rem;
+  }
+
+  dl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .why-card {
+    width: 19.6875rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3.5rem;
+
+    .icon-checklist::before {
+      content: '';
+      display: block;
+      margin: 0px auto 10px;
+      height: 2.5rem;
+      background: url('/svg/checklist.svg') 50% 50% no-repeat;
+    }
+    .icon-kurlyonly::before {
+      content: '';
+      display: block;
+      margin: 0px auto 10px;
+      height: 2.5rem;
+      background: url('/svg/kurlyonly.svg') 50% 50% no-repeat;
+    }
+    .icon-delivery::before {
+      content: '';
+      display: block;
+      margin: 0px auto 10px;
+      height: 2.5rem;
+      background: url('/svg/delivery.svg') 50% 50% no-repeat;
+    }
+    .icon-cool_price::before {
+      content: '';
+      display: block;
+      margin: 0px auto 10px;
+      height: 2.5rem;
+      background: url('/svg/cool_price.svg') 50% 50% no-repeat;
+    }
+    .icon-recycle::before {
+      content: '';
+      display: block;
+      margin: 0px auto 10px;
+      height: 2.5rem;
+      background: url('/svg/recycle.svg') 50% 50% no-repeat;
+    }
+  }
+
+  .why-title {
+    color: var(--primary);
+
+    font-size: 1.333rem;
+    font-weight: 600;
+    line-height: 150%;
+  }
+
+  .why-description {
+    color: var(--content);
+
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 160%;
+    text-align: center;
+
+    margin-top: 1.5rem;
+  }
+}
