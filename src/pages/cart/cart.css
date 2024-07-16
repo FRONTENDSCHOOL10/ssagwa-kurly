@@ -30,50 +30,6 @@ button {
   width: 742px;
 }
 
-/* .product-section-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 10px 16px 2px;
-  font-size: 14px;
-  line-height: 26px;
-  font-weight: 500;
-}
-.product-section-bar-container {
-  label {
-    position: relative;
-    display: inline-flex;
-    line-height: 26px;
-    padding: 0;
-    vertical-align: top;
-    position: relative;
-    align-items: center;
-    vertical-align: top;
-
-    input {
-      overflow: hidden;
-      position: absolute;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-      width: 1px;
-      height: 1px;
-    }
-  }
-
-  .icon {
-    margin-right: 12px;
-  }
-}
-
-.divider {
-  display: inline-block;
-  width: 1px;
-  height: 14px;
-  background: var(--gray-100);
-  margin: 6px 21px 0 22px;
-  vertical-align: top;
-} */
-
 .cart__total-section {
   position: relative;
   width: 284px;
@@ -87,6 +43,8 @@ button {
 }
 
 .cart__total-amout {
+  display: flex;
+  flex-direction: column;
   padding: 19px 18px 18px 20px;
   border: 0.0625rem solid #f2f2f2;
   background-color: var(--gray-50);
@@ -94,14 +52,29 @@ button {
 
 .product-amount,
 .discount-amout,
-.delivery-cost {
+.delivery-total-cost {
   display: flex;
   justify-content: space-between;
 }
 
+.delivery-cost {
+  display: flex;
+  flex-direction: column;
+}
 .discount-amout,
 .delivery-cost {
+  display: flex;
   padding-top: 12px;
+}
+
+.free-shipping-message {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  right: 0;
+  color: var(--primary);
 }
 
 .estimated-amount {
@@ -117,6 +90,7 @@ button {
 }
 
 .reward {
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   display: flex;
@@ -124,20 +98,15 @@ button {
   margin-top: 10px;
   font-weight: 600;
 }
+
 .icon--reward {
   display: inline-block;
   background-image: url('/svg/Badge-Reward.svg');
-  width: 21px;
+  width: 37px;
   height: 18px;
   margin-right: 5px;
   display: flex;
   padding: 0px 8px;
-}
-
-.icon--location {
-  background-image: url('/svg/Location.svg');
-  width: 36px;
-  height: 36px;
 }
 
 .total__span-left {
@@ -216,7 +185,7 @@ button {
 }
 
 .cart__total-delivery {
-  font-weight: 500;
+  font-weight: 600;
   padding: 23px 20px 20px;
   border-width: 1px 1px 0px;
   border-top-style: solid;
@@ -229,36 +198,40 @@ button {
   border-bottom-style: initial;
   border-bottom-color: initial;
 
-  h4 {
-    background-image: url(/svg/Location.svg) 0px 50% / 20px 20px no-repeat;
-    display: flex;
-    align-items: center;
-  }
-
-  .address {
-    padding-top: 12px;
+  h3 {
+    padding-left: 24px;
     font-size: 16px;
-    line-height: 24px;
-    word-break: break-word;
-  }
-
-  .delivery-type {
-    display: inline-block;
-    color: var(--primary);
-    font-size: 14px;
-    padding: 7px 0 12px 0;
+    line-height: 20px;
+    background: url(https://res.kurly.com/pc/service/cart/2007/ico_location.svg)
+      0px 50% / 20px 20px no-repeat;
   }
 }
 
-.freeDelivery {
-  display: block;
-  padding-top: 2px;
-  color: var(--primary);
-  line-height: 18px;
-  text-align: right;
+.delivery-location-info {
+  padding-top: 12px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.delivery-location{
+.delivery-location-info__address {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  word-break: break-word;
+}
+
+.delivery-location-info__change {
+  padding: 6px 0px;
+  font-size: 14px;
   display: flex;
   flex-direction: column;
+
+  button {
+    margin-top: 12px;
+  }
+}
+
+.delivery-type {
+  color: var(--primary);
+  font-size: 14px;
 }
