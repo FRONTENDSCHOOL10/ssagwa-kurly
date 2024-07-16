@@ -1,9 +1,10 @@
 import '/src/components/product_filter/filter.css';
-import { getAttr, toggleClass } from '/src/lib/index.js';
+import { getAttr, toggleClass, addClass, removeClass } from '/src/lib/index.js';
 
 function createFilterComponent(FilterContainer, data) {
   const container = document.getElementById(FilterContainer);
 
+  //메인 필터
   function render() {
     const aside = document.createElement('aside');
     aside.className = 'filter';
@@ -21,6 +22,7 @@ function createFilterComponent(FilterContainer, data) {
     addEventListeners();
   }
 
+  //메뉴들
   function getFilterSectionsHTML() {
     let sectionsHTML = '';
     data.sections.forEach((section) => {
@@ -39,6 +41,7 @@ function createFilterComponent(FilterContainer, data) {
     return sectionsHTML;
   }
 
+  //메뉴 펼쳤을때 리스트
   function getSectionListHTML(section) {
     if (!section.items) return '';
 
@@ -71,23 +74,59 @@ function createFilterComponent(FilterContainer, data) {
     `;
   }
 
+  //이벤트  추가
   function addEventListeners() {
     const toggleButtons = container.querySelectorAll('.filter__toggle');
     toggleButtons.forEach((button) => {
       button.addEventListener('click', handleSectionToggle);
     });
+
+    const inputs = container.querySelectorAll(
+      'input[type="checkbox"], input[type="radio"]'
+    );
+    inputs.forEach((input) => {
+      input.addEventListener('change', updateResetButton);
+    });
+
+    const resetButton = container.querySelector('.filter__reset');
+    resetButton.addEventListener('click', handleReset);
   }
 
+  //필터 메뉴칸 열고닫게 할수있게하는것
   function handleSectionToggle(event) {
     const button = event.currentTarget;
     const sectionId = getAttr(button, 'aria-controls');
-
     const section = document.getElementById(sectionId);
-
     const isExpanded = getAttr(button, 'aria-expanded') === 'true';
 
     button.setAttribute('aria-expanded', !isExpanded);
     toggleClass(section, 'expanded');
+  }
+
+  //리셋버튼 불들어왔다 꺼지게하는거
+  function updateResetButton() {
+    const resetButton = container.querySelector('.filter__reset');
+    const anyChecked = container.querySelector(
+      'input[type="checkbox"]:checked, input[type="radio"]:checked'
+    );
+
+    if (anyChecked) {
+      addClass(resetButton, 'filter__reset--active');
+    } else {
+      removeClass(resetButton, 'filter__reset--active');
+    }
+  }
+
+  //리셋버튼 로직
+  function handleReset() {
+    const inputs = container.querySelectorAll(
+      'input[type="checkbox"], input[type="radio"]'
+    );
+    inputs.forEach((input) => {
+      input.checked = false;
+    });
+
+    updateResetButton();
   }
 
   render();
