@@ -5,14 +5,17 @@ import '/src/components/footer/footer.js';
 import '/src/components/product_filter/filter.js';
 import '/src/components/product/product.css';
 import pb from '/src/api/pocketbase.js';
-import { comma } from '/src/lib/math/comma.js';
-import { calcDiscountPrice } from '/src/lib/math';
+
 import {
   getNode,
   insertLast,
   toggleClass,
   removeClass,
+  addClass,
   getPbImageURL,
+  calcDiscountPrice,
+  comma,
+  getNodes,
 } from '/src/lib';
 
 const perpage = 15; //한페이지당 표시할갯수
@@ -24,8 +27,13 @@ async function ProductsList() {
     const records = await pb.collection('products').getFullList({
       sort: '-created',
     });
+    //이건 정렬 이벤트추가해준거
+    const sortingContainer = getNode('.productlist-sortings ul');
+    sortingContainer.addEventListener('click', handleSortingClick);
 
     totalProducts = records;
+    const counting = getNode('.productlist-sorting__count');
+    counting.textContent = `총 ${totalProducts.length}건`;
     updateProductList();
     updatePagination();
   } catch (error) {
@@ -33,6 +41,44 @@ async function ProductsList() {
     console.error('Error details:', error);
   }
 }
+async function sortProducts(sortType) {
+  let sortField = '-created'; // 기본 정렬
+
+  switch (sortType) {
+    case '추천순':
+      sortField = '-created'; // 또는 추천 기준에 맞는 필드
+      break;
+    case '신상품순':
+      sortField = '-created'; //완료
+      break;
+    case '판매량순':
+      sortField = '-created'; // 판매량 필드가 있다고 가정
+      break;
+    case '할인율순':
+      sortField = '-discountRate'; //완료
+      break;
+    case '낮은 가격순':
+      sortField = '+price'; //이거 보니까 할인율이 적용이안돼서 할인율계산한 필드를만들어야하나?
+      break;
+    case '높은 가격순':
+      sortField = '-price'; //이거 보니까 할인율이 적용이안돼서 할인율계산한 필드를만들어야하나?
+      break;
+  }
+
+  try {
+    const records = await pb.collection('products').getFullList({
+      sort: sortField,
+    });
+
+    totalProducts = records;
+    currentPage = 1;
+    updateProductList();
+    updatePagination();
+  } catch (error) {
+    console.error('정렬된 제품을 가져오는 중 오류 발생:', error);
+  }
+}
+//할인율 제공함수
 
 function updateProductList() {
   const productsContainer = getNode('.products');
@@ -47,9 +93,8 @@ function updateProductList() {
     const discountRate = Number(item.discountRate);
     const hasDiscount = discountRate !== 0 && item.discountRate !== '';
     const discountPrice = hasDiscount
-      ? calcDiscountPrice(price, discountRate)
+      ? Math.ceil(calcDiscountPrice(price, discountRate))
       : price;
-
     const template = `
         <li class="product__wrapper">
           <div class="product__image-wrapper">
@@ -155,7 +200,7 @@ function handlePaginationClick(event) {
   if (!clickedElement || removeClass(clickedElement, 'disabled')) return;
 
   const pageAction = clickedElement.dataset.page;
-  const totalPages = Math.ceil(totalProducts.length / perpage);
+  const totalPages = Math.ceil(totalProducts.length / perpage); //전체 제품수를 페이지당 제품수로 나눴습니다
 
   let newPage;
   switch (pageAction) {
@@ -163,10 +208,10 @@ function handlePaginationClick(event) {
       newPage = 1;
       break;
     case 'prev':
-      newPage = Math.max(1, currentPage - 1);
+      newPage = Math.max(1, currentPage - 1); //현재페이지 +1
       break;
     case 'next':
-      newPage = Math.min(totalPages, currentPage + 1);
+      newPage = Math.min(totalPages, currentPage + 1); //현재페이지 -1
       break;
     case 'last':
       newPage = totalPages;
@@ -184,6 +229,20 @@ function handlePaginationClick(event) {
       top: 0,
     });
   }
+}
+function handleSortingClick(event) {
+  event.preventDefault();
+  const clickedElement = event.target.closest('.productlist-sorting');
+  if (!clickedElement) return;
+
+  getNodes('.productlist-sorting').forEach((rm) => {
+    removeClass(rm, 'productlist-sorting--is-active');
+  });
+
+  addClass(clickedElement, 'productlist-sorting--is-active');
+
+  const sortType = clickedElement.textContent.trim();
+  sortProducts(sortType);
 }
 
 document.addEventListener('DOMContentLoaded', ProductsList);
