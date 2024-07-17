@@ -18,7 +18,7 @@ body{
   box-shadow: 0 1px 0 0 var(--gray-200);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
 
   h2{
     color: var(--black);
@@ -31,7 +31,30 @@ body{
   }
 }
 
+.button__cancel{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: inherit;
+  border: 0;
+  
+  span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 1.5px; 
+    background-color: var(--gray-200);
+  }
+}
 
+.cancel-1{
+  transform: translate(-50%, -50%) rotate(45deg); 
+}
+
+.cancel-2{
+  transform: translate(-50%, -50%) rotate(-45deg); 
+}
 
 .product-image{
   display: flex;
