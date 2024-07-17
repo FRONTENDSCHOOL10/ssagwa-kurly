@@ -1,0 +1,144 @@
+body{
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__popup--product{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 793px;
+  height: 630px;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 1rem;
+}
+
+.popup-header{
+  box-shadow: 0 1px 0 0 var(--gray-200);
+
+  h2{
+    color: var(--black);
+    font-family: inherit;
+    font-size: 28.43px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 20px;
+  }
+}
+
+.product-image{
+  display: flex;
+  align-items: center;
+  padding: 1rem 0 1rem;
+  box-shadow: 0 1px 0 0 var(--gray-200);
+
+
+  img{
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    margin-right: 24px;
+  }
+
+  p{
+    color: var(--black);
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+}
+
+.form__wrapper--popup{
+  padding: 1rem 0 58px;
+  box-shadow: 0 1px 0 0 var(--gray-200);
+}
+
+.popup__title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  label{
+    color: var(--content);
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    padding: 8px 0 0 8px;
+  }
+
+  input{
+    width: 589px;
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 4px;
+    border: 1px solid var(--gray-300);
+  }
+}
+
+.popup__content{
+  display: flex;
+  justify-content: space-between;
+
+  label{
+    color: var(--content);
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    padding: 8px 0 0 8px;
+  }
+
+  textarea{
+    width: 597px;
+    height: 166px;
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid var(--gray-300);
+  }
+}
+
+.popup-footer{
+  padding-top: 20px;
+}
+
+.btn-group{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  button{
+    border-radius: 4px;
+    width: 168px;
+    height: 54px;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-1{
+    box-shadow: 0 0 0 1px var(--gray-100); 
+    background-color: inherit;
+    color: var(--content);
+    border: 0;
+  }
+
+  .btn-2{
+    background: var(--gray-100);
+    border: 0;
+    color: var(--white);
+  }
+}
