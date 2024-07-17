@@ -130,10 +130,7 @@ class KurlyHeader extends HTMLElement {
   checkLoginStatus() {
     const auth = JSON.parse(localStorage.getItem('auth'));
     if (auth && auth.isAuth) {
-      console.log('인증 된 유저입니다 👩‍💻');
       this.showLoggedInHeader(auth.user);
-    } else {
-      console.log('인증되지 않은 유저에요👻');
     }
   }
 
@@ -144,7 +141,6 @@ class KurlyHeader extends HTMLElement {
     memberService.innerHTML = `
       <li class="header__member-item divider">
         <a href="#" class="header__member-link">${user.name} 님<img src="/svg/Icon_down.png" alt="펼치기" /></a>
-        
         <ul class="user-menu">
           <li><a href="#">마이페이지</a></li>
           <li><a href="#" class="logout-link">로그아웃</a></li>
