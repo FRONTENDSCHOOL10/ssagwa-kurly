@@ -35,7 +35,6 @@ async function isShowPopup(){
 
 export default function viewPopup(element) {
   isShowPopup().then(result => {
-    console.log(result)
     if(result){
       // 모달 컨테이너 div를 생성합니다.
       const modalContainer = document.createElement('div');
@@ -65,7 +64,7 @@ export default function viewPopup(element) {
       document.querySelectorAll('.close').forEach(function(btn){
         btn.addEventListener('click', function () {
           document.querySelectorAll('.modal').forEach(function(modal) {
-            document.body.removeChild(modal);
+            element.removeChild(modal);
           });
 
           if(btn.classList.contains('oneday')){
