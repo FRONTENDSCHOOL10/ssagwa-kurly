@@ -2,6 +2,7 @@ body{
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+/* 후기작성, 상품 문의하기 */
 .modal__popup--product{
   display: flex;
   flex-direction: column;
@@ -15,6 +16,9 @@ body{
 
 .popup-header{
   box-shadow: 0 1px 0 0 var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   h2{
     color: var(--black);
@@ -26,6 +30,8 @@ body{
     margin-bottom: 20px;
   }
 }
+
+
 
 .product-image{
   display: flex;
@@ -41,7 +47,7 @@ body{
     margin-right: 24px;
   }
 
-  p{
+  figcaption{
     color: var(--black);
     font-family: inherit;
     font-size: 1rem;
@@ -97,7 +103,7 @@ body{
 
   textarea{
     width: 597px;
-    height: 166px;
+    height: 163px;
     padding: 1rem;
     border-radius: 4px;
     border: 1px solid var(--gray-300);
@@ -140,5 +146,53 @@ body{
     background: var(--gray-100);
     border: 0;
     color: var(--white);
+  }
+}
+
+/* + 상품문의하기 */
+.form__wrapper--popup-checkbox{
+  padding: 1rem 0 25px;
+  box-shadow: 0 1px 0 0 var(--gray-200);
+}
+
+.form-checkbox{
+  position: relative;
+  margin-left: 92px;
+  margin-top: 12px;
+
+  input{
+    position: absolute;
+    appearance: none;
+    width: 23px;
+    height: 23px;
+    
+  }
+  label{
+    background: url(/svg/Check-UnChecked.svg) no-repeat 0 0 /contain;
+    padding-left: 33px;
+    color: var(--black);
+    font-family: inherit;
+    font-size: 12.003px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    background-size: 23px 23px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+  }
+
+  input:checked + label{
+    background-image: url(/svg/Check-Checked.svg);
+  }
+
+  input:focus{
+    outline: none;
+  }
+
+  input:focus-visible{
+    outline: 2px solid red;
+    outline-offset: 4px;
+    
   }
 }
