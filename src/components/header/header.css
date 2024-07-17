@@ -161,6 +161,7 @@ input:focus {
 }
 
 .header__member-item {
+  position: relative;
   display: flex;
   align-items: center;
   height: 1.3rem;
@@ -182,11 +183,12 @@ input:focus {
   font-weight: 300;
   position: absolute;
   right: 0;
-  top: 2rem;
+  top: 28px;
+  width: 130px;
+  padding: 3px 9px;
   background-color: var(--white);
   font-size: 0.75rem;
-  width: 6.875rem;
-  padding: 0.1875rem 0.5625rem;
+
   border: 0.06rem solid var(--gray-100);
   line-height: 1.5625rem;
   flex-direction: column;
@@ -194,6 +196,7 @@ input:focus {
 }
 
 .header__member-link {
+  position: relative;
   height: 2.1875rem;
   display: flex;
   align-items: center;
@@ -362,4 +365,24 @@ nav.scrolled {
 
 .header__wrapper.scrolled .nav__delivery {
   display: none;
+}
+
+.user-menu {
+  display: none;
+}
+
+.header__member-item:hover .user-menu {
+  display: block;
+  font-weight: 300;
+  position: absolute;
+  right: 12px;
+  top: 28px;
+  background-color: var(--white);
+  font-size: 0.75rem;
+  width: 130px;
+  padding: 3px 9px;
+  border: 0.06rem solid var(--gray-100);
+  line-height: 1.5625rem;
+  flex-direction: column;
+  z-index: 300;
 }
