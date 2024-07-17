@@ -147,10 +147,10 @@ function verificationIDEvent() {
       if (!isBoolean(result)) return;
 
       if (result) {
-        viewModal('사용 할 수 있는 아이디 입니다.', null);
+        viewModal('사용 할 수 있는 아이디 입니다.');
         verificationIDBtn.disabled = true;
       } else {
-        viewModal('사용 불가능한 아이디 입니다.', ()=>userID.focus());
+        viewModal('사용 불가능한 아이디 입니다.', '확인', ()=>userID.focus());
       }
     })
     .catch((error) => {
@@ -165,10 +165,10 @@ function verificationEmailEvent() {
       if (!isBoolean(result)) return;
 
       if (result) {
-        viewModal('사용 가능한 이메일 입니다.', null);
+        viewModal('사용 가능한 이메일 입니다');
         verificationEmailBtn.disabled = true;
       } else {
-        viewModal('사용 불가능한 이메일 입니다.', ()=>userEmail.focus());
+        viewModal('사용 불가능한 이메일 입니다.', '확인', ()=>userEmail.focus());
       }
     })
     .catch((error) => {
@@ -181,7 +181,7 @@ function verificationEmailEvent() {
 async function verificationID(id) {
   try {
     if (!regID(id)) {
-      viewModal('6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합', ()=>userID.focus());
+      viewModal('6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합', '확인', ()=>userID.focus());
       return '12';
     }
 
@@ -205,7 +205,7 @@ async function verificationID(id) {
 async function verificationEmail(email) {
   try {
     if (!regEmail(email)) {
-      viewModal('이메일 형식으로 입력해 주세요.', ()=>userEmail.focus());
+      viewModal('이메일 형식으로 입력해 주세요.', '확인', ()=>userEmail.focus());
       return;
     }
 
@@ -247,31 +247,31 @@ function register(event) {
   event.preventDefault();
 
   if(verificationIDBtn.disabled === false){
-    viewModal('아이디 중복 체크를 해주세요.', null);
+    viewModal('아이디 중복 체크를 해주세요.');
     return;
   }else if(verificationEmailBtn.disabled === false){
-    viewModal('이메일 중복 체크를 해주세요.', null);
+    viewModal('이메일 중복 체크를 해주세요.');
     return;
   }else if(userPhoneNum.value === ''){
-    viewModal('휴대폰 인증을 진행해 주세요.', null);
+    viewModal('휴대폰 인증을 진행해 주세요.');
     return;
   }else if(userPw.value === ''){
-    viewModal('비밀번호를 입력해 주세요.', ()=>userPw.focus());
+    viewModal('비밀번호를 입력해 주세요.', '확인', ()=>userPw.focus());
     return;
   }else if(!agreeOther[0].checked || !agreeOther[1].checked || !agreeOther[3].checked){
-    viewModal('필수 이용 약관을 동의해 주세요.', null);
+    viewModal('필수 이용 약관을 동의해 주세요.');
     return;
   }else if(userPwConfirm.value === ''){
-    viewModal('비밀번호를 한번 더 입력해 주세요.', ()=>userPwConfirm.focus());
+    viewModal('비밀번호를 한번 더 입력해 주세요.', '확인', ()=>userPwConfirm.focus());
     return;
   }else if(userPw.value !== userPwConfirm.value){
-    viewModal('동일한 비밀번호를 입력', ()=>userPwConfirm.focus());
+    viewModal('동일한 비밀번호를 입력', '확인', ()=>userPwConfirm.focus());
     return;
   }else if(userName.value === ''){
-    viewModal('이름을 입력해 주세요.', ()=>userName.focus());
+    viewModal('이름을 입력해 주세요.', '확인', ()=>userName.focus());
     return;
   }else if(userAdress.value === '' || userAdressOther.value === ''){
-    viewModal('주소를 검색하여 입력해 주세요.', null);
+    viewModal('주소를 검색하여 입력해 주세요.');
     return;
   }
 
@@ -298,7 +298,7 @@ function register(event) {
       .collection('users')
       .create(data)
       .then(() => {
-        viewModal('🎉 회원 가입이 완료됐습니다! 🎉', ()=>location.href = '/src/pages/login/');
+        viewModal('🎉 회원 가입이 완료됐습니다! 🎉', '확인', ()=>location.href = '/src/pages/login/');
       });
   }
 

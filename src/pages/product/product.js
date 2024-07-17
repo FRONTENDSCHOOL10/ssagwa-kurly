@@ -128,7 +128,7 @@ async function renderProduct(){
   const productLikeBtn = document.querySelector('.product__button-like');
   productLikeBtn.addEventListener('click', ()=>{
     if(!isAuth){
-      viewModal('로그인하셔야 본 서비스를 이용하실 수 있습니다.', ()=>{
+      viewModal('로그인하셔야 본 서비스를 이용하실 수 있습니다.', '확인', ()=>{
         location.href = '/src/pages/login/';
       })
     }
