@@ -1,14 +1,18 @@
+import '/src/pages/main/main.css';
+
 import '/src/styles/global.css';
+import '/src/components/product/product.css'
+
+import pb from "/src/api/pocketbase.js";
 import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
-
-import '/src/pages/main/main.css';
-import '/src/components/product/product.css'
+import viewPopup from '/src/components/popup/popup.js';
 import { slideSwiper } from '/src/pages/main/swiper.js';
-import { comma } from "/src/lib/math/comma.js";
-import { calcDiscountPrice } from "/src/lib/math/calcDiscountPrice.js";
-import pb from "/src/api/pocketbase.js";
+import { comma, calcDiscountPrice, getNode, getNodes } from "/src/lib/index.js";
 
+const mainElement = getNode('main');
+
+viewPopup(mainElement);
 
 document.addEventListener('DOMContentLoaded', function () {
   slideSwiper();
@@ -21,7 +25,7 @@ async function fetchAndDisplayProducts() {
       sort: '-created',
     });
 
-    const productsContainers = document.querySelectorAll('.product__list');
+    const productsContainers = getNodes('.product__list');
 
     records.items.forEach((item) => {
       const price = Number(item.price);
