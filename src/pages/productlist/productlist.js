@@ -185,7 +185,7 @@ function updateProductList() {
     const template = `
         <li class="product__wrapper">
           <div class="product__image-wrapper">
-            <a href="#" class="product__link">
+            <a href="/src/pages/product/?product=${item.id}" class="product__link">
               <figure class="product__visual" aria-label="상품 이미지">
                 <img src="${getPbImageURL(item)}" alt="${item.productName}" />
                 <figcaption class="sr-only">상품 이미지: ${
@@ -197,7 +197,7 @@ function updateProductList() {
           <button type="button" class="product__basket" aria-label="장바구니에 상품 담기">
             <img src="/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기
           </button>
-          <a href="#" class="product__link">
+          <a href="/src/pages/product/?product=${item.id}" class="product__link">
             <div class="product__details">
               <span class="product__delivery" aria-label="배송 설명">${
                 item.Delivery

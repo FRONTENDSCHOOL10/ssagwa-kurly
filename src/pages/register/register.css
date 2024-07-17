@@ -71,6 +71,11 @@
   .input__wrapper + button {
     width: 8.9375rem;
   }
+
+  .verificationID:disabled, .verificationEmail:disabled, .verificationPhone:disabled{
+    color: var(--gray-100);
+    border-color: var(--gray-100);
+  }
 }
 
 .register__adress-wrapper {

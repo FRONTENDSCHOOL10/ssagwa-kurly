@@ -44,7 +44,9 @@ main{
   gap: 4px;
 
   a{
-    color: black;
+    color: var(--black);
+    font-weight: 500;
+    line-height: 160%;
     text-decoration: none;
   }
 }
