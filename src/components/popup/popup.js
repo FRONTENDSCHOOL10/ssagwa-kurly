@@ -48,7 +48,7 @@ export default function viewPopup(element) {
 
         <p id="ad-popup" class="sr-only">광고 팝업</p>
         <a href="#" aria-label="뷰티컬리 만나보기">
-          <img id="modalImg" class="modal__img" src="/src/assets/images/popup/ea7e5e29-f8e5-4f65-934a-62432df4b337 1.png" alt="뷰티컬리 만나보기 이미지" />
+          <img id="modalImg" class="modal__img" src="/src/assets/images/popup/ea7e5e29-f8e5-4f65-934a-62432df4b337.png" alt="뷰티컬리 만나보기 이미지" />
         </a>
         <div class="modal-btn_wrapper">
           <button type="button" class="close oneday">오늘 하루 안보기</button>
