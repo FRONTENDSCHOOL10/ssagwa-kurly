@@ -151,7 +151,7 @@ export function addEventListeners(cartData, updateCartSummary) {
         .querySelector('input[type="checkbox"]')
         .id.split('-')
         .pop();
-      viewModal('선택한 상품을 삭제하시겠습니까?', '취소', null, '확인', () => {
+      viewModal('삭제하시겠습니까?', '취소', null, '확인', () => {
         const itemIndex = cartData.findIndex((item) => item.id === itemId);
         if (itemIndex > -1) {
           cartData.splice(itemIndex, 1);
@@ -177,37 +177,31 @@ export function addEventListeners(cartData, updateCartSummary) {
       const selectedItems = Array.from(checkboxes)
         .filter((checkbox) => checkbox.checked)
         .map((checkbox) => checkbox.id.split('-').pop());
-      viewModal(
-        '선택한 상품들을 삭제하시겠습니까?',
-        '취소',
-        null,
-        '확인',
-        () => {
-          selectedItems.forEach((itemId) => {
-            const itemIndex = cartData.findIndex((item) => item.id === itemId);
-            if (itemIndex > -1) {
-              const itemElement = document
-                .querySelector(`#cart-item-checkbox-${itemId}`)
-                .closest('.cart-accordion__item');
-              itemElement.remove();
-              cartData.splice(itemIndex, 1);
-            }
-          });
-
-          setStorage('cart', cartData);
-          updateCartSummary(cartData);
-          updateSelectAllLabel(checkboxes);
-          hideEmptySections(
-            cartData.filter((item) => item.packagingType.includes('냉장')),
-            cartData.filter((item) => item.packagingType.includes('냉동')),
-            cartData.filter((item) => item.packagingType.includes('상온'))
-          );
-
-          if (cartData.length === 0) {
-            displayEmptyCartMessage();
+      viewModal('선택한 상품을 삭제하시겠습니까?', '취소', null, '확인', () => {
+        selectedItems.forEach((itemId) => {
+          const itemIndex = cartData.findIndex((item) => item.id === itemId);
+          if (itemIndex > -1) {
+            const itemElement = document
+              .querySelector(`#cart-item-checkbox-${itemId}`)
+              .closest('.cart-accordion__item');
+            itemElement.remove();
+            cartData.splice(itemIndex, 1);
           }
+        });
+
+        setStorage('cart', cartData);
+        updateCartSummary(cartData);
+        updateSelectAllLabel(checkboxes);
+        hideEmptySections(
+          cartData.filter((item) => item.packagingType.includes('냉장')),
+          cartData.filter((item) => item.packagingType.includes('냉동')),
+          cartData.filter((item) => item.packagingType.includes('상온'))
+        );
+
+        if (cartData.length === 0) {
+          displayEmptyCartMessage();
         }
-      );
+      });
     });
   });
 }
