@@ -34,23 +34,23 @@ class KurlyHeader extends HTMLElement {
               <button
                 type="submit"
               >
-                <img src="/svg/Search.svg" alt="검색" />
+                <img src="/svg/Search.svg" alt="검색" class="icon" />
               </button>
             </form>
             <ul class="header__icon-list">
               <li>
                 <a href="#">
-                  <img src="/svg/Location.svg" alt="배송지 등록" />
+                  <img src="/svg/Location.svg" alt="배송지 등록" class="icon" />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="/svg/Heart.svg" alt="찜한 상품 목록" />
+                  <img src="/svg/Heart.svg" alt="찜한 상품 목록" class="icon" />
                 </a>
               </li>
               <li>
                 <a href="/src/pages/cart/index.html">
-                  <img src="/svg/Group.svg" alt="장바구니" />
+                  <img src="/svg/Group.svg" alt="장바구니" class="icon" />
                 </a>
               </li>
             </ul>

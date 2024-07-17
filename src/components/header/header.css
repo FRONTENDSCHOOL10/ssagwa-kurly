@@ -26,7 +26,7 @@ input:focus {
   top: 0;
   background-color: var(--white);
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 9.75rem;
   align-items: center;
   flex-direction: column;
@@ -184,7 +184,7 @@ input:focus {
   position: absolute;
   right: 0;
   top: 28px;
-  width: 130px;
+  width: 110px;
   padding: 3px 9px;
   background-color: var(--white);
   font-size: 0.75rem;
@@ -267,6 +267,11 @@ input:focus {
   font-weight: 600;
   transform: scale(1.05);
   transition: none 0.1s ease;
+}
+
+.nav__category__item:hover .nav__category__item-img {
+  filter: invert(39%) sepia(24%) saturate(3960%) hue-rotate(322deg)
+    brightness(89%) contrast(100%);
 }
 
 .nav__category__item-img {
@@ -379,10 +384,15 @@ nav.scrolled {
   top: 28px;
   background-color: var(--white);
   font-size: 0.75rem;
-  width: 130px;
+  width: 110px;
   padding: 3px 9px;
   border: 0.06rem solid var(--gray-100);
   line-height: 1.5625rem;
   flex-direction: column;
   z-index: 300;
+}
+
+.icon:hover {
+  filter: invert(39%) sepia(24%) saturate(3960%) hue-rotate(322deg)
+    brightness(89%) contrast(100%);
 }
