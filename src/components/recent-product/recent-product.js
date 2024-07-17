@@ -58,7 +58,6 @@ export function addRecentProduct() {
 
       // 로컬스토리지에 삭제한 상품 저장
       await setStorage('viewedProduct', viewItemList);
-      console.log(viewItemList);
 
       // 최근 본 아이템 화면에 렌더
       renderRecentProducts();
