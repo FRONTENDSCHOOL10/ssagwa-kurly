@@ -33,8 +33,8 @@ function generateCartSectionHTML() {
   return `
     <div class="cart-accordion__select-bar">
       <div class="select-bar-container">
-        <label class="select-all-checkbox" for="select-all-checkbox">
-          <input type="checkbox" id="select-all-checkbox" checked />
+        <label class="select-all-checkbox" for="select-all-checkbox1">
+          <input type="checkbox" id="select-all-checkbox1" checked />
           <span class="icon icon--small icon--Checked"></span>
           <span class="all">전체선택 (0/0)</span>
         </label>
@@ -44,7 +44,7 @@ function generateCartSectionHTML() {
     </div>
     <section class="cart-accordion__product-list">
       <h4 class="cart-accordion__heading refrigerated-heading">
-        <span class="product__status" id="cart-accordion__title">
+        <span class="product__status">
           <span class="icon icon--large icon--refrigerated" aria-hidden="true"></span>
           냉장 상품
         </span>
@@ -54,7 +54,7 @@ function generateCartSectionHTML() {
       </h4>
       <ul class="product__list refrigerated"></ul>
       <h4 class="cart-accordion__heading frozen-heading">
-        <span class="product__status" id="cart-accordion__title">
+        <span class="product__status">
           <span class="icon icon--large icon--frozen" aria-hidden="true"></span>
           냉동 상품
         </span>
@@ -64,7 +64,7 @@ function generateCartSectionHTML() {
       </h4>
       <ul class="product__list frozen"></ul>
       <h4 class="cart-accordion__heading normal-heading">
-        <span class="product__status" id="cart-accordion__title">
+        <span class="product__status">
           <span class="icon icon--large icon--normal" aria-hidden="true"></span>
           상온 상품
         </span>
@@ -76,7 +76,7 @@ function generateCartSectionHTML() {
     </section>
     <div class="cart-accordion__select-bar">
       <div class="select-bar-container">
-        <label class="select-all-checkbox" for="select-all-checkbox">
+        <label class="select-all-checkbox" for="select-all-checkbox2">
           <input type="checkbox" id="select-all-checkbox2" checked />
           <span class="icon icon--small icon--Checked"></span>
           <span class="all">전체선택 (0/0)</span>
