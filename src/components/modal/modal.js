@@ -1,6 +1,6 @@
 import '/src/components/modal/modal.css';
 
-export default function viewModal(text, callback) {
+export default function viewModal(text, btnText1 = '확인', callback1 = null, btnText2 = null, callback2 = null) {
   // 모달 컨테이너 div를 생성합니다.
   const modalContainer = document.createElement('div');
   modalContainer.classList.add('modalContainer');
@@ -9,7 +9,10 @@ export default function viewModal(text, callback) {
   modalContainer.innerHTML = `
     <div id="modalContent">
       <p>${text}</p>
-      <button type="button" class="modalCloseButton">확인</button>
+      <div class="button-wrapper">
+        <button type="button" class="modalClose btn1">${btnText1}</button>
+        ${btnText2 ?'<button type="button" class="modalClose btn2">' + btnText2 + '</button>' : ''}
+      </div>
     </div>
   `;
 
@@ -17,16 +20,18 @@ export default function viewModal(text, callback) {
   document.body.appendChild(modalContainer);
 
   // 닫기 버튼에 이벤트 리스너를 추가합니다.
-  document.querySelectorAll('.modalCloseButton').forEach(function(btn){
+  document.querySelectorAll('.modalClose').forEach(function(btn){
     btn.addEventListener('click', function () {
-      // callback 함수 실행
-      if (typeof callback === 'function') {
-        callback();
-      }
-
+      //모달창 없애기
       document.querySelectorAll('.modalContainer').forEach(function(modal) {
         document.body.removeChild(modal);
       });
+
+      // callback 함수 실행
+      if (typeof callback1 === 'function' || typeof callback2 === 'function') {
+        if(btn.classList.contains('btn1')) callback1();
+        if(btn.classList.contains('btn2')) callback2();
+      }
     });
   })
 }
