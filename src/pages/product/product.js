@@ -9,6 +9,7 @@ import pb from '/src/api/pocketbase.js';
 import initializeStepper from '/src/components/stepper/stepper.js';
 import { getStorage, calcDiscountPrice, comma, getPbImageURL, insertFirst, setDocumentTitle } from '/src/lib/index.js'
 import viewModal from '/src/components/modal/modal.js';
+import { setRecentProduct, addRecentProduct } from '/src/components/recent-product/recent-product.js';
 
 const { isAuth } = getStorage('auth') || {};
 
@@ -24,7 +25,9 @@ async function renderProduct(){
   const data = await pb.collection('products').getOne(productId);
 
   const {price,discountRate,Delivery,productName,productDescription,productDetailDescription,packagingType,unitOfSale,weight,origin,allergy} = data;
-
+  
+  
+  setRecentProduct(productId, getPbImageURL(data), productName);
   const product_top_contnet = /* html */`
       <img class="product__img" src="${getPbImageURL(data)}" alt="${productName}"/>
       <div class="product__detail-wrapper">
@@ -155,3 +158,4 @@ async function renderProduct(){
 
 
 renderProduct();
+addRecentProduct();

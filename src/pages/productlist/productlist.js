@@ -7,6 +7,7 @@ import '/src/components/product_filter/filter.js';
 import '/src/components/product/product.css';
 import openCartModal from '/src/components/cart-modal/cartModal.js';
 import pb from '/src/api/pocketbase.js';
+import { addRecentProduct } from '/src/components/recent-product/recent-product.js';
 import {
   createFilterComponent,
   filterdata,
@@ -29,6 +30,8 @@ let currentPage = 1;
 let originalProducts = [];
 let totalProducts = [];
 let currentSortType = '추천순';
+
+addRecentProduct();
 
 async function ProductsList() {
   try {

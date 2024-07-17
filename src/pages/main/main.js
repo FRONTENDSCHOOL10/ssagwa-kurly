@@ -9,10 +9,12 @@ import '/src/components/footer/footer.js';
 import viewPopup from '/src/components/popup/popup.js';
 import { slideSwiper } from '/src/pages/main/swiper.js';
 import { comma, calcDiscountPrice, getNode, getNodes } from "/src/lib/index.js";
+import { addRecentProduct } from '/src/components/recent-product/recent-product.js';
 
 const mainElement = getNode('main');
 
 viewPopup(mainElement);
+addRecentProduct();
 
 document.addEventListener('DOMContentLoaded', function () {
   slideSwiper();
