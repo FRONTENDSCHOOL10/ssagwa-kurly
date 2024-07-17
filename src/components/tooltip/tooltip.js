@@ -94,9 +94,9 @@ function adjustTooltipPosition() {
 
   if (tooltip) {
     if (window.scrollY > headerHeight) {
-      tooltip.style.top = '70px'; // 헤더가 스크롤되면 툴팁의 top을 60px로 설정
+      tooltip.style.top = '70px';
     } else {
-      tooltip.style.top = '100px'; // 기본 위치
+      tooltip.style.top = '100px';
     }
   }
 }
