@@ -20,17 +20,17 @@ export function createAccordionItem(item, packagingType) {
         <input type="checkbox" id="cart-item-checkbox-${item.id}" checked />
         <span class="icon icon--small icon--Checked"></span>
       </label>
-      <a href="#" class="accordion__item--img-wrapper">
+      <a href="/src/pages/product/?product=${
+        item.id
+      }" class="accordion__item--img-wrapper">
         <span class="item--img" style="background-image: url('${getPbImageURL(
           item
         )}')"></span>
       </a>
       <div class="accordion__item--info">
-        <a>
-          <p class="item--title text-overflow">${item.productName}</p>
-          <p class="item--description text-overflow">${
-            item.productDescription
-          }</p>
+        <a href="/src/pages/product/?product=${item.id}">
+          <p class="item--title ">${item.productName}</p>
+          <p class="item--description ">${item.productDescription}</p>
         </a>
       </div>
       <div class="stepper" data-product-id="${item.id}">
