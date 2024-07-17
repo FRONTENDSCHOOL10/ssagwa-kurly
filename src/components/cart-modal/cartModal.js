@@ -1,9 +1,10 @@
-import '/src/components/cartModal/cartModal.css';
+import '/src/components/cart-modal/cartModal.css';
 import '/src/components/button/button.css';
 import '/src/components/stepper/stepper.css';
 import { calcDiscountPrice } from '/src/lib/index.js';
+import { openCartTooltip } from '/src/components/tooltip/tooltip.js';
 
-export default function openCartModal(product, callback) {
+export default function openCartModal(product) {
   const modalContainer = document.createElement('div');
   modalContainer.classList.add('modalContainer');
 
@@ -116,7 +117,21 @@ export default function openCartModal(product, callback) {
   });
 
   addToCartButton.addEventListener('click', () => {
-    callback(quantity);
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItem = cart.find((item) => item.id === product.id);
+    const isDuplicate = !!existingItem;
+
+    if (isDuplicate) {
+      existingItem.quantity += quantity;
+    } else {
+      product.quantity = quantity;
+      cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    openCartTooltip(product, isDuplicate);
+
     modalContainer.remove();
   });
 
