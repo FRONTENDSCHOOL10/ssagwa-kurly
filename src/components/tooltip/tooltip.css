@@ -5,13 +5,13 @@
   padding: 20px;
   position: fixed;
   top: 100px;
-  right: 426px;
+  right: 410px;
   max-width: 340px;
   width: fit-content;
   height: auto;
   z-index: 999;
   opacity: 1;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.4s ease;
 }
 
 .cart-tooltip::after {

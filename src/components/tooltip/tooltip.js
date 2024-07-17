@@ -2,6 +2,8 @@ import '/src/styles/global.css';
 import '/src/components/tooltip/tooltip.css';
 import { getPbImageURL } from '/src/lib';
 
+let tooltipTimeout;
+
 export function openCartTooltip(product, isDuplicate) {
   let tooltip = document.getElementById('cart-tooltip');
 
@@ -33,6 +35,11 @@ export function openCartTooltip(product, isDuplicate) {
       duplicateMessage.textContent = '이미 담은 상품의 수량을 추가했습니다.';
       tooltip.querySelector('.tooltip-message').appendChild(duplicateMessage);
     }
+  } else {
+    const duplicateMessage = tooltip.querySelector('#tooltip-duplicate');
+    if (duplicateMessage) {
+      duplicateMessage.remove();
+    }
   }
 
   const tooltipImg = tooltip.querySelector('#tooltip-img');
@@ -41,13 +48,30 @@ export function openCartTooltip(product, isDuplicate) {
   tooltipImg.src = `${getPbImageURL(product)}`;
   tooltipTitle.textContent = product.productName;
 
+  clearTimeout(tooltipTimeout);
+  tooltip.style.display = 'flex';
+  tooltip.style.opacity = '0';
+
+  setTimeout(() => {
+    tooltip.style.opacity = '1';
+  }, 0);
+
+  tooltipTimeout = setTimeout(() => {
+    tooltip.style.opacity = '0';
+    setTimeout(() => {
+      tooltip.style.display = 'none';
+    }, 300);
+  }, 2000);
+
   tooltip.style.display = 'flex';
   tooltip.style.opacity = '0';
   setTimeout(() => {
     tooltip.style.opacity = '1';
   }, 0);
 
-  setTimeout(() => {
+  adjustTooltipPosition();
+
+  tooltipTimeout = setTimeout(() => {
     tooltip.style.opacity = '0';
     setTimeout(() => {
       tooltip.style.display = 'none';
@@ -55,6 +79,24 @@ export function openCartTooltip(product, isDuplicate) {
       if (duplicateMessage) {
         duplicateMessage.remove();
       }
-    }, 2000);
+    }, 300);
   }, 2000);
+
+  window.addEventListener('scroll', adjustTooltipPosition);
+}
+
+function adjustTooltipPosition() {
+  const header = document
+    .querySelector('ssagwakurly-header')
+    .shadowRoot.querySelector('.header__wrapper');
+  const headerHeight = header.offsetHeight;
+  const tooltip = document.getElementById('cart-tooltip');
+
+  if (tooltip) {
+    if (window.scrollY > headerHeight) {
+      tooltip.style.top = '70px'; // 헤더가 스크롤되면 툴팁의 top을 60px로 설정
+    } else {
+      tooltip.style.top = '100px'; // 기본 위치
+    }
+  }
 }
