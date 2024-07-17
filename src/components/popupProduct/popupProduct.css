@@ -7,8 +7,8 @@ body{
   display: flex;
   flex-direction: column;
   background-color: var(--white);
-  width: 793px;
-  height: 630px;
+  width: 49.56rem;
+  height: 39.38rem;
   padding: 2rem;
   box-sizing: border-box;
   border-radius: 1rem;
@@ -23,20 +23,21 @@ body{
   h2{
     color: var(--black);
     font-family: inherit;
-    font-size: 28.43px;
+    font-size: 1.78rem;
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 }
 
 .button__cancel{
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 1.88rem;
+  height: 1.88rem;
   background: inherit;
   border: 0;
+  cursor: pointer;
   
   span{
     position: absolute;
@@ -64,10 +65,10 @@ body{
 
 
   img{
-    width: 72px;
-    height: 72px;
+    width: 4.5rem;
+    height: 4.5rem;
     object-fit: cover;
-    margin-right: 24px;
+    margin-right: 1.5rem;
   }
 
   figcaption{
@@ -81,7 +82,7 @@ body{
 }
 
 .form__wrapper--popup{
-  padding: 1rem 0 58px;
+  padding: 1rem 0 3.63rem;
   box-shadow: 0 1px 0 0 var(--gray-200);
 }
 
@@ -89,7 +90,7 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 
   label{
     color: var(--content);
@@ -98,14 +99,14 @@ body{
     font-style: normal;
     font-weight: 600;
     line-height: 150%;
-    padding: 8px 0 0 8px;
+    padding: 0.5rem 0 0 0.5rem;
   }
 
   input{
-    width: 589px;
-    height: 44px;
-    padding: 0 20px;
-    border-radius: 4px;
+    width: 36.81rem;
+    height: 2.75rem;
+    padding: 0 1.25rem;
+    border-radius: 0.25rem;
     border: 1px solid var(--gray-300);
   }
 }
@@ -121,32 +122,32 @@ body{
     font-style: normal;
     font-weight: 600;
     line-height: 150%;
-    padding: 8px 0 0 8px;
+    padding: 0.5rem 0 0 0.5rem;
   }
 
   textarea{
     width: 597px;
     height: 163px;
     padding: 1rem;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     border: 1px solid var(--gray-300);
   }
 }
 
 .popup-footer{
-  padding-top: 20px;
+  padding-top: 1.25rem;
 }
 
 .btn-group{
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 0.75rem;
 
   button{
-    border-radius: 4px;
-    width: 168px;
-    height: 54px;
-    padding: 20px;
+    border-radius: 0.25rem;
+    width: 10.5rem;
+    height: 3.38rem;
+    padding: 1.25rem;
     box-sizing: border-box;
     font-family: inherit;
     font-size: 1rem;
@@ -156,6 +157,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
   .btn-1{
@@ -163,6 +165,7 @@ body{
     background-color: inherit;
     color: var(--content);
     border: 0;
+    
   }
 
   .btn-2{
@@ -174,35 +177,38 @@ body{
 
 /* + 상품문의하기 */
 .form__wrapper--popup-checkbox{
-  padding: 1rem 0 25px;
+  padding: 1rem 0 1.56rem;
   box-shadow: 0 1px 0 0 var(--gray-200);
 }
 
 .form-checkbox{
   position: relative;
-  margin-left: 92px;
-  margin-top: 12px;
+  margin-left: 5.75rem;
+  margin-top: 0.75rem;
+  
 
   input{
     position: absolute;
     appearance: none;
-    width: 23px;
-    height: 23px;
+    width: 1.44rem;
+    height: 1.44rem;
+    cursor: pointer;
     
   }
   label{
     background: url(/svg/Check-UnChecked.svg) no-repeat 0 0 /contain;
-    padding-left: 33px;
+    padding-left: 2.06rem;
     color: var(--black);
     font-family: inherit;
     font-size: 12.003px;
     font-style: normal;
     font-weight: 500;
     line-height: 160%;
-    background-size: 23px 23px;
-    height: 23px;
+    background-size: 1.44rem 1.44rem;
+    height: 1.44rem;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   input:checked + label{
@@ -215,7 +221,13 @@ body{
 
   input:focus-visible{
     outline: 2px solid red;
-    outline-offset: 4px;
+    outline-offset: 0.25rem;
     
   }
+}
+
+/* placeholder폰트 사이즈 변경 */
+input::placeholder {
+  font-size: 1rem;
+  font-style: inherit;
 }
