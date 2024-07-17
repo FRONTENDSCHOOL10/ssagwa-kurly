@@ -52,9 +52,7 @@ export function createFilterComponent(FilterContainer, data, onFilterChange) {
             section.id
           }" value="${item.name}" class="filter__${inputType}">
           <label for="${section.id}${index + 1}" class="filter__label">
-            ${item.name}<span class="filter__count" aria-label="상품 수">${
-              item.count
-            }</span>
+            ${item.name}
           </label>
         </li>
       `;
@@ -166,64 +164,58 @@ export const filterdata = {
       id: 'category',
       title: '카테고리',
       items: [
-        { name: '샐러드·간편식', count: 0 },
-        { name: '국·반찬·메인요리', count: 0 },
-        { name: '정육·계란', count: 0 },
-        { name: '과일·견과·쌀', count: 0 },
-        { name: '간식·과자·떡', count: 0 },
-        { name: '생수·음료·우유·커피', count: 0 },
-        { name: '수산·해산·건어물', count: 0 },
-        { name: '베이커리·치즈·델리', count: 0 },
-        { name: '건강식품', count: 0 },
-        { name: '생활용품·리빙·캠핑', count: 0 },
+        { name: '샐러드·간편식' },
+        { name: '국·반찬·메인요리' },
+        { name: '정육·계란' },
+        { name: '과일·견과·쌀' },
+        { name: '간식·과자·떡' },
+        { name: '생수·음료·우유·커피' },
+        { name: '수산·해산·건어물' },
+        { name: '베이커리·치즈·델리' },
+        { name: '건강식품' },
+        { name: '생활용품·리빙·캠핑' },
       ],
     },
     {
       id: 'delivery',
       title: '배송',
-      items: [
-        { name: '샛별배송', count: 0 },
-        { name: '판매자배송', count: 0 },
-      ],
+      items: [{ name: '샛별배송' }, { name: '판매자배송' }],
     },
     {
       id: 'price',
       title: '가격',
       items: [
-        { name: '6,900 미만', count: 0 },
-        { name: '6,900원 ~ 9,900원', count: 0 },
-        { name: '9,990원 ~ 14,900원', count: 0 },
-        { name: '14,900이상', count: 0 },
+        { name: '6,900 미만' },
+        { name: '6,900원 ~ 9,900원' },
+        { name: '9,900원 ~ 14,900원' },
+        { name: '14,900이상' },
       ],
     },
     {
       id: 'brand',
       title: '브랜드',
       items: [
-        { name: 'CJ', count: 0 },
-        { name: '조선호텔', count: 0 },
-        { name: 'KF365', count: 0 },
-        { name: '피코크', count: 0 },
-        { name: '도리깨침', count: 0 },
+        { name: 'CJ' },
+        { name: '조선호텔' },
+        { name: 'KF365' },
+        { name: '피코크' },
+        { name: '도리깨침' },
       ],
     },
     {
       id: 'benefit',
       title: '혜택',
-      items: [
-        { name: '할인상품', count: 0 },
-        { name: '한정수량', count: 0 },
-      ],
+      items: [{ name: '할인상품' }, { name: '한정수량' }],
     },
     {
       id: 'type',
       title: '유형',
-      items: [{ name: 'Kurly Only', count: 0 }],
+      items: [{ name: 'Kurly Only' }],
     },
     {
       id: 'exclude',
       title: '특정상품 제외',
-      items: [{ name: '반려동물 상품', count: 0 }],
+      items: [{ name: '반려동물 상품' }],
     },
   ],
 };

@@ -5,6 +5,7 @@ import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
 import '/src/components/product_filter/filter.js';
 import '/src/components/product/product.css';
+import openCartModal from '/src/components/cartModal/cartModal.js';
 import pb from '/src/api/pocketbase.js';
 import {
   createFilterComponent,
@@ -185,7 +186,9 @@ function updateProductList() {
     const template = `
         <li class="product__wrapper">
           <div class="product__image-wrapper">
-            <a href="/src/pages/product/?product=${item.id}" class="product__link">
+            <a href="/src/pages/product/?product=${
+              item.id
+            }" class="product__link">
               <figure class="product__visual" aria-label="상품 이미지">
                 <img src="${getPbImageURL(item)}" alt="${item.productName}" />
                 <figcaption class="sr-only">상품 이미지: ${
@@ -194,10 +197,14 @@ function updateProductList() {
               </figure>
             </a>
           </div>
-          <button type="button" class="product__basket" aria-label="장바구니에 상품 담기">
+          <button type="button" class="product__basket" aria-label="장바구니에 상품 담기"  data-product='${JSON.stringify(
+            item
+          )}'>
             <img src="/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기
           </button>
-          <a href="/src/pages/product/?product=${item.id}" class="product__link">
+          <a href="/src/pages/product/?product=${
+            item.id
+          }" class="product__link">
             <div class="product__details">
               <span class="product__delivery" aria-label="배송 설명">${
                 item.Delivery
@@ -246,6 +253,38 @@ function updateProductList() {
         </li>
       `;
     insertLast('.products', template);
+  });
+  document.querySelectorAll('.product__basket').forEach((button) => {
+    button.addEventListener('click', addToCart);
+  });
+}
+
+function addToCart(e) {
+  const button = e.target.closest('button');
+  if (!button) return;
+
+  let product;
+  try {
+    product = JSON.parse(button.dataset.product);
+  } catch (e) {
+    console.error('유효한 JSON 데이터가 아니에요 ☹:', button.dataset.product);
+    return;
+  }
+
+  openCartModal(product, (quantity) => {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      existingItem.quantity = (existingItem.quantity || 1) + quantity;
+    } else {
+      product.quantity = quantity;
+      cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log('장바구니에 상품이 담겼어요🛒');
   });
 }
 
