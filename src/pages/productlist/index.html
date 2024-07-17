@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>마켓 베스트 - 사과컬리 </title>
+  <title>베스트 - 사과컬리 </title>
+  <link rel="icon" type="image/svg+xml" href="/nosorry.png" />
   <link rel="stylesheet" href="/src/pages/productlist/productlist.css" />
   <script type="module" src="/src/pages/productlist/productlist.js"></script>
 </head>
@@ -16,19 +17,19 @@
 
     <div class="productlist-area">
       <aside id="productlist-filter"></aside>
-      <section class="productlist-group">
-        <article class="productlist-sortings">
-          <p class="productlist-sorting__count">총 284건</p>
+      <section class="productlist-group" aria-label="정렬과상품목록 그룹">
+        <article class="productlist-sortings" aria-label="정렬 목록">
+          <p class="productlist-sorting__count"></p>
           <ul>
             <li><a class="productlist-sorting   productlist-sorting--is-active">추천순</a></li>
             <li class="bar"><a class="productlist-sorting">신상품순</a></li>
             <li class="bar"><a class="productlist-sorting">판매량순</a></li>
-            <li class="bar"><a class="productlist-sorting">혜택순</a></li>
+            <li class="bar"><a class="productlist-sorting">할인율순</a></li>
             <li class="bar"><a class="productlist-sorting">낮은 가격순</a></li>
             <li class="bar"><a class="productlist-sorting">높은 가격순</a></li>
           </ul>
         </article>
-        <article class="productlists" role="group">
+        <article class="productlists" aria-label="상품목록">
           <ul class="products"></ul>
         </article>
         <nav class="paginator">

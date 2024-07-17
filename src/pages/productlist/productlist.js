@@ -1,23 +1,34 @@
+/* eslint-disable no-case-declarations */
 import '/src/styles/global.css';
 import '/src/components/pagenatior/pagenatior.css';
 import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
 import '/src/components/product_filter/filter.js';
 import '/src/components/product/product.css';
+import openCartModal from '/src/components/cartModal/cartModal.js';
 import pb from '/src/api/pocketbase.js';
-import { comma } from '/src/lib/math/comma.js';
-import { calcDiscountPrice } from '/src/lib/math';
+import {
+  createFilterComponent,
+  filterdata,
+} from '/src/components/product_filter/filter.js';
+
 import {
   getNode,
   insertLast,
   toggleClass,
   removeClass,
+  addClass,
   getPbImageURL,
+  calcDiscountPrice,
+  comma,
+  getNodes,
 } from '/src/lib';
 
-const perpage = 15; //한페이지당 표시할갯수
-let currentPage = 1; // 현재 페이지 1부터시작해야함
-let totalProducts = []; //모든 상품 배열임
+const perpage = 15;
+let currentPage = 1;
+let originalProducts = [];
+let totalProducts = [];
+let currentSortType = '추천순';
 
 async function ProductsList() {
   try {
@@ -25,13 +36,136 @@ async function ProductsList() {
       sort: '-created',
     });
 
+    const sortingContainer = getNode('.productlist-sortings ul');
+    sortingContainer.addEventListener('click', handleSortingClick);
+
+    originalProducts = records;
     totalProducts = records;
+    const counting = getNode('.productlist-sorting__count');
+    counting.textContent = `총 ${totalProducts.length}건`;
     updateProductList();
     updatePagination();
+
+    createFilterComponent('productlist-filter', filterdata, handleFilterChange);
+
+    // 초기 정렬 상태 설정
+    currentSortType = '추천순';
+    updateSortingUI();
+    sortProducts(currentSortType);
   } catch (error) {
     console.error('제품을 가져오는 중 오류 발생:', error);
     console.error('Error details:', error);
   }
+}
+
+function handleFilterChange(filters) {
+  totalProducts = filterProducts(originalProducts, filters);
+  currentPage = 1;
+
+  sortProducts(currentSortType);
+  updateProductList();
+  updatePagination();
+
+  const counting = getNode('.productlist-sorting__count');
+  counting.textContent = `총 ${totalProducts.length}건`;
+}
+
+function filterProducts(products, filters) {
+  return products.filter((product) => {
+    return Object.entries(filters).every(([key, values]) => {
+      if (!values || values.length === 0) return true;
+
+      switch (key) {
+        case 'category':
+          return values.includes(product.category);
+        case 'delivery':
+          return values.includes(product.Delivery);
+        case 'price':
+          const price = calcDiscountPrice(
+            Number(product.price),
+            Number(product.discountRate)
+          );
+          return isPriceInRange(price, values[0]);
+        case 'brand':
+          return values.includes(product.brand);
+        case 'benefit':
+          return values.some((benefit) => {
+            if (benefit === '할인상품') return Number(product.discountRate) > 0;
+            if (benefit === '한정수량') return product.limitCount;
+            return false;
+          });
+        case 'type':
+          return values.some((type) => {
+            if (type === 'Kurly Only') return product.kurlyOnly;
+            return false;
+          });
+        case 'exclude':
+          return values.some((exclude) => {
+            if (exclude === '반려동물 상품') return !product.isPetProduct;
+            return false;
+          });
+        default:
+          return true;
+      }
+    });
+  });
+}
+
+function isPriceInRange(price, range) {
+  const [min, max] = range
+    .split(' ~ ') //~기준으로 나눔
+    .map((v) => parseInt(v.replace(/[^0-9]/g, ''))); //숫자가아닌 모든문자제거 그리고 parseINt로 정수로변환
+  if (range.includes('미만')) {
+    return price < min;
+  } else if (range.includes('이상')) {
+    return price >= min;
+  } else {
+    return price >= min && price <= max;
+  }
+}
+
+function sortProducts(sortType) {
+  currentSortType = sortType;
+  let sortedProducts = [...totalProducts];
+
+  switch (sortType) {
+    case '추천순':
+      sortedProducts;
+      break;
+    case '신상품순':
+      sortedProducts.sort((a, b) => new Date(b.created) - new Date(a.created));
+      break;
+    case '판매량순':
+      sortedProducts;
+      break;
+    case '할인율순':
+      sortedProducts.sort((a, b) => b.discountRate - a.discountRate);
+      break;
+    case '낮은 가격순':
+    case '높은 가격순':
+      sortedProducts.sort((a, b) => {
+        const priceA = calcDiscountPrice(
+          Number(a.price),
+          Number(a.discountRate)
+        );
+        const priceB = calcDiscountPrice(
+          Number(b.price),
+          Number(b.discountRate)
+        );
+        return sortType === '낮은 가격순' ? priceA - priceB : priceB - priceA;
+      });
+      break;
+    default:
+      sortedProducts.sort((a, b) => a.productName.localeCompare(b.productName));
+  }
+
+  totalProducts = sortedProducts;
+  updateSortingUI();
+  updateProductList();
+  updatePagination();
+
+  const counting = getNode('.productlist-sorting__count');
+  counting.textContent = `총 ${totalProducts.length}건`;
 }
 
 function updateProductList() {
@@ -40,20 +174,21 @@ function updateProductList() {
 
   const firstIndex = (currentPage - 1) * perpage;
   const lastIndex = firstIndex + perpage;
-  const pageProducts = totalProducts.slice(firstIndex, lastIndex); //첫번째인덱스부터 마지막인덱스직전까지 새배열로반환해주기
+  const pageProducts = totalProducts.slice(firstIndex, lastIndex);
 
   pageProducts.forEach((item) => {
     const price = Number(item.price);
     const discountRate = Number(item.discountRate);
     const hasDiscount = discountRate !== 0 && item.discountRate !== '';
     const discountPrice = hasDiscount
-      ? calcDiscountPrice(price, discountRate)
+      ? Math.ceil(calcDiscountPrice(price, discountRate))
       : price;
-
     const template = `
         <li class="product__wrapper">
           <div class="product__image-wrapper">
-            <a href="/src/pages/product/?product=${item.id}" class="product__link">
+            <a href="/src/pages/product/?product=${
+              item.id
+            }" class="product__link">
               <figure class="product__visual" aria-label="상품 이미지">
                 <img src="${getPbImageURL(item)}" alt="${item.productName}" />
                 <figcaption class="sr-only">상품 이미지: ${
@@ -62,10 +197,14 @@ function updateProductList() {
               </figure>
             </a>
           </div>
-          <button type="button" class="product__basket" aria-label="장바구니에 상품 담기">
+          <button type="button" class="product__basket" aria-label="장바구니에 상품 담기"  data-product='${JSON.stringify(
+            item
+          )}'>
             <img src="/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기
           </button>
-          <a href="/src/pages/product/?product=${item.id}" class="product__link">
+          <a href="/src/pages/product/?product=${
+            item.id
+          }" class="product__link">
             <div class="product__details">
               <span class="product__delivery" aria-label="배송 설명">${
                 item.Delivery
@@ -115,6 +254,38 @@ function updateProductList() {
       `;
     insertLast('.products', template);
   });
+  document.querySelectorAll('.product__basket').forEach((button) => {
+    button.addEventListener('click', addToCart);
+  });
+}
+
+function addToCart(e) {
+  const button = e.target.closest('button');
+  if (!button) return;
+
+  let product;
+  try {
+    product = JSON.parse(button.dataset.product);
+  } catch (e) {
+    console.error('유효한 JSON 데이터가 아니에요 ☹:', button.dataset.product);
+    return;
+  }
+
+  openCartModal(product, (quantity) => {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      existingItem.quantity = (existingItem.quantity || 1) + quantity;
+    } else {
+      product.quantity = quantity;
+      cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log('장바구니에 상품이 담겼어요🛒');
+  });
 }
 
 function updatePagination() {
@@ -133,7 +304,6 @@ function updatePagination() {
     pageNumbersContainer.appendChild(pageLink);
   }
 
-  //페이지네이션 버튼 상태 업데이트
   updatePaginatiorButtonStates(totalPages);
 }
 
@@ -184,6 +354,26 @@ function handlePaginationClick(event) {
       top: 0,
     });
   }
+}
+
+function handleSortingClick(event) {
+  event.preventDefault();
+  const clickedElement = event.target.closest('.productlist-sorting');
+  if (!clickedElement) return;
+
+  currentSortType = clickedElement.textContent.trim();
+  updateSortingUI();
+  sortProducts(currentSortType);
+}
+
+function updateSortingUI() {
+  getNodes('.productlist-sorting').forEach((el) => {
+    if (el.textContent.trim() === currentSortType) {
+      addClass(el, 'productlist-sorting--is-active');
+    } else {
+      removeClass(el, 'productlist-sorting--is-active');
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', ProductsList);

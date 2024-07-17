@@ -1,8 +1,9 @@
 import '/src/components/product_filter/filter.css';
-import { getAttr, toggleClass } from '/src/lib/index.js';
+import { getAttr, toggleClass, addClass, removeClass } from '/src/lib/index.js';
 
-function createFilterComponent(FilterContainer, data) {
+export function createFilterComponent(FilterContainer, data, onFilterChange) {
   const container = document.getElementById(FilterContainer);
+  let currentFilters = {};
 
   function render() {
     const aside = document.createElement('aside');
@@ -51,9 +52,7 @@ function createFilterComponent(FilterContainer, data) {
             section.id
           }" value="${item.name}" class="filter__${inputType}">
           <label for="${section.id}${index + 1}" class="filter__label">
-            ${item.name}<span class="filter__count" aria-label="상품 수">${
-              item.count
-            }</span>
+            ${item.name}
           </label>
         </li>
       `;
@@ -76,89 +75,147 @@ function createFilterComponent(FilterContainer, data) {
     toggleButtons.forEach((button) => {
       button.addEventListener('click', handleSectionToggle);
     });
+
+    const inputs = container.querySelectorAll(
+      'input[type="checkbox"], input[type="radio"]'
+    );
+    inputs.forEach((input) => {
+      input.addEventListener('change', handleInputChange);
+    });
+
+    const resetButton = container.querySelector('.filter__reset');
+    resetButton.addEventListener('click', handleReset);
   }
 
   function handleSectionToggle(event) {
     const button = event.currentTarget;
     const sectionId = getAttr(button, 'aria-controls');
-
     const section = document.getElementById(sectionId);
-
     const isExpanded = getAttr(button, 'aria-expanded') === 'true';
 
     button.setAttribute('aria-expanded', !isExpanded);
     toggleClass(section, 'expanded');
   }
 
+  function handleInputChange(event) {
+    const input = event.target;
+    const filterType = input.name;
+    const filterValue = input.value;
+
+    if (input.type === 'radio') {
+      // 라디오 버튼의 경우, 해당 필터 타입의 값을 새로운 값으로 대체
+      currentFilters[filterType] = [filterValue];
+    } else {
+      // 체크박스의 경우, 기존 로직 유지
+      if (!currentFilters[filterType]) {
+        currentFilters[filterType] = [];
+      }
+
+      if (input.checked) {
+        if (!currentFilters[filterType].includes(filterValue)) {
+          currentFilters[filterType].push(filterValue);
+        }
+      } else {
+        currentFilters[filterType] = currentFilters[filterType].filter(
+          (value) => value !== filterValue
+        );
+      }
+
+      if (currentFilters[filterType].length === 0) {
+        delete currentFilters[filterType];
+      }
+    }
+
+    updateResetButton();
+    if (onFilterChange) onFilterChange(currentFilters);
+  }
+  function updateResetButton() {
+    const resetButton = container.querySelector('.filter__reset');
+    const anyChecked = container.querySelector(
+      'input[type="checkbox"]:checked, input[type="radio"]:checked'
+    );
+
+    if (anyChecked) {
+      addClass(resetButton, 'filter__reset--active');
+    } else {
+      removeClass(resetButton, 'filter__reset--active');
+    }
+  }
+
+  function handleReset() {
+    const inputs = container.querySelectorAll(
+      'input[type="checkbox"], input[type="radio"]'
+    );
+    inputs.forEach((input) => {
+      input.checked = false;
+    });
+
+    currentFilters = {};
+    updateResetButton();
+    if (onFilterChange) onFilterChange(currentFilters);
+  }
+
   render();
 }
 
-const filterdata = {
+export const filterdata = {
   sections: [
     {
       id: 'category',
       title: '카테고리',
       items: [
-        { name: '샐러드·간편식', count: 65 },
-        { name: '국·반찬·메인요리', count: 52 },
-        { name: '정육·계란', count: 41 },
-        { name: '과일·견과·쌀', count: 30 },
-        { name: '간식·과자·떡', count: 18 },
-        { name: '생수·음료·우유·커피', count: 17 },
-        { name: '수산·해산·건어물', count: 16 },
-        { name: '베이커리·치즈·델리', count: 13 },
-        { name: '건강식품', count: 10 },
-        { name: '생활용품·리빙·캠핑', count: 10 },
+        { name: '샐러드·간편식' },
+        { name: '국·반찬·메인요리' },
+        { name: '정육·계란' },
+        { name: '과일·견과·쌀' },
+        { name: '간식·과자·떡' },
+        { name: '생수·음료·우유·커피' },
+        { name: '수산·해산·건어물' },
+        { name: '베이커리·치즈·델리' },
+        { name: '건강식품' },
+        { name: '생활용품·리빙·캠핑' },
       ],
     },
     {
       id: 'delivery',
       title: '배송',
-      items: [
-        { name: '샛별배송', count: 777 },
-        { name: '판매자배송', count: 6 },
-      ],
+      items: [{ name: '샛별배송' }, { name: '판매자배송' }],
     },
     {
       id: 'price',
       title: '가격',
       items: [
-        { name: '6,900 미만', count: 100 },
-        { name: '6,900원 ~ 9,900원', count: 200 },
-        { name: '9,990원 ~ 14,900원', count: 150 },
-        { name: '14,900이상', count: 100 },
+        { name: '6,900 미만' },
+        { name: '6,900원 ~ 9,900원' },
+        { name: '9,900원 ~ 14,900원' },
+        { name: '14,900이상' },
       ],
     },
     {
       id: 'brand',
       title: '브랜드',
       items: [
-        { name: 'CJ', count: 1 },
-        { name: '조선호텔', count: 1 },
-        { name: 'KF365', count: 1 },
-        { name: '피코크', count: 1 },
-        { name: '도리꺠침', count: 1 },
+        { name: 'CJ' },
+        { name: '조선호텔' },
+        { name: 'KF365' },
+        { name: '피코크' },
+        { name: '도리깨침' },
       ],
     },
     {
       id: 'benefit',
       title: '혜택',
-      items: [
-        { name: '할인상품', count: 666 },
-        { name: '한정수량', count: 7 },
-      ],
+      items: [{ name: '할인상품' }, { name: '한정수량' }],
     },
     {
       id: 'type',
       title: '유형',
-      items: [{ name: 'Kurly Only', count: 77 }],
+      items: [{ name: 'Kurly Only' }],
     },
     {
       id: 'exclude',
       title: '특정상품 제외',
-      items: [{ name: '반려동물 상품', count: 1 }],
+      items: [{ name: '반려동물 상품' }],
     },
   ],
 };
-
-createFilterComponent('productlist-filter', filterdata);
