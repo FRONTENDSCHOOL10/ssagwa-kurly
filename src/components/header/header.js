@@ -164,7 +164,7 @@ class KurlyHeader extends HTMLElement {
       .querySelector('.logout-link')
       .addEventListener('click', () => {
         localStorage.removeItem('auth');
-        location.reload();
+        location.href = '/';
       });
   }
 
