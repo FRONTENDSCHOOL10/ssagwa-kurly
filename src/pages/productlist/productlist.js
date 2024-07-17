@@ -5,7 +5,7 @@ import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
 import '/src/components/product_filter/filter.js';
 import '/src/components/product/product.css';
-import openCartModal from '/src/components/cartModal/cartModal.js';
+import openCartModal from '/src/components/cart-modal/cartModal.js';
 import pb from '/src/api/pocketbase.js';
 import {
   createFilterComponent,
