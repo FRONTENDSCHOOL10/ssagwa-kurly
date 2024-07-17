@@ -1,9 +1,9 @@
 import '/src/styles/global.css';
-import '/src/components/cart-accordion/cartAccordion.css';
+import viewModal from '/src/components/modal/modal.js';
 import { createAccordionItem } from '/src/components/cart-accordion/accordionItem.js';
+import '/src/components/cart-accordion/cartAccordion.css';
 import { setStorage, toggleClass } from '/src/lib/index.js';
-import { displayEmptyCartMessage } from '../../pages/cart/cart';
-import viewModal from '../modal/modal';
+import { displayEmptyCartMessage } from '/src/pages/cart/cart.js';
 
 export function createCartAccordion(cartData) {
   const refrigeratedItems = cartData.filter((item) =>
