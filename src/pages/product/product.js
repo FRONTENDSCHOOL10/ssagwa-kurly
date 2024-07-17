@@ -7,7 +7,7 @@ import '/src/components/button/button.css';
 
 import pb from '/src/api/pocketbase.js';
 import initializeStepper from '/src/components/stepper/stepper.js';
-import { getStorage, calcDiscountPrice, comma, getPbImageURL, insertFirst, setDocumentTitle } from '/src/lib/index.js'
+import { getStorage, calcDiscountPrice, comma, getPbImageURL, insertFirst, setDocumentTitle, addToCart } from '/src/lib/index.js'
 import viewModal from '/src/components/modal/modal.js';
 import { setRecentProduct, addRecentProduct } from '/src/components/recent-product/recent-product.js';
 
@@ -26,8 +26,8 @@ async function renderProduct(){
 
   const {price,discountRate,Delivery,productName,productDescription,productDetailDescription,packagingType,unitOfSale,weight,origin,allergy} = data;
   
-  
   setRecentProduct(productId, getPbImageURL(data), productName);
+
   const product_top_contnet = /* html */`
       <img class="product__img" src="${getPbImageURL(data)}" alt="${productName}"/>
       <div class="product__detail-wrapper">
@@ -111,7 +111,7 @@ async function renderProduct(){
         <div class="product__actions">
           <button type="button" class="product__button-like"></button>
           <button type="button" disabled class="product__button-bell"></button>
-          <button type="button" class="button--large button--primary">장바구니 담기</button>
+          <button type="button" class="button--large button--primary product__button-addcart">장바구니 담기</button>
         </div>
       </div>
   `
@@ -138,6 +138,11 @@ async function renderProduct(){
     productLikeBtn.style.backgroundPosition = '-9px 63px';
   })
 
+  // 장바구니 담기 버튼
+  const productAddCart = document.querySelector('.product__button-addcart');
+  productAddCart.addEventListener('click', () => {
+    addToCart(data, Number(stepper_stat.textContent));
+  });
  
 
   const product_description_contnet = /* html */`
