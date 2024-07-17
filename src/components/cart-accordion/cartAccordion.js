@@ -169,6 +169,12 @@ export function addEventListeners(cartData, updateCartSummary) {
           }
         }
       });
+
+      // 취소 버튼에 스타일 추가
+      const modalCancelButton = document.querySelector('.modalClose.btn1');
+      if (modalCancelButton) {
+        modalCancelButton.style.color = 'inherit';
+      }
     });
   });
 
@@ -202,6 +208,12 @@ export function addEventListeners(cartData, updateCartSummary) {
           displayEmptyCartMessage();
         }
       });
+
+      // 취소 버튼에 스타일 추가
+      const modalCancelButton = document.querySelector('.modalClose.btn1');
+      if (modalCancelButton) {
+        modalCancelButton.style.color = 'inherit';
+      }
     });
   });
 }
