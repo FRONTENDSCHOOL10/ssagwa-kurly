@@ -3,9 +3,6 @@ export const slideSwiper = () => {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
-    autoplay: {
-      delay: 2000,
-    },
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 0,
@@ -40,9 +37,6 @@ export const slideSwiper = () => {
     slidesPerView: 4,
     slidesPerGroup: 1,
     spaceBetween: 0, 
-    autoplay: {
-      delay: 3000,
-    },
     speed: 2000,
     observer: true,
     observeParents: true,
