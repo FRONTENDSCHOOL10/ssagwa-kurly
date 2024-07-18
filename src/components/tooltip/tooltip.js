@@ -1,5 +1,5 @@
-import '/src/styles/global.css';
 import '/src/components/tooltip/tooltip.css';
+
 import { getPbImageURL } from '/src/lib';
 
 let tooltipTimeout;

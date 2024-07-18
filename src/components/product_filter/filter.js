@@ -1,4 +1,5 @@
 import '/src/components/product_filter/filter.css';
+
 import { getAttr, toggleClass, addClass, removeClass } from '/src/lib/index.js';
 
 export function createFilterComponent(FilterContainer, data, onFilterChange) {

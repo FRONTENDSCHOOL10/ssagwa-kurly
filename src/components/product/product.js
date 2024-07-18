@@ -1,7 +1,7 @@
-import pb from '/src/api/pocketbase.js';
 import '/src/components/product/product.css';
-import { comma } from '/src/lib/math/comma.js';
-import { calcDiscountPrice } from '/src/lib/math/calcDiscountPrice.js';
+
+import pb from '/src/api/pocketbase.js';
+import { comma, calcDiscountPrice } from '/src/lib/index.js';
 
 async function ProductsList() {
   try {
