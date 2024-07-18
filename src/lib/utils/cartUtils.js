@@ -7,8 +7,8 @@ import openCartModal from '/src/components/cart-modal/cartModal.js';
  * '장바구니에 담기' 버튼 클릭 시 장바구니 모달을 띄우지 않고
  * 툴팁 알림만 띄우고 장바구니에 상품을 담는 함수
  */
-export function addToCart(product, quantity) {
-  let cart = getStorage('cart');
+export async function addToCart(product, quantity) {
+  let cart = await getStorage('cart');
 
   if (!Array.isArray(cart)) {
     cart = [];
@@ -24,7 +24,7 @@ export function addToCart(product, quantity) {
     cart.push(product);
   }
 
-  setStorage('cart', cart);
+  await setStorage('cart', cart);
   openCartTooltip(product, isDuplicate);
 }
 
@@ -33,7 +33,7 @@ export function addToCart(product, quantity) {
  * '장바구니에 담기' 버튼 클릭 시 장바구니 모달을 띄워 수량을 저장한 후
  * addToCart 함수 호출
  */
-export function addToCartwithModal(e) {
+export async function addToCartwithModal(e) {
   const button = e.target.closest('button');
   if (!button) return;
 
@@ -45,7 +45,7 @@ export function addToCartwithModal(e) {
     return;
   }
 
-  openCartModal(product, (quantity) => {
-    addToCart(product, quantity);
+  openCartModal(product, async (quantity) => {
+    await addToCart(product, quantity);
   });
 }
