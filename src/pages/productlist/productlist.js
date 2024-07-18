@@ -50,7 +50,9 @@ async function ProductsList() {
     updatePagination();
 
     createFilterComponent('productlist-filter', filterdata, handleFilterChange);
-
+    //URL 현재 페이지 번호 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    currentPage = parseInt(urlParams.get('page')) || 1;
     // 초기 정렬 상태 설정
     currentSortType = '추천순';
     updateSortingUI();
@@ -193,7 +195,7 @@ function updateProductList() {
               item.id
             }" class="product__link">
               <figure class="product__visual" aria-label="상품 이미지">
-                <img src="${getPbImageURL(item)}" alt="${item.productName}" />
+                <img src="${getPbImageURL(item)}" alt="${item.productName}"/>
                 <figcaption class="sr-only">상품 이미지: ${
                   item.productName
                 }</figcaption>
@@ -350,11 +352,25 @@ function handlePaginationClick(event) {
 
   if (newPage !== currentPage) {
     currentPage = newPage;
+
+    const newUrl = new URL(window.location);
+    newUrl.searchParams.set('page', currentPage);
+    history.pushState({ page: currentPage }, '', newUrl); //새로고침없이 하ㅏ라수있음
+
     updateProductList();
     updatePagination();
 
-    window.scrollTo({
-      top: 0,
+    //뒤로가기 앞으로가기하면 page 넘어갈수있게
+    window.addEventListener('popstate', (event) => {
+      if (event.state && event.state.page) {
+        currentPage = event.state.page;
+        updateProductList();
+        updatePagination();
+        //상단으로 스크롤 올라가게
+        window.scrollTo({
+          top: 0,
+        });
+      }
     });
   }
 }
