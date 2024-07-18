@@ -34,23 +34,23 @@ class KurlyHeader extends HTMLElement {
               <button
                 type="submit"
               >
-                <img src="/svg/Search.svg" alt="검색" />
+                <img src="/svg/Search.svg" alt="검색" class="icon" />
               </button>
             </form>
             <ul class="header__icon-list">
               <li>
                 <a href="#">
-                  <img src="/svg/Location.svg" alt="배송지 등록" />
+                  <img src="/svg/Location.svg" alt="배송지 등록" class="icon" />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="/svg/Heart.svg" alt="찜한 상품 목록" />
+                  <img src="/svg/Heart.svg" alt="찜한 상품 목록" class="icon" />
                 </a>
               </li>
               <li>
                 <a href="/src/pages/cart/index.html">
-                  <img src="/svg/Group.svg" alt="장바구니" />
+                  <img src="/svg/Group.svg" alt="장바구니" class="icon" />
                 </a>
               </li>
             </ul>
@@ -65,7 +65,7 @@ class KurlyHeader extends HTMLElement {
             <li class="header__member-item">
               <a href="#" class="header__member-link">
                 고객센터
-                <img src="/svg/Icon_down.png" alt="펼치기" />
+                <img class="icon-down" src="/svg/Icon_down.png" alt="펼치기" />
               </a>
               <ul class="header__cs-menu">
                 <li>
@@ -84,8 +84,7 @@ class KurlyHeader extends HTMLElement {
             </li>
           </ul>
         </div>
-
-          <nav class="nav" aria-label="상품 전체 카테고리">
+        <nav class="nav" aria-label="상품 전체 카테고리">
           <ul class="nav__category" aria-haspopup="true" aria-expanded="false">
             <li>
               <img src="/svg/Hamburger.svg" alt="카테고리" />
@@ -95,7 +94,6 @@ class KurlyHeader extends HTMLElement {
               <ul class="nav__category-list"></ul>
             </li>
           </ul>
-
           <ul class="nav__product-list">
             <li>
               <a href="/src/pages/productlist/index.html">신상품</a>
@@ -124,9 +122,50 @@ class KurlyHeader extends HTMLElement {
   }
 
   connectedCallback() {
+    this.checkLoginStatus();
     categoryMenuItem(this.shadowRoot);
-
     window.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  checkLoginStatus() {
+    const auth = JSON.parse(localStorage.getItem('auth'));
+    if (auth && auth.isAuth) {
+      this.showLoggedInHeader(auth.user);
+    }
+  }
+
+  showLoggedInHeader(user) {
+    const memberService = this.shadowRoot.querySelector(
+      '.header__member-service'
+    );
+    memberService.innerHTML = `
+      <li class="header__member-item divider">
+        <a href="#" class="header__member-link">${user.name} 님<img src="/svg/Icon_down.png" alt="펼치기" /></a>
+        <ul class="user-menu">
+          <li><a href="#">마이페이지</a></li>
+          <li><a href="#" class="logout-link">로그아웃</a></li>
+        </ul>
+      </li>
+      <li class="header__member-item">
+        <a href="#" class="header__member-link">
+          고객센터
+          <img src="/svg/Icon_down.png" alt="펼치기" />
+        </a>
+        <ul class="header__cs-menu">
+          <li><a href="#">공지사항</a></li>
+          <li><a href="#">자주하는질문</a></li>
+          <li><a href="#">1:1 문의</a></li>
+          <li><a href="#">대량주문 문의</a></li>
+        </ul>
+      </li>
+    `;
+
+    this.shadowRoot
+      .querySelector('.logout-link')
+      .addEventListener('click', () => {
+        localStorage.removeItem('auth');
+        location.href = '/';
+      });
   }
 
   handleScroll() {
