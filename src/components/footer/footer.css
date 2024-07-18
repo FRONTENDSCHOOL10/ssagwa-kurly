@@ -21,7 +21,8 @@ ul {
   background: var(--white);
 }
 .footer__maininner {
-  min-width: 65.625rem;
+  width: 65.625rem;
+  height: 32.6rem;
 }
 
 .footer__top {
@@ -161,6 +162,10 @@ ul {
     font-size: 0.625rem;
     text-decoration: none;
     color: var(--content);
+  }
+  img {
+    width: 32px;
+    height: 32px;
   }
 }
 
