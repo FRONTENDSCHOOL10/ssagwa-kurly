@@ -1,10 +1,10 @@
 import '/src/pages/product/product.css';
 
 import '/src/styles/global.css';
-import '/src/components/header/header.js';
-import '/src/components/footer/footer.js';
 import '/src/components/button/button.css';
 
+import '/src/components/header/header.js';
+import '/src/components/footer/footer.js';
 import pb from '/src/api/pocketbase.js';
 import initializeStepper from '/src/components/stepper/stepper.js';
 import { getStorage, calcDiscountPrice, comma, getPbImageURL, insertFirst, setDocumentTitle, addToCart } from '/src/lib/index.js'

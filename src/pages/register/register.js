@@ -1,14 +1,13 @@
 import '/src/pages/register/register.css';
 
 import '/src/styles/global.css';
-import '/src/components/header/header.js';
-import '/src/components/footer/footer.js';
 import '/src/components/input/input.css';
 import '/src/components/button/button.css';
 
+import '/src/components/header/header.js';
+import '/src/components/footer/footer.js';
 import pb from '/src/api/pocketbase';
-import { isBoolean } from '/src/lib/utils/typeOf.js';
-import { getNode } from '/src/lib/dom/getNode.js';
+import { isBoolean, getNode } from '/src/lib/index.js';
 import viewModal from '/src/components/modal/modal.js';
 
 const registerForm = getNode('.register__form');

@@ -1,12 +1,15 @@
 /* eslint-disable no-case-declarations */
+import '/src/pages/productlist/productlist.css';
+
 import '/src/styles/global.css';
 import '/src/components/pagenatior/pagenatior.css';
+import '/src/components/product/product.css';
+
 import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
-import '/src/components/product_filter/filter.js';
-import '/src/components/product/product.css';
-import openCartModal from '/src/components/cart-modal/cartModal.js';
 import pb from '/src/api/pocketbase.js';
+import '/src/components/product_filter/filter.js';
+import openCartModal from '/src/components/cart-modal/cartModal.js';
 import { addRecentProduct } from '/src/components/recent-product/recent-product.js';
 import {
   createFilterComponent,
