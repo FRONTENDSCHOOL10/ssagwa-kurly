@@ -67,6 +67,7 @@ input:focus {
 
 .header__logo img {
   width: 5.125rem;
+  height: 2.386875rem;
 }
 
 .header__site-switch ul {
@@ -231,6 +232,8 @@ input:focus {
 
 .nav__category img {
   margin-right: 0.75rem;
+  width: 1rem;
+  height: 0.875rem;
 }
 
 .nav__category-list {
@@ -391,4 +394,13 @@ nav.scrolled .nav__product-list li {
 .icon:hover {
   filter: invert(39%) sepia(24%) saturate(3960%) hue-rotate(322deg)
     brightness(89%) contrast(100%);
+}
+
+.icon {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+.icon-down {
+  width: 0.5rem;
+  height: 0.35rem;
 }
