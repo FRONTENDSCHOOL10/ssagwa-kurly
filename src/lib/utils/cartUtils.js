@@ -7,25 +7,29 @@ import openCartModal from '/src/components/cart-modal/cartModal.js';
  * '장바구니에 담기' 버튼 클릭 시 장바구니 모달을 띄우지 않고
  * 툴팁 알림만 띄우고 장바구니에 상품을 담는 함수
  */
-export function addToCart(product, quantity) {
-  let cart = getStorage('cart');
+export async function addToCart(product, quantity) {
+  try {
+    let cart = await getStorage('cart');
 
-  if (!Array.isArray(cart)) {
-    cart = [];
+    if (!Array.isArray(cart)) {
+      cart = [];
+    }
+
+    const existingItem = cart.find((item) => item.id === product.id);
+    const isDuplicate = !!existingItem;
+
+    if (isDuplicate) {
+      existingItem.quantity += quantity;
+    } else {
+      product.quantity = quantity;
+      cart.push(product);
+    }
+
+    await setStorage('cart', cart);
+    openCartTooltip(product, isDuplicate);
+  } catch (error) {
+    console.error('장바구니에 상품을 담는 중 오류가 발생했습니다:', error);
   }
-
-  const existingItem = cart.find((item) => item.id === product.id);
-  const isDuplicate = !!existingItem;
-
-  if (isDuplicate) {
-    existingItem.quantity += quantity;
-  } else {
-    product.quantity = quantity;
-    cart.push(product);
-  }
-
-  setStorage('cart', cart);
-  openCartTooltip(product, isDuplicate);
 }
 
 /**
@@ -45,7 +49,7 @@ export function addToCartwithModal(e) {
     return;
   }
 
-  openCartModal(product, (quantity) => {
-    addToCart(product, quantity);
+  openCartModal(product, async (quantity) => {
+    await addToCart(product, quantity);
   });
 }
