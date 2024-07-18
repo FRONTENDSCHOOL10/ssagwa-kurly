@@ -26,7 +26,7 @@ input:focus {
   top: 0;
   background-color: var(--white);
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 9.75rem;
   align-items: center;
   flex-direction: column;
@@ -69,23 +69,20 @@ input:focus {
   width: 5.125rem;
 }
 
-.header__site-switch {
-  font-weight: 500;
+.header__site-switch ul {
+  display: flex;
+}
 
-  ul {
-    display: flex;
-  }
+.header__site-switch a {
+  font-size: 1.25rem;
+  margin: 0 0.75rem;
+}
 
-  a {
-    font-size: 1.25rem;
-    margin: 0 0.75rem;
-  }
-  a:hover {
-    color: var(--primary);
-    font-weight: bold;
-    transform: scale(1.1);
-    transition: all 0.1s linear;
-  }
+.header__site-switch a:hover {
+  color: var(--primary);
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 0.1s linear;
 }
 
 .site-main {
@@ -121,28 +118,28 @@ input:focus {
   border-radius: 0.375rem;
   border: 0.0625rem solid var(--primary);
   padding-left: 0.875rem;
+}
 
-  input {
-    border: none;
-    width: 85%;
-    font-size: 1rem;
-    color: var(--gray-500);
-  }
+.header__search input {
+  border: none;
+  width: 85%;
+  font-size: 1rem;
+  color: var(--gray-500);
+}
 
-  input::placeholder {
-    color: var(--gray-300);
-  }
+.header__search input::placeholder {
+  color: var(--gray-300);
+}
 
-  button {
-    font-size: 1.3125rem;
-    width: 2.25rem;
-    border: 0;
-    background-color: transparent;
-    margin: 0.625rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
+.header__search button {
+  font-size: 1.3125rem;
+  width: 2.25rem;
+  border: 0;
+  background-color: transparent;
+  margin: 0.625rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .header__icon-list {
@@ -161,20 +158,22 @@ input:focus {
 }
 
 .header__member-item {
+  position: relative;
   display: flex;
   align-items: center;
   height: 1.3rem;
-  ul {
-    display: none;
-  }
+}
+
+.header__member-item ul {
+  display: none;
 }
 
 .divider::after {
   content: '';
   width: 0.0625rem;
-  height: 13px;
+  height: 0.8125rem;
   background-color: var(--gray-100);
-  margin: 0 14px;
+  margin: 0 0.875rem;
 }
 
 .header__member-item:hover .header__cs-menu {
@@ -182,11 +181,12 @@ input:focus {
   font-weight: 300;
   position: absolute;
   right: 0;
-  top: 2rem;
-  background-color: var(--white);
-  font-size: 0.75rem;
+  top: 1.75rem;
   width: 6.875rem;
   padding: 0.1875rem 0.5625rem;
+  background-color: var(--white);
+  font-size: 0.75rem;
+
   border: 0.06rem solid var(--gray-100);
   line-height: 1.5625rem;
   flex-direction: column;
@@ -194,15 +194,16 @@ input:focus {
 }
 
 .header__member-link {
+  position: relative;
   height: 2.1875rem;
   display: flex;
   align-items: center;
   font-size: 0.75rem;
+}
 
-  img {
-    color: var(--primary);
-    margin-left: 0.375rem;
-  }
+.header__member-link img {
+  color: var(--primary);
+  margin-left: 0.375rem;
 }
 
 .join {
@@ -216,20 +217,20 @@ input:focus {
   align-items: center;
   justify-content: space-between;
   position: relative;
+}
 
-  span:hover {
-    color: var(--primary);
-  }
+.nav span:hover {
+  color: var(--primary);
 }
 
 .nav__category {
   display: flex;
   align-items: center;
   height: 100%;
+}
 
-  img {
-    margin-right: 0.75rem;
-  }
+.nav__category img {
+  margin-right: 0.75rem;
 }
 
 .nav__category-list {
@@ -237,7 +238,7 @@ input:focus {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 235px;
+  width: 14.6875rem;
   background: var(--white);
   border: 0.06rem solid var(--gray-100);
   overflow-y: auto;
@@ -266,6 +267,11 @@ input:focus {
   transition: none 0.1s ease;
 }
 
+.nav__category__item:hover .nav__category__item-img {
+  filter: invert(39%) sepia(24%) saturate(3960%) hue-rotate(322deg)
+    brightness(89%) contrast(100%);
+}
+
 .nav__category__item-img {
   width: 1.5rem;
   color: var(--primary);
@@ -276,19 +282,19 @@ input:focus {
 
 .nav__product-list {
   display: flex;
+}
 
-  li {
-    display: flex;
-    width: 9.375rem;
-    height: 1.5rem;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem 0;
-  }
+.nav__product-list li {
+  display: flex;
+  width: 9.375rem;
+  height: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+}
 
-  li:hover {
-    color: var(--primary);
-  }
+.nav__product-list li:hover {
+  color: var(--primary);
 }
 
 .nav__delivery {
@@ -298,24 +304,24 @@ input:focus {
   border-radius: 1rem;
   padding: 0.5rem 0.8rem;
   font-size: 0.75rem;
+}
 
-  span {
-    color: var(--primary);
-  }
+.nav__delivery span {
+  color: var(--primary);
 }
 
 nav.scrolled {
   display: flex;
   align-items: center;
-
   justify-content: flex-start;
+}
 
-  .nav__product-list {
-    margin-left: 1.875rem;
-    li {
-      width: 7.5rem;
-    }
-  }
+nav.scrolled .nav__product-list {
+  margin-left: 1.875rem;
+}
+
+nav.scrolled .nav__product-list li {
+  width: 7.5rem;
 }
 
 .header__wrapper.scrolled {
@@ -329,7 +335,6 @@ nav.scrolled {
   right: 11.25rem;
   width: 15.125rem;
   height: 2.25rem;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -337,21 +342,20 @@ nav.scrolled {
   border: 1px solid var(--gray-50);
   background-color: var(--gray-50);
   z-index: 999;
-
   font-weight: 400;
   font-size: 0.75rem;
+}
 
-  input {
-    border: none;
-    font-size: 0.75rem;
-    background-color: transparent;
-    width: 80%;
-  }
+.header__search.scrolled input {
+  border: none;
+  font-size: 0.75rem;
+  background-color: transparent;
+  width: 80%;
 }
 
 .header__search.scrolled:focus-within {
   background-color: var(--white);
-  border: 1px solid var(--gray-50);
+  border: 0.0625rem solid var(--gray-50);
 }
 
 .header__icon-list.scrolled {
@@ -362,4 +366,29 @@ nav.scrolled {
 
 .header__wrapper.scrolled .nav__delivery {
   display: none;
+}
+
+.user-menu {
+  display: none;
+}
+
+.header__member-item:hover .user-menu {
+  display: block;
+  font-weight: 300;
+  position: absolute;
+  right: 0.75rem;
+  top: 1.75rem;
+  background-color: var(--white);
+  font-size: 0.75rem;
+  width: 6.875rem;
+  padding: 0.1875rem 0.5625rem;
+  border: 0.06rem solid var(--gray-100);
+  line-height: 1.5625rem;
+  flex-direction: column;
+  z-index: 300;
+}
+
+.icon:hover {
+  filter: invert(39%) sepia(24%) saturate(3960%) hue-rotate(322deg)
+    brightness(89%) contrast(100%);
 }
