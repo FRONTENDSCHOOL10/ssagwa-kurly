@@ -406,3 +406,7 @@ nav.scrolled .nav__product-list li {
   width: 0.5rem;
   height: 0.35rem;
 }
+
+.user-menu li:hover {
+  color: var(--primary);
+}
