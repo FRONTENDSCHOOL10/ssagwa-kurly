@@ -67,7 +67,7 @@ function regPhone(text) {
 
 // 특수문자 포함 최소 10자 이상
 function regPW(text) {
-  const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{10,16}$/;
+  const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
   return regex.test(String(text).toLowerCase());
 }
 
