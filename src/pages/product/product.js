@@ -11,7 +11,7 @@ import { getStorage, calcDiscountPrice, comma, getPbImageURL, insertFirst, setDo
 import viewModal from '/src/components/modal/modal.js';
 import { setRecentProduct, addRecentProduct } from '/src/components/recent-product/recent-product.js';
 
-const { isAuth } = getStorage('auth') || {};
+const { isAuth } = await getStorage('auth') || {};
 
 function replaceBr(text){
   return text.replaceAll('\r\n', '<br />');
@@ -134,8 +134,9 @@ async function renderProduct(){
       viewModal('로그인하셔야 본 서비스를 이용하실 수 있습니다.', '확인', ()=>{
         location.href = '/src/pages/login/';
       })
+    }else {
+      productLikeBtn.style.backgroundPosition = '-9px 63px';
     }
-    productLikeBtn.style.backgroundPosition = '-9px 63px';
   })
 
   // 장바구니 담기 버튼
