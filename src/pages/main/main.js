@@ -70,6 +70,9 @@ async function fetchAndDisplayProducts() {
         container.insertAdjacentHTML('beforeend', template);
       });
     });
+
+    
+    
   } catch (error) {
     console.error('제품을 가져오는 중 오류 발생:', error);
   }

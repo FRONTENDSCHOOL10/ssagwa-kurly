@@ -27,6 +27,10 @@ export const slideSwiper = () => {
       nextEl: '.banner-swiper-button-right',
       prevEl: '.banner-swiper-button-left',
     },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
   });
 
   const swiper2 = new Swiper('.price-swiper', {
@@ -55,6 +59,10 @@ export const slideSwiper = () => {
     // Navigation arrows
     navigation: {
       nextEl: '.price-swiper-button-right',
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
     },
   });
 }
