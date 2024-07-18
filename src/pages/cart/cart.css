@@ -95,7 +95,7 @@ button {
   justify-content: space-between;
 }
 
-.reward {
+/* .reward {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -113,7 +113,7 @@ button {
   margin-right: 0.3125rem;
   display: flex;
   padding: 0rem 0.5rem;
-}
+} */
 
 .total__span-left {
   width: 6.25rem;
@@ -123,13 +123,6 @@ button {
 }
 
 .total__span-right {
-  font-size: 1.125rem;
-  line-height: 1.5rem;
-  text-align: right;
-}
-
-.total__span-right {
-  width: 10.125rem;
   font-size: 1.125rem;
   line-height: 1.5rem;
   text-align: right;

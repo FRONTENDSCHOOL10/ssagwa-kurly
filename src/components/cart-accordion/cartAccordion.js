@@ -127,6 +127,7 @@ export function addEventListeners(cartData, updateCartSummary) {
         toggleCheckboxIcon(selectAll);
       });
       updateSelectAllLabel(checkboxes);
+      updateCartSummary(); // Update summary after changing select all checkbox
     });
   });
 
@@ -141,6 +142,7 @@ export function addEventListeners(cartData, updateCartSummary) {
       });
       toggleCheckboxIcon(checkbox);
       updateSelectAllLabel(checkboxes);
+      updateCartSummary(); // Update summary after changing item checkbox
     });
   });
 

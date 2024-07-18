@@ -50,19 +50,24 @@ export function displayEmptyCartMessage() {
 
 export function updateCartSummary() {
   const cartData = JSON.parse(localStorage.getItem('cart')) || [];
-  const totalAmount = cartData.reduce(
-    (sum, item) => sum + item.price * (item.quantity || 1),
-    0
+  const checkboxes = document.querySelectorAll(
+    '.accordion__item--checkbox input[type="checkbox"]'
   );
-  const discountAmount = cartData.reduce(
-    (sum, item) =>
-      Math.trunc(
-        sum +
-          (item.price - calcDiscountPrice(item.price, item.discountRate)) *
-            (item.quantity || 1)
-      ),
-    0
-  );
+
+  let totalAmount = 0;
+  let discountAmount = 0;
+
+  checkboxes.forEach((checkbox, index) => {
+    if (checkbox.checked) {
+      const item = cartData[index];
+      totalAmount += item.price * (item.quantity || 1);
+      discountAmount +=
+        (item.price - calcDiscountPrice(item.price, item.discountRate)) *
+        (item.quantity || 1);
+    }
+  });
+
+  discountAmount = Math.trunc(discountAmount);
 
   const netAmount = totalAmount - discountAmount;
   let deliveryCost = 0;
