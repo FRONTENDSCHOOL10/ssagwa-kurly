@@ -43,7 +43,7 @@ function generateCartSectionHTML() {
       </div>
     </div>
     <section class="cart-accordion__product-list">
-      <h4 class="cart-accordion__heading refrigerated-heading">
+      <h3 class="cart-accordion__heading refrigerated-heading">
         <span class="product__status">
           <span class="icon icon--large icon--refrigerated" aria-hidden="true"></span>
           냉장 상품
@@ -51,9 +51,9 @@ function generateCartSectionHTML() {
         <button class="cart-accordion__toggle-button">
           <span class="icon icon--large icon--arrow-up"></span>
         </button>
-      </h4>
+      </h3>
       <ul class="product__list refrigerated"></ul>
-      <h4 class="cart-accordion__heading frozen-heading">
+      <h3 class="cart-accordion__heading frozen-heading">
         <span class="product__status">
           <span class="icon icon--large icon--frozen" aria-hidden="true"></span>
           냉동 상품
@@ -61,9 +61,9 @@ function generateCartSectionHTML() {
         <button class="cart-accordion__toggle-button">
           <span class="icon icon--large icon--arrow-up"></span>
         </button>
-      </h4>
+      </h3>
       <ul class="product__list frozen"></ul>
-      <h4 class="cart-accordion__heading normal-heading">
+      <h3 class="cart-accordion__heading normal-heading">
         <span class="product__status">
           <span class="icon icon--large icon--normal" aria-hidden="true"></span>
           상온 상품
@@ -71,7 +71,7 @@ function generateCartSectionHTML() {
         <button class="cart-accordion__toggle-button">
           <span class="icon icon--large icon--arrow-up"></span>
         </button>
-      </h4>
+      </h3>
       <ul class="product__list normal"></ul>
     </section>
     <div class="cart-accordion__select-bar">

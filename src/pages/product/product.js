@@ -34,8 +34,8 @@ async function renderProduct(){
         <div class="product__info">
           <p class="product__delivery-method">${Delivery}</p>
           <div>
-            <p class="product__name">${productName}</p>
-            <p class="product__description">${productDescription}</p>
+            <h2 class="product__name">${productName}</h2>
+            <h3 class="product__description">${productDescription}</h3>
           </div>
           <div class="product__price-wrapper">
             <div>
