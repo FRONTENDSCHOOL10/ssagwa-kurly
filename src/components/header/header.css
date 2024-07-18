@@ -230,7 +230,7 @@ input:focus {
   height: 100%;
 }
 
-.nav__category img {
+.nav__category-hambuger {
   margin-right: 0.75rem;
   width: 1rem;
   height: 0.875rem;
@@ -279,7 +279,9 @@ input:focus {
   width: 1.5rem;
   color: var(--primary);
 }
+
 .nav__category__item-title {
+  margin-left: 0.75rem;
   font-size: 0.875rem;
 }
 

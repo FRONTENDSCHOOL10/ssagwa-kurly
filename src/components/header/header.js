@@ -87,7 +87,7 @@ class KurlyHeader extends HTMLElement {
         <nav class="nav" aria-label="상품 전체 카테고리">
           <ul class="nav__category" aria-haspopup="true" aria-expanded="false">
             <li>
-              <img src="/svg/Hamburger.svg" alt="카테고리" />
+            <img src="/svg/Hamburger.svg" alt="카테고리" class="nav__category-hambuger" />
               <span>카테고리</span>
             </li>
             <li>
