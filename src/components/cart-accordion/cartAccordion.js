@@ -129,7 +129,7 @@ export function addEventListeners(cartData, updateCartSummary) {
         toggleCheckboxIcon(selectAll);
       });
       updateSelectAllLabel(checkboxes);
-      updateCartSummary(); // Update summary after changing select all checkbox
+      updateCartSummary();
     });
   });
 
@@ -144,7 +144,7 @@ export function addEventListeners(cartData, updateCartSummary) {
       });
       toggleCheckboxIcon(checkbox);
       updateSelectAllLabel(checkboxes);
-      updateCartSummary(); // Update summary after changing item checkbox
+      updateCartSummary();
     });
   });
 
@@ -174,7 +174,6 @@ export function addEventListeners(cartData, updateCartSummary) {
         }
       });
 
-      // 취소 버튼에 스타일 추가
       const modalCancelButton = document.querySelector('.modalClose.btn1');
       if (modalCancelButton) {
         modalCancelButton.style.color = 'inherit';
@@ -213,7 +212,6 @@ export function addEventListeners(cartData, updateCartSummary) {
         }
       });
 
-      // 취소 버튼에 스타일 추가
       const modalCancelButton = document.querySelector('.modalClose.btn1');
       if (modalCancelButton) {
         modalCancelButton.style.color = 'inherit';
