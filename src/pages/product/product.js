@@ -73,12 +73,12 @@ async function renderProduct(){
             <dd class="product__details-content">${weight}</dd>
           </li>
           <li class="product__details-item">
-              <dt class="product__details-title">원산지</dt>
-              <dd class="product__details-content">${origin}</dd>
+            <dt class="product__details-title">원산지</dt>
+             <dd class="product__details-content">${origin}</dd>
           </li>
           <li class="product__details-item">
             <dt class="product__details-title">알레르기정보</dt>
-              <dd class="product__details-content">${replaceBr(allergy)}</dd>
+            <dd class="product__details-content">${replaceBr(allergy)}</dd>
           </li>
           <li class="product__details-item">
             <dt class="product__details-title">상품선택</dt>
@@ -108,8 +108,8 @@ async function renderProduct(){
           </div>
         </div>
         <div class="product__actions">
-          <button type="button" class="product__button-like"></button>
-          <button type="button" disabled class="product__button-bell"></button>
+          <button type="button" class="product__button-like" aria-label="좋아요"></button>
+          <button type="button" disabled class="product__button-bell" aria-label="재입고 알림"></button>
           <button type="button" class="button--large button--primary product__button-addcart">장바구니 담기</button>
         </div>
       </div>
