@@ -11,13 +11,12 @@ import { getStorage, calcDiscountPrice, comma, getPbImageURL, insertFirst, setDo
 import viewModal from '/src/components/modal/modal.js';
 import { setRecentProduct, addRecentProduct } from '/src/components/recent-product/recent-product.js';
 
-const { isAuth } = await getStorage('auth') || {};
-
 function replaceBr(text){
   return text.replaceAll('\r\n', '<br />');
 }
 
 async function renderProduct(){
+  const { isAuth } = await getStorage('auth') || {};
 
   const params = new URLSearchParams(location.search);
   const productId = params.get('product');
