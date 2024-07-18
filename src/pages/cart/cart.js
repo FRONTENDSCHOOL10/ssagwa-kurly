@@ -1,13 +1,15 @@
+import '/src/pages/cart/cart.css';
+
+import '/src/styles/global.css';
 import '/src/components/button/button.css';
+
+import '/src/components/footer/footer.js';
+import '/src/components/header/header.js';
 import {
   addEventListeners,
   createCartAccordion,
 } from '/src/components/cart-accordion/cartAccordion.js';
-import '/src/components/footer/footer.js';
-import '/src/components/header/header.js';
 import { calcDiscountPrice, getStorage } from '/src/lib/index.js';
-import '/src/pages/cart/cart.css';
-import '/src/styles/global.css';
 
 document.addEventListener('DOMContentLoaded', initializeCartPage);
 
