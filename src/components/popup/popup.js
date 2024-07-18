@@ -59,7 +59,7 @@ export default function viewPopup(element) {
       `;
 
       // 모달 컨테이너를 element에 추가합니다.
-      element.appendChild(modalContainer);
+      element.insertBefore(modalContainer, element.firstChild);
 
       // 닫기 버튼에 이벤트 리스너를 추가합니다.
       document.querySelectorAll('.close').forEach(function(btn){
