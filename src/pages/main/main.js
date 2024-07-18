@@ -3,11 +3,10 @@ import '/src/pages/main/main.css';
 import '/src/styles/global.css';
 import '/src/components/product/product.css'
 
-import pb from "/src/api/pocketbase.js";
 import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
+import pb from "/src/api/pocketbase.js";
 import viewPopup from '/src/components/popup/popup.js';
-import { slideSwiper } from '/src/pages/main/swiper.js';
 import { comma, calcDiscountPrice, getNode, getNodes, addToCartwithModal } from "/src/lib/index.js";
 import { addRecentProduct } from '/src/components/recent-product/recent-product.js';
 
@@ -17,7 +16,66 @@ viewPopup(mainElement);
 addRecentProduct();
 
 document.addEventListener('DOMContentLoaded', function () {
-  slideSwiper();
+  const swiper1 = new Swiper('.banner-swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    spaceBetween: 0,
+    speed: 4000,
+    observer: true,
+    observeParents: true,
+    parallax: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      bulletClass: 'bullet',
+      bulletActiveClass: 'is-active',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.banner-swiper-button-right',
+      prevEl: '.banner-swiper-button-left',
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+  });
+
+  const swiper2 = new Swiper('.price-swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: false,
+    slidesPerView: 4,
+    slidesPerGroup: 1,
+    spaceBetween: 0, 
+    speed: 2000,
+    observer: true,
+    observeParents: true,
+    parallax: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      bulletClass: 'bullet',
+      bulletActiveClass: 'is-active',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.price-swiper-button-right',
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+  });
 });
 
 
