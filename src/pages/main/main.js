@@ -34,7 +34,7 @@ async function fetchAndDisplayProducts() {
       const discountRate = Number(item.discountRate);
       const hasDiscount = discountRate !== 0 && item.discountRate !== '';
       const discountPrice = hasDiscount
-      ? calcDiscountPrice(price, discountRate)
+      ? Math.ceil(calcDiscountPrice(price, discountRate))
       : price;
 
       const template = `
