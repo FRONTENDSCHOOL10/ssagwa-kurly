@@ -257,7 +257,7 @@ function toggleAccordionList() {
 
   toggleButtons.forEach((button) => {
     button.addEventListener('click', function () {
-      const productList = this.closest('h4').nextElementSibling;
+      const productList = this.closest('h3').nextElementSibling;
       const toggleIcon = this.querySelector('.icon');
 
       toggleClass(productList, 'is-hidden');
