@@ -3,13 +3,10 @@ export const slideSwiper = () => {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
-    autoplay: {
-      delay: 3000,
-    },
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 0,
-    speed: 2000,
+    speed: 4000,
     observer: true,
     observeParents: true,
     parallax: true,
@@ -27,6 +24,10 @@ export const slideSwiper = () => {
       nextEl: '.banner-swiper-button-right',
       prevEl: '.banner-swiper-button-left',
     },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
   });
 
   const swiper2 = new Swiper('.price-swiper', {
@@ -36,9 +37,6 @@ export const slideSwiper = () => {
     slidesPerView: 4,
     slidesPerGroup: 1,
     spaceBetween: 0, 
-    autoplay: {
-      delay: 3000,
-    },
     speed: 2000,
     observer: true,
     observeParents: true,
@@ -55,6 +53,10 @@ export const slideSwiper = () => {
     // Navigation arrows
     navigation: {
       nextEl: '.price-swiper-button-right',
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
     },
   });
 }

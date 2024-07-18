@@ -8,7 +8,7 @@ import '/src/components/header/header.js';
 import '/src/components/footer/footer.js';
 import viewPopup from '/src/components/popup/popup.js';
 import { slideSwiper } from '/src/pages/main/swiper.js';
-import { comma, calcDiscountPrice, getNode, getNodes } from "/src/lib/index.js";
+import { comma, calcDiscountPrice, getNode, getNodes, addToCartwithModal } from "/src/lib/index.js";
 import { addRecentProduct } from '/src/components/recent-product/recent-product.js';
 
 const mainElement = getNode('main');
@@ -34,7 +34,7 @@ async function fetchAndDisplayProducts() {
       const discountRate = Number(item.discountRate);
       const hasDiscount = discountRate !== 0 && item.discountRate !== '';
       const discountPrice = hasDiscount
-      ? calcDiscountPrice(price, discountRate)
+      ? Math.ceil(calcDiscountPrice(price, discountRate))
       : price;
 
       const template = `
@@ -44,7 +44,7 @@ async function fetchAndDisplayProducts() {
                 <img src="${pb.getFileUrl(item, item.productImg)}" alt="${item.productName}" />
                 <figcaption class="sr-only">상품 이미지: ${item.productName}</figcaption>
               </figure></a>
-              <button type="button" class="product__basket" aria-label="장바구니에 상품 담기">
+              <button type="button" class="product__basket" aria-label="장바구니에 상품 담기" data-product='${JSON.stringify(item)}'>
                 <img src="/svg/Cart-1.svg" alt="장바구니 아이콘" aria-hidden="true"/>담기
               </button>
               <a href="/src/pages/product/?product=${item.id}" class="product__link">
@@ -70,6 +70,11 @@ async function fetchAndDisplayProducts() {
         container.insertAdjacentHTML('beforeend', template);
       });
     });
+
+    document.querySelectorAll('.product__basket').forEach((button) => {
+      button.addEventListener('click', addToCartwithModal);
+    });
+    
   } catch (error) {
     console.error('제품을 가져오는 중 오류 발생:', error);
   }
