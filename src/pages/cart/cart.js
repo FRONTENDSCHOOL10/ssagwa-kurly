@@ -1,13 +1,15 @@
+import '/src/pages/cart/cart.css';
+
+import '/src/styles/global.css';
 import '/src/components/button/button.css';
+
+import '/src/components/footer/footer.js';
+import '/src/components/header/header.js';
 import {
   addEventListeners,
   createCartAccordion,
 } from '/src/components/cart-accordion/cartAccordion.js';
-import '/src/components/footer/footer.js';
-import '/src/components/header/header.js';
 import { calcDiscountPrice, getStorage } from '/src/lib/index.js';
-import '/src/pages/cart/cart.css';
-import '/src/styles/global.css';
 
 document.addEventListener('DOMContentLoaded', initializeCartPage);
 
@@ -26,7 +28,7 @@ async function initializeCartPage() {
     }
 
     updateCartSummary();
-    updateOrderButton(authData.isAuth);
+    updateOrderButton(authData);
   } catch (error) {
     console.error('장바구니 데이터를 불러오는데 실패했습니다 ☹:', error);
   }
@@ -117,12 +119,17 @@ function updateDeliveryType(cartData) {
   }
 }
 
-function updateOrderButton(isAuth) {
+function updateOrderButton(authData) {
   const orderButton = document.getElementById('orderButton');
   const Location = document.querySelector('.cart__total-delivery');
-  if (isAuth) {
+  if (authData.isAuth) {
     orderButton.textContent = '주문하기';
     Location.style.display = 'block';
+    Location.querySelector('.delivery-location-info').innerHTML = `
+      <p class="delivery-location-info__address">
+        ${authData.user.adress + "<br />" + authData.user.otherAdress}
+      </p>
+      `;
   } else {
     orderButton.textContent = '로그인';
     Location.style.display = 'none';

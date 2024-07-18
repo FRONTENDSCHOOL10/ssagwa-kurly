@@ -1,4 +1,5 @@
 import '/src/components/product_filter/filter.css';
+
 import { getAttr, toggleClass, addClass, removeClass } from '/src/lib/index.js';
 
 export function createFilterComponent(FilterContainer, data, onFilterChange) {
@@ -12,7 +13,7 @@ export function createFilterComponent(FilterContainer, data, onFilterChange) {
     aside.innerHTML = `
       <section class="filter__section">
         <header class="filter__sections filter__section-header">
-          <h2 class="filter__section-title">필터</h2>
+          <p class="filter__section-title">필터</p>
           <button id="resetFilter" type="button" class="filter__reset" aria-label="필터 초기화">초기화</button>
         </header>
         ${getFilterSectionsHTML()}

@@ -49,7 +49,7 @@ class KurlyHeader extends HTMLElement {
                 </a>
               </li>
               <li>
-                <a href="/src/pages/cart/index.html">
+                <a href="/src/pages/cart/">
                   <img src="/svg/Group.svg" alt="장바구니" class="icon" />
                 </a>
               </li>
@@ -57,10 +57,10 @@ class KurlyHeader extends HTMLElement {
           </div>
           <ul class="header__member-service">
             <li class="header__member-item divider">
-              <a href="/src/pages/register/index.html" class="header__member-link join">회원가입</a>
+              <a href="/src/pages/register/" class="header__member-link join">회원가입</a>
             </li>
             <li class="header__member-item divider">
-              <a href="/src/pages/login/index.html" class="header__member-link">로그인</a>
+              <a href="/src/pages/login/" class="header__member-link">로그인</a>
             </li>
             <li class="header__member-item">
               <a href="#" class="header__member-link">
@@ -96,16 +96,16 @@ class KurlyHeader extends HTMLElement {
           </ul>
           <ul class="nav__product-list">
             <li>
-              <a href="/src/pages/productlist/index.html">신상품</a>
+              <a href="/src/pages/productlist/?page=1">신상품</a>
             </li>
             <li>
-              <a href="/src/pages/productlist/index.html">베스트</a>
+              <a href="/src/pages/productlist/?page=1">베스트</a>
             </li>
             <li>
-              <a href="/src/pages/productlist/index.html">알뜰쇼핑</a>
+              <a href="/src/pages/productlist/?page=1">알뜰쇼핑</a>
             </li>
             <li>
-              <a href="/src/pages/productlist/index.html">특가/혜택</a>
+              <a href="/src/pages/productlist/?page=1">특가/혜택</a>
             </li>
           </ul>
           <div class="nav__delivery">

@@ -4,11 +4,14 @@ export default function viewModal(text, btnText1 = '확인', callback1 = null, b
   // 모달 컨테이너 div를 생성합니다.
   const modalContainer = document.createElement('div');
   modalContainer.classList.add('modalContainer');
+  modalContainer.setAttribute('role', 'dialog');
+  modalContainer.setAttribute('aria-modal', true);
+  modalContainer.setAttribute('aria-labelledby', 'modal-text');
 
   // 제공된 텍스트로 모달 콘텐츠를 생성합니다.
   modalContainer.innerHTML = `
     <div id="modalContent">
-      <p>${text}</p>
+      <p id="modal-text">${text}</p>
       <div class="button-wrapper">
         <button type="button" class="modalClose btn1">${btnText1}</button>
         ${btnText2 ?'<button type="button" class="modalClose btn2">' + btnText2 + '</button>' : ''}

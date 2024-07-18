@@ -1,23 +1,22 @@
 import '/src/pages/product/product.css';
 
 import '/src/styles/global.css';
-import '/src/components/header/header.js';
-import '/src/components/footer/footer.js';
 import '/src/components/button/button.css';
 
+import '/src/components/header/header.js';
+import '/src/components/footer/footer.js';
 import pb from '/src/api/pocketbase.js';
 import initializeStepper from '/src/components/stepper/stepper.js';
 import { getStorage, calcDiscountPrice, comma, getPbImageURL, insertFirst, setDocumentTitle, addToCart } from '/src/lib/index.js'
 import viewModal from '/src/components/modal/modal.js';
 import { setRecentProduct, addRecentProduct } from '/src/components/recent-product/recent-product.js';
 
-const { isAuth } = getStorage('auth') || {};
-
 function replaceBr(text){
   return text.replaceAll('\r\n', '<br />');
 }
 
 async function renderProduct(){
+  const { isAuth } = await getStorage('auth') || {};
 
   const params = new URLSearchParams(location.search);
   const productId = params.get('product');
@@ -34,8 +33,8 @@ async function renderProduct(){
         <div class="product__info">
           <p class="product__delivery-method">${Delivery}</p>
           <div>
-            <p class="product__name">${productName}</p>
-            <p class="product__description">${productDescription}</p>
+            <h2 class="product__name">${productName}</h2>
+            <h3 class="product__description">${productDescription}</h3>
           </div>
           <div class="product__price-wrapper">
             <div>
@@ -134,8 +133,9 @@ async function renderProduct(){
       viewModal('로그인하셔야 본 서비스를 이용하실 수 있습니다.', '확인', ()=>{
         location.href = '/src/pages/login/';
       })
+    }else {
+      productLikeBtn.style.backgroundPosition = '-9px 63px';
     }
-    productLikeBtn.style.backgroundPosition = '-9px 63px';
   })
 
   // 장바구니 담기 버튼

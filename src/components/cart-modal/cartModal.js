@@ -1,8 +1,9 @@
 import '/src/components/cart-modal/cartModal.css';
+
 import '/src/components/button/button.css';
 import '/src/components/stepper/stepper.css';
-import { calcDiscountPrice } from '/src/lib/index.js';
 import { openCartTooltip } from '/src/components/tooltip/tooltip.js';
+import { calcDiscountPrice } from '/src/lib/index.js';
 
 export default function openCartModal(product) {
   const modalContainer = document.createElement('div');

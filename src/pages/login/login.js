@@ -1,14 +1,13 @@
 import '/src/pages/login/login.css';
-import '/src/styles/global.css';
 
-import '/src/components/header/header.js';
-import '/src/components/footer/footer.js';
+import '/src/styles/global.css';
 import '/src/components/input/input.css';
 import '/src/components/button/button.css';
 
+import '/src/components/header/header.js';
+import '/src/components/footer/footer.js';
 import pb from '/src/api/pocketbase.js';
-import { getNode } from '/src/lib/dom';
-import { getStorage, setStorage } from '/src/lib/utils/storage.js';
+import { getStorage, setStorage, getNode } from '/src/lib/index.js';
 import viewModal from '/src/components/modal/modal.js';
 
 const loginButton = getNode('.loginBtn');
@@ -36,7 +35,7 @@ function handleLogin(e) {
           token,
         });
 
-        location.href = '/index.html';
+        location.href = '/';
       },
       () => {
         viewModal('아이디 또는 비밀번호를 확인해 주세요.');

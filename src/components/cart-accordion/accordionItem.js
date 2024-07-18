@@ -1,11 +1,10 @@
-import '/src/components/stepper/stepper.js';
 import {
   calcDiscountPrice,
   getPbImageURL,
   insertLast,
 } from '/src/lib/index.js';
 import initializeStepper from '/src/components/stepper/stepper.js';
-import { updateCartSummary } from '/src/pages/cart/cart';
+import { updateCartSummary } from '/src/pages/cart/cart.js';
 
 export function createAccordionItem(item, packagingType) {
   const discountedPrice = calcDiscountPrice(item.price, item.discountRate);
