@@ -3,11 +3,8 @@ import '/src/components/recent-product/recent-product.css';
 import { setStorage, getStorage } from '/src/lib/utils/storage.js';
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
 
-// viewProduct 함수를 전역 스코프에 노출 (다른 스크립트에서 사용할 수 있도록)
-// window.viewProduct = renderRecentProducts;
-
 const LATELY_VIEW_ITEM_EXPIRATION_DATE = 1; // 유효기간 일수
-const LATELY_VIEW_MAX_SAVE_COUNT = 15; // 저장할 수 있는 아이템 개수
+const LATELY_VIEW_MAX_SAVE_COUNT = 7; // 저장할 수 있는 아이템 개수
 
 export function addRecentProduct() {
   const template = `
