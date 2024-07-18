@@ -360,16 +360,16 @@ function handlePaginationClick(event) {
     updateProductList();
     updatePagination();
 
+    window.scrollTo({
+      top: 0,
+    });
+
     //뒤로가기 앞으로가기하면 page 넘어갈수있게
     window.addEventListener('popstate', (event) => {
       if (event.state && event.state.page) {
         currentPage = event.state.page;
         updateProductList();
         updatePagination();
-        //상단으로 스크롤 올라가게
-        window.scrollTo({
-          top: 0,
-        });
       }
     });
   }
