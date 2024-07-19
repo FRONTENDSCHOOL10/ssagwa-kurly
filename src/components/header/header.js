@@ -1,5 +1,7 @@
 import csstext from '/src/components/header/header.css?inline';
 import categoryMenuItem from '/src/components/header-category/headerCategory.js';
+import viewModal from '/src/components/modal/modal.js';
+import userWithdrawl from '/src/lib/utils/userWithdrawal';
 
 class KurlyHeader extends HTMLElement {
   constructor() {
@@ -143,6 +145,7 @@ class KurlyHeader extends HTMLElement {
         <a href="#" class="header__member-link">${user.name} 님<img src="/svg/Icon_down.png" alt="펼치기" /></a>
         <ul class="user-menu">
           <li><a href="#">마이페이지</a></li>
+          <li><a href="#" class="withdrawl">회원 탈퇴</a></li>
           <li><a href="#" class="logout-link">로그아웃</a></li>
         </ul>
       </li>
@@ -165,6 +168,12 @@ class KurlyHeader extends HTMLElement {
       .addEventListener('click', () => {
         localStorage.removeItem('auth');
         location.href = '/';
+      });
+
+      this.shadowRoot
+      .querySelector('.withdrawl')
+      .addEventListener('click', () => {
+        viewModal('회원 탈퇴를 하시겠습니까?', '확인', userWithdrawl,'취소')
       });
   }
 

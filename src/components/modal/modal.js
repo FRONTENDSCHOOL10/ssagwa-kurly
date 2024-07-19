@@ -1,6 +1,6 @@
 import '/src/components/modal/modal.css';
 
-export default function viewModal(text, btnText1 = '확인', callback1 = null, btnText2 = null, callback2 = null) {
+export default function viewModal(text, btnText1 = '확인', callback1 = null, btnText2 = null, callback2 = ()=>{}) {
   // 모달 컨테이너 div를 생성합니다.
   const modalContainer = document.createElement('div');
   modalContainer.classList.add('modalContainer');
