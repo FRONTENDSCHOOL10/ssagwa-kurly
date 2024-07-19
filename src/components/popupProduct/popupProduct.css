@@ -1,0 +1,234 @@
+body{
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* 후기작성, 상품 문의하기 */
+.modal__popup--product{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 49.56rem;
+  height: 39.38rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 1rem;
+}
+
+.popup-header{
+  box-shadow: 0 1px 0 0 var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+
+  h2{
+    color: var(--black);
+    font-family: inherit;
+    font-size: 1.78rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.button__cancel{
+  position: relative;
+  width: 1.88rem;
+  height: 1.88rem;
+  background: inherit;
+  border: 0;
+  cursor: pointer;
+  
+  span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 1.5px; 
+    background-color: var(--gray-200);
+  }
+}
+
+.cancel-1{
+  transform: translate(-50%, -50%) rotate(45deg); 
+}
+
+.cancel-2{
+  transform: translate(-50%, -50%) rotate(-45deg); 
+}
+
+.product-image{
+  display: flex;
+  align-items: center;
+  padding: 1rem 0 1rem;
+  box-shadow: 0 1px 0 0 var(--gray-200);
+
+
+  img{
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: cover;
+    margin-right: 1.5rem;
+  }
+
+  figcaption{
+    color: var(--black);
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+}
+
+.form__wrapper--popup{
+  padding: 1rem 0 3.63rem;
+  box-shadow: 0 1px 0 0 var(--gray-200);
+}
+
+.popup__title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+
+  label{
+    color: var(--content);
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    padding: 0.5rem 0 0 0.5rem;
+  }
+
+  input{
+    width: 36.81rem;
+    height: 2.75rem;
+    padding: 0 1.25rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--gray-300);
+  }
+}
+
+.popup__content{
+  display: flex;
+  justify-content: space-between;
+
+  label{
+    color: var(--content);
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    padding: 0.5rem 0 0 0.5rem;
+  }
+
+  textarea{
+    width: 597px;
+    height: 163px;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--gray-300);
+  }
+}
+
+.popup-footer{
+  padding-top: 1.25rem;
+}
+
+.btn-group{
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+
+  button{
+    border-radius: 0.25rem;
+    width: 10.5rem;
+    height: 3.38rem;
+    padding: 1.25rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .btn-1{
+    box-shadow: 0 0 0 1px var(--gray-100); 
+    background-color: inherit;
+    color: var(--content);
+    border: 0;
+    
+  }
+
+  .btn-2{
+    background: var(--gray-100);
+    border: 0;
+    color: var(--white);
+  }
+}
+
+/* + 상품문의하기 */
+.form__wrapper--popup-checkbox{
+  padding: 1rem 0 1.56rem;
+  box-shadow: 0 1px 0 0 var(--gray-200);
+}
+
+.form-checkbox{
+  position: relative;
+  margin-left: 5.75rem;
+  margin-top: 0.75rem;
+  width: 8.56rem;
+  
+
+  input{
+    position: absolute;
+    appearance: none;
+    width: 1.44rem;
+    height: 1.44rem;
+    cursor: pointer;
+    
+  }
+  label{
+    background: url(/svg/Check-UnChecked.svg) no-repeat 0 0 /contain;
+    padding-left: 2.06rem;
+    color: var(--black);
+    font-family: inherit;
+    font-size: 12.003px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    background-size: 1.44rem 1.44rem;
+    height: 1.44rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  input:checked + label{
+    background-image: url(/svg/Check-Checked.svg);
+  }
+
+  input:focus{
+    outline: none;
+  }
+
+  input:focus-visible{
+    outline: 2px solid red;
+    outline-offset: 0.25rem;
+    
+  }
+}
+
+/* placeholder폰트 사이즈 변경 */
+input::placeholder {
+  font-size: 1rem;
+  font-style: inherit;
+}

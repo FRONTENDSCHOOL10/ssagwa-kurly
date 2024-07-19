@@ -1,0 +1,256 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.register-page {
+  --requiredElement: '*';
+  --Info-Error: #f03f40;
+
+  width: 40rem;
+  margin: 0 auto;
+
+  font-weight: 600;
+
+  .register__title {
+    font-size: 1.333rem;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 1.375rem;
+  }
+
+  .register__required-element {
+    display: block;
+
+    font-size: 0.7502rem;
+    text-align: right;
+
+    margin-bottom: 0.625rem;
+
+    &::before {
+      content: var(--requiredElement);
+      color: var(--Info-Error);
+    }
+  }
+
+  form {
+    border-top: 2px solid var(--content);
+  }
+}
+
+.register__section {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+
+  padding-block: 1.25rem;
+
+  .register__label--required {
+    &::after {
+      content: var(--requiredElement);
+      color: var(--Info-Error);
+    }
+  }
+
+  .register__label {
+    width: 8.6875rem;
+    height: 2.75rem;
+    line-height: 150%;
+
+    padding: 0.5rem;
+  }
+
+  .register__input,
+  .register__adress-wrapper > button,
+  .radio__wrapper,
+  .userBirth {
+    width: 20.8125rem;
+  }
+
+  .input__wrapper + button {
+    width: 8.9375rem;
+  }
+
+  .verificationID:disabled, .verificationEmail:disabled, .verificationPhone:disabled{
+    color: var(--gray-100);
+    border-color: var(--gray-100);
+  }
+}
+
+.register__adress-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .register__adress-accordion {
+    display: none; /* 보일때에는 flex로 변경 */
+  }
+
+  .adress__line {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 8.9375rem;
+      padding-right: 1rem;
+    }
+  }
+
+  .register__adress-accordion > input {
+    margin-top: 1rem;
+  }
+
+  span {
+    font-size: 0.7502rem;
+    font-weight: 500;
+    line-height: 160%;
+  }
+}
+
+.radio__wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  .input--radio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    position: relative;
+
+    input {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    span {
+      width: 1.5rem;
+      height: 1.5rem;
+
+      position: absolute;
+      top: 0.6875rem;
+      left: 0.3125rem;
+      background-image: url('/svg/Radio.svg');
+      background-position: -0.5rem -0.5rem;
+    }
+
+    input:checked + span {
+      background-image: url('/svg/Radio.svg');
+      background-position: -0.5rem -2.5625rem;
+    }
+  }
+}
+
+.userBirth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.25rem;
+  border: 1px solid var(--gray-300);
+
+  input {
+    font-family: inherit;
+    font-weight: 600;
+    text-align: center;
+
+    width: 25%;
+    border: none;
+  }
+
+  input:focus {
+    outline: none;
+  }
+}
+
+.register__agreement {
+  border-top: 1px solid var(--content);
+  border-bottom: 1px solid var(--gray-200);
+
+  .register__agreement--list {
+    width: 26.8125rem;
+  }
+
+  .input--checkbox {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 12px;
+
+    position: relative;
+
+    .input--checkbox--wrapper {
+      display: flex;
+      justify-content: center;
+
+      gap: 0.5rem;
+
+      input {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      input + span {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        position: absolute;
+        top: 0.9375rem;
+        left: 0.25rem;
+        background-image: url('/svg/Check.svg');
+        background-position: -0.5rem -0.5rem;
+      }
+
+      input:checked + span {
+        background-image: url('/svg/Check.svg');
+        background-position: -0.5rem -2.5rem;
+      }
+
+      span + label {
+        line-height: 180%;
+      }
+    }
+
+    a {
+      color: var(--primary);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .input__agreementAll {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 1.333rem;
+        font-weight: 600;
+        line-height: 150%;
+      }
+
+      label + span {
+        width: 24.75rem;
+
+        font-size: 0.7502rem;
+        font-weight: 500;
+        line-height: 160%;
+        color: var(--gray-400);
+      }
+    }
+  }
+}
+
+.register-page__submit-btn {
+  width: 21.25rem;
+  margin: 2.5rem 9.375rem 5rem;
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  z-index: 1;
+}

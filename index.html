@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사과하지마켓</title>
+    <meta property="og:title" content="사과컬리">
+    <meta property="og:description" content="멋쟁이사자처럼 프론트엔드스쿨 10기 Vanila Project 사과하지말조(4조)">
+    <meta property="og:image" content="https://camo.githubusercontent.com/30c556def95cd7701916e462ba2540f9d15038cab339ffa7f859e95b61d3eb0e/68747470733a2f2f76656c6f672e76656c63646e2e636f6d2f696d616765732f7a69646f6f70616c2f706f73742f35333235663431362d346432622d346637322d383963302d6639383439653031336330622f696d6167652e706e67">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="604">
+    <meta property="og:image:alt" content="ssagwa-kurly">
+    <meta property="og:url" content="https://ssagwa-kurly.netlify.app">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="사과하지마켓">
+    <meta property="og:locale" content="ko_KR">
+    <link rel="icon" type="image/svg+xml" href="/nosorry.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="/src/pages/main/main.js"></script>
+  </head>
+
+  <body>
+    <ssagwakurly-header></ssagwakurly-header>
+  
+    <main>
+      <div aria-labelledby="banner-slider">
+        <div id="banner-slider" class="swiper banner-swiper">
+          <div class="swiper-wrapper width-box">
+            <div class="swiper-slide"><img src="/src/assets/images/banner/banner01.webp" alt="부드러운 달콤함 컬리 과일가게 멜론 9900원"/></div>
+            <div class="swiper-slide"><img src="/src/assets/images/banner/banner02.webp" alt="한눈에 보는 이달의 카드 혜택"/></div>
+            <div class="swiper-slide"><img src="/src/assets/images/banner/banner03.webp" alt="컬리 퍼플위크"/></div>
+            <div class="swiper-slide"><img src="/src/assets/images/banner/banner05.webp" alt="컬리 장보기의 특권 이 주의 특가 한눈에 보기"/></div>
+          </div>
+          <div class="banner-swiper-button-left"></div>
+          <div class="banner-swiper-button-right"></div>
+        </div>
+      </div>
+  
+      <section class="main__product" aria-labelledby="recommended-item-list">
+        <h2 id="recommended-item-list">이 상품 어때요?</h2>
+        <div class="product--swiper main__product">
+          <div class="swiper price-swiper">
+            <ul class="swiper-wrapper product__list main__product--items">
+              <!-- product 컴포넌트 -->
+            </ul>
+            <div class="price-swiper-button-right"></div>
+          </div>
+        </div>
+      </section>
+  
+      <div aria-labelledby="line-banner">
+        <a href="/"><img id="line-banner" class="line__banner" src="/src/assets/images/banner/line-banner.webp" alt="더 풍성해진 10월 퍼플위크 적립률 UP + 3종 쿠폰팩" /></a>
+      </div>
+  
+      <section class="main__product" aria-labelledby="recommendation-price">
+        <h2 id="recommendation-price">놓치면 후회할 가격</h2>
+        <div class="product--swiper main__product">
+          <div class="swiper price-swiper">
+            <ul class="swiper-wrapper product__list main__product--items">
+              <!-- product 컴포넌트 -->
+            </ul>
+            <div class="price-swiper-button-right"></div>
+          </div>
+        </div>
+      </section>
+  
+    </main>
+  
+    <ssagwakurly-footer></ssagwakurly-footer>
+  </body>
+
+</html>

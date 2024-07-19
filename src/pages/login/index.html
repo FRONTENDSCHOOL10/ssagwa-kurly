@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/nosorry.png" />
+  <script type="module" src="/src/pages/login/login.js"></script>
+  <title>로그인 - 사과컬리</title>
+  <meta property="og:title" content="로그인 - 사과컬리">
+  <meta property="og:description" content="멋쟁이사자처럼 프론트엔드스쿨 10기 Vanila Project 사과하지말조(4조)">
+  <meta property="og:image" content="https://camo.githubusercontent.com/30c556def95cd7701916e462ba2540f9d15038cab339ffa7f859e95b61d3eb0e/68747470733a2f2f76656c6f672e76656c63646e2e636f6d2f696d616765732f7a69646f6f70616c2f706f73742f35333235663431362d346432622d346637322d383963302d6639383439653031336330622f696d6167652e706e67">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="604">
+  <meta property="og:image:alt" content="ssagwa-kurly">
+  <meta property="og:url" content="https://ssagwa-kurly.netlify.app/src/pages/login/">
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="사과하지마켓">
+  <meta property="og:locale" content="ko_KR">
+</head>
+<body>
+  <ssagwakurly-header></ssagwakurly-header>
+
+  <main>
+    <section class="login__container" aria-labelledby="login-head1">
+
+      <h2 id="login-head1">로그인</h2>
+      
+      <form class="login__form">
+        <div class="input form--login width-box">
+          <label class="sr-only" for="userEmail">아이디</label>
+          <div class="input__wrapper box-sizing">
+            <input class="input__field--large" type="email" name="userEmail" id="userEmail" required placeholder="아이디를 입력해주세요" aria-invalid="false" aria-describedby="userEmailError" aria-live="assertive" />
+            <span class="input__error-message" id="userEmailError">아이디는 이메일 형식으로 입력해 주세요.</span>
+          </div>
+        </div>
+        
+        <div class="input width-box">
+          <label class="sr-only" for="userPw">비밀번호</label>
+          <div class="input__wrapper">
+            <input class="input__field--large box-sizing" type="password" name="userPw" id="userPw" required placeholder="비밀번호를 입력해주세요" aria-invalid="false" aria-describedby="userPwError" aria-live="polite" />
+            <span class="input__error-message" id="userPwError">비밀번호는 6자리 이상 입력해주세요.</span>
+          </div>
+        </div>
+
+        <div class="form--login-find">
+          <a href="#">아이디찾기</a>
+          <span aria-hidden="true">|</span>
+          <a href="#">비밀번호찾기</a>
+        </div>
+        
+        <div class="button-group__button--large flex-box">
+          <button type="submit" class="loginBtn button--large button--primary form--login">로그인</button>
+          <button type="button" class="registerBtn button--large button--transparent">회원가입</button>
+        </div>
+
+      </form>
+
+    </section>
+  </main>
+
+  <ssagwakurly-footer></ssagwakurly-footer>
+</body>
+</html>

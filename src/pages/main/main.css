@@ -1,0 +1,116 @@
+/* main css */
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.swiper{
+  width: 100vw;
+  height: 100%;
+  position: relative;
+}
+
+.width-box{
+  margin: 0 auto;
+  width: 1900px;
+}
+
+.swiper-slide{
+  width: 100%;
+  img{
+    max-width: 100vw;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+
+.banner-swiper-button-left,.banner-swiper-button-right{
+  background-image: url(/svg/Arrow.svg);
+  background-size: cover;
+  width: 3.125rem;
+  height: 3.125rem;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 10;
+  top: 40%;
+  opacity: 1 !important;
+  display: block !important;
+  cursor: pointer; 
+}
+
+.banner-swiper-button-left{
+  left: 20%;
+}
+
+.banner-swiper-button-right{
+  background-position: 0 0;
+  transform: rotate(180deg);
+  right: 20%;
+}
+
+
+.main__product{
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2{
+    margin-bottom: 1.75rem;
+    font-family: inherit;
+    font-size: 1.776875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    width: 65.125rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.line__banner{
+  margin: 2.5rem 0;
+}
+
+/* product css */
+.main__product{
+  width: 65.625rem;
+  overflow: hidden;
+}
+
+.product__wrapper {
+  /* width: 249px !important; */
+  width: 25% !important; 
+  box-sizing: border-box;
+  position: relative;
+  a{
+    width: 100%;
+    display: block;
+  }
+}
+
+.price-swiper{
+  width: 65.125rem!important;
+}
+
+.price-swiper .swiper-slide {
+  width: calc(25% - 0.9375rem) !important;
+  margin-right: 0.9375rem !important;  
+  box-sizing: border-box; 
+}
+
+.price-swiper-button-right{
+  top: 25%;
+  left: 95.5%;
+  background-image: url(/svg/arrow2.svg);
+  background-size: cover;
+  width: 3.125rem;
+  height: 3.125rem;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 10;
+  opacity: 1 !important;
+  display: block !important;
+  cursor: pointer; 
+  background-position: 0 0;
+}

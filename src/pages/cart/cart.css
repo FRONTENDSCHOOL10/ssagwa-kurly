@@ -1,0 +1,229 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cart__bg {
+  width: 65.625rem;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+}
+
+.cart__header {
+  padding: 3.125rem 0 3rem;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 2.1875rem;
+  text-align: center;
+}
+
+.cart__section {
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: -0.0313rem;
+}
+
+.cart__product-section {
+  width: 46.375rem;
+}
+
+.cart__total-section {
+  position: relative;
+  width: 17.75rem;
+  min-height: 58.875rem;
+}
+
+.cart__total-section-container {
+  position: absolute;
+  width: 17.75rem;
+  padding-top: 3.75rem;
+}
+
+.cart__total-amout {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1875rem 1.125rem 1.125rem 1.25rem;
+  border: 0.0625rem solid #f2f2f2;
+  background-color: var(--gray-50);
+}
+
+.product-amount,
+.discount-amout,
+.delivery-total-cost {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delivery-cost {
+  display: flex;
+  flex-direction: column;
+}
+.discount-amout,
+.delivery-cost {
+  display: flex;
+  padding-top: 0.75rem;
+}
+
+.free-shipping-message {
+  display: block;
+  padding-top: 0.125rem;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.125rem;
+  text-align: right;
+}
+
+.estimated-amount {
+  flex-direction: column;
+  margin-top: 1rem;
+  padding-top: 1.125rem;
+  border-top: 0.0625rem solid var(--gray-100);
+}
+
+.estimated-amount .amount {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .reward {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  font-size: 0.75rem;
+  margin-top: 0.625rem;
+  font-weight: 600;
+}
+
+.icon--reward {
+  display: inline-block;
+  background-image: url('/svg/Badge-Reward.svg');
+  width: 2.3125rem;
+  height: 1.125rem;
+  margin-right: 0.3125rem;
+  display: flex;
+  padding: 0rem 0.5rem;
+} */
+
+.total__span-left {
+  width: 6.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  white-space: nowrap;
+}
+
+.total__span-right {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  text-align: right;
+}
+
+.total__span-right strong {
+  font-size: 1.8125rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+}
+
+.total__span-right span {
+  padding-left: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  vertical-align: 0.0625rem;
+}
+
+#select-btn {
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: inherit;
+}
+
+.order-info {
+  padding: 1rem 0;
+}
+
+.order-info li {
+  color: var(--gray-400);
+  position: relative;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
+
+.order-info li::before {
+  overflow: hidden;
+  position: absolute;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  margin: 0.375rem 0rem 0 -0.375rem;
+  vertical-align: top;
+  border-radius: 50%;
+  content: '';
+}
+
+.cart__total-login {
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart__total-delivery {
+  font-weight: 600;
+  padding: 1.4375rem 1.25rem 1.25rem;
+  border-width: 0.0625rem 0.0625rem 0;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-top-color: rgb(242, 242, 242);
+  border-right-color: rgb(242, 242, 242);
+  border-left-color: rgb(242, 242, 242);
+  border-image: initial;
+  border-bottom-style: initial;
+  border-bottom-color: initial;
+}
+
+.cart__total-delivery h3 {
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  background: url(https://res.kurly.com/pc/service/cart/2007/ico_location.svg) 0
+    50% / 1.25rem 1.25rem no-repeat;
+}
+
+.delivery-location-info {
+  padding-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.delivery-location-info__address {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  word-break: break-word;
+}
+
+.delivery-location-info__change {
+  padding: 0.375rem 0;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.delivery-location-info__change button {
+  margin-top: 0.75rem;
+}
+
+.delivery-type {
+  color: var(--primary);
+  font-size: 0.875rem;
+}

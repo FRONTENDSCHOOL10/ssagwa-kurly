@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>베스트 - 사과컬리 </title>
+  <meta property="og:title" content="베스트 - 사과컬리">
+  <meta property="og:description" content="멋쟁이사자처럼 프론트엔드스쿨 10기 Vanila Project 사과하지말조(4조)">
+  <meta property="og:image" content="https://camo.githubusercontent.com/30c556def95cd7701916e462ba2540f9d15038cab339ffa7f859e95b61d3eb0e/68747470733a2f2f76656c6f672e76656c63646e2e636f6d2f696d616765732f7a69646f6f70616c2f706f73742f35333235663431362d346432622d346637322d383963302d6639383439653031336330622f696d6167652e706e67">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="604">
+  <meta property="og:image:alt" content="ssagwa-kurly">
+  <meta property="og:url" content="https://ssagwa-kurly.netlify.app/src/pages/productlist/?page=1">
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="사과하지마켓">
+  <meta property="og:locale" content="ko_KR">
+  <link rel="icon" type="image/svg+xml" href="/nosorry.png" />
+  <script type="module" src="/src/pages/productlist/productlist.js"></script>
+</head>
+
+<body>
+  <ssagwakurly-header></ssagwakurly-header>
+  <main class="productlistpage">
+    <h2 class="productlistpage__header" aria-label="추천메뉴목록">베스트</h2>
+
+    <div class="productlist-area">
+      <aside id="productlist-filter"></aside>
+      <section class="productlist-group" aria-label="정렬과상품목록 그룹">
+        <article class="productlist-sortings" aria-label="정렬 목록">
+          <p class="productlist-sorting__count"></p>
+          <ul>
+            <li><a class="productlist-sorting   productlist-sorting--is-active">추천순</a></li>
+            <li class="bar"><a class="productlist-sorting">신상품순</a></li>
+            <li class="bar"><a class="productlist-sorting">판매량순</a></li>
+            <li class="bar"><a class="productlist-sorting">할인율순</a></li>
+            <li class="bar"><a class="productlist-sorting">낮은 가격순</a></li>
+            <li class="bar"><a class="productlist-sorting">높은 가격순</a></li>
+          </ul>
+        </article>
+        <article class="productlists" aria-label="상품목록">
+          <ul class="products"></ul>
+        </article>
+        <nav class="paginator">
+          <a href="#" class="doublearrow" data-page="first">
+            <img src="/svg/firstpage.svg" alt="첫페이지 아이콘" />
+          </a>
+          <a href="#" class="arrow" data-page="prev">
+            <img src="/svg/Previouspage.svg" alt="이전페이지 아이콘" />
+          </a>
+          <div class="page-numbers"></div>
+          <a href="#" class="arrow" data-page="next">
+            <img src="/svg/nextpage.svg" alt="다음페이지 아이콘" />
+          </a>
+          <a href="#" class="doublearrow" data-page="last">
+            <img src="/svg/lastpage.svg" alt="마지막페이지 아이콘" />
+          </a>
+        </nav>
+      </section>
+    </div>
+
+  </main>
+  <ssagwakurly-footer></ssagwakurly-footer>
+</body>
+
+</html>
